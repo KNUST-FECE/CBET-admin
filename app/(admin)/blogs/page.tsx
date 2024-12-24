@@ -1,7 +1,7 @@
 
 export default function Page() {
     return (
-        <div className="blog-blank-container">
+        <div className="blogs-home-container">
             <p>BLANK PAGE</p>
         </div>
     )

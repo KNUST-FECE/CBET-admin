@@ -127,8 +127,9 @@
   }
 
   p {
-    @apply text-balance text-2xl font-extrabold text-primary-800;
+    @apply text-balance text-lg font-semibold text-primary-800;
   }
+
 }
 
 /* ///////////////////////////////////// */
@@ -154,10 +155,123 @@
 }
 
 /* ///////////////////////////////////// */
-/* //////////// ADMIN STYLES ////////// */
+/* //////// ADMIN MAIN STYLES ///////// */
 /* //////////////////////////////////// */
 @layer utilities {
   .admin-container {
+    @apply w-full min-h-dvh flex;
+  }
+
+  .admin-container>header {
+    @apply w-64 h-dvh bg-secondary-600 flex-center;
+  }
+
+  .admin-container>main {
+    @apply flex-1 min-h-dvh flex
+  }
+}
+
+/* ///////////////////////////////////// */
+/* //////////// HOME STYLES //////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .home-container {
+    @apply w-full min-h-dvh flex-center;
+  }
+}
+
+/* ///////////////////////////////////// */
+/* ///////// RESOURCES STYLES ////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .resource-container {
+    @apply w-full min-h-dvh flex-center;
+  }
+}
+
+/* ///////////////////////////////////// */
+/* //////////// BLOG STYLES //////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .blogs-container {
+    @apply w-full min-h-dvh flex;
+  }
+
+  .blogs-container>nav {
+    @apply w-64 h-dvh bg-secondary-300 flex-center;
+  }
+
+  .blogs-container>.blogs-home-container {
+    @apply flex-1 min-h-dvh flex-center
+  }
+
+  .blogs-container>.blogs-form-container {
+    @apply flex-1 min-h-dvh flex-center
+  }
+}
+
+/* ///////////////////////////////////// */
+/* /////////// MARKET STYLES /////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .market-container {
+    @apply w-full min-h-dvh flex flex-col;
+  }
+
+  .market-container>nav {
+    @apply w-full h-28 flex-center bg-secondary-300
+  }
+
+  .market-container>.shops-container {
+    @apply w-full flex-1 flex-center
+  }
+
+  .market-container>.products-container {
+    @apply w-full flex-1 flex-center
+  }
+}
+
+/* ///////////////////////////////////// */
+/* ///////// MEMBERS STYLES ////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .members-container {
+    @apply w-full min-h-dvh flex-center flex-col space-y-8;
+  }
+}
+
+/* ///////////////////////////////////// */
+/* /////////// USERS STYLES //////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .users-container {
+    @apply w-full min-h-dvh flex-center flex-col space-y-8;
+  }
+}
+
+/* ///////////////////////////////////// */
+/* ///////// REPORTS STYLES /////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .reports-container {
+    @apply w-full min-h-dvh flex-center;
+  }
+}
+
+/* ///////////////////////////////////// */
+/* /////////// ROLES STYLES //////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .roles-container {
+    @apply w-full min-h-dvh flex-center flex-col space-y-8;
+  }
+}
+
+/* ///////////////////////////////////// */
+/* ////////// SETTINGS STYLES ////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .settings-container {
     @apply w-full min-h-dvh flex-center;
   }
 }
