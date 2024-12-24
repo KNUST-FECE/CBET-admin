@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --primary: 0 0% 100%;
   --primary-50: 0 0% 98%;
   --primary-100: 0 0% 96.1% ;
   --primary-200: 0 0% 89.8% ;
@@ -14,7 +15,6 @@
   --primary-800: 0 0% 14.9% ;
   --primary-900: 0 0% 9% ;
   --primary-950: 0 0% 3.9% ;
-  --primary: 0 0% 0%;
   
   --secondary-50: 213.8 100% 96.9%;
   --secondary-100: 214.3 94.6% 92.7% ;
@@ -62,6 +62,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --primary: 0 0% 100%;
     --primary-50: 0 0% 98%;
     --primary-100: 0 0% 96.1% ;
     --primary-200: 0 0% 89.8% ;
@@ -73,8 +74,8 @@
     --primary-800: 0 0% 14.9% ;
     --primary-900: 0 0% 9% ;
     --primary-950: 0 0% 3.9% ;
-    --primary: 0 0% 0%;
     
+    --secondary: 0 0% 100%;
     --secondary-50: 213.8 100% 96.9%;
     --secondary-100: 214.3 94.6% 92.7% ;
     --secondary-200: 213.3 96.9% 87.3% ;
@@ -86,7 +87,6 @@
     --secondary-800: 224.3 76.3% 48% ;
     --secondary-900: 224.4 64.3% 32.9% ;
     --secondary-950: 226.2 57% 21% ;
-    --secondary: 0 0% 100%;
 
     --success-50: 138.5 76.5% 96.7%;
     --success-100: 140.6 84.2% 92.5% ;
@@ -114,16 +114,26 @@
   }
 }
 
+/* ///////////////////////////////////// */
+/* ///////////// BASE STYLES ////////// */
+/* //////////////////////////////////// */
 @layer base {
   html {
     @apply scroll-smooth
   }
 
   body {
-    @apply bg-primary text-primary-300 scroll-smooth w-full min-h-dvh;
+    @apply w-full min-h-dvh bg-primary text-primary-950 scroll-smooth font-inter;
+  }
+
+  p {
+    @apply text-balance text-2xl font-extrabold text-primary-800;
   }
 }
 
+/* ///////////////////////////////////// */
+/* /////////// UTILITY STYLES ////////// */
+/* //////////////////////////////////// */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -131,5 +141,23 @@
 
   .flex-center {
     @apply flex items-center justify-center;
+  }
+}
+
+/* ///////////////////////////////////// */
+/* ///////////// LOGIN STYLES ////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .login-container {
+    @apply w-full min-h-dvh flex-center;
+  }
+}
+
+/* ///////////////////////////////////// */
+/* //////////// ADMIN STYLES ////////// */
+/* //////////////////////////////////// */
+@layer utilities {
+  .admin-container {
+    @apply w-full min-h-dvh flex-center;
   }
 }
