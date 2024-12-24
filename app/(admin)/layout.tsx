@@ -1,3 +1,4 @@
+import Header from "@/components/admin/header";
 import { Metadata } from "next";
 
 
@@ -9,8 +10,10 @@ export const metadata: Metadata = {
 export default function Layout({ children }: Readonly<{ children: React.ReactNode; }>) {
     return (
         <div className="admin-container">
-            <p>HEADER</p>
-            {children}
+            <Header />
+            <main>
+                {children}
+            </main>
         </div>
     );
 }

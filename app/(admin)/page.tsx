@@ -1,8 +1,8 @@
 
 export default function Home() {
   return (
-    <main>
+    <div className="home-container">
       <p>HOME</p>
-    </main>
+    </div>
   );
 }
