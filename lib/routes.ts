@@ -1,0 +1,11 @@
+export const _home = "/";
+export const _login = "/login";
+export const _resources = "/resources";
+export const _market = "/market";
+export const _blogs = "/blogs";
+export const _blog = (id: string) => `${_blogs}/${id}`;
+export const _users = "/users";
+export const _members = "/mambers";
+export const _settings = "/settings";
+export const _reports = "/reports";
+export const _roles = "/roles";

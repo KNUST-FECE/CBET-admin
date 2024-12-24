@@ -1,8 +1,8 @@
 
 export default function Page() {
     return (
-        <div className="blogs-container">
-            <p>BLOG</p>
+        <div className="blog-blank-container">
+            <p>BLANK PAGE</p>
         </div>
     )
 }
