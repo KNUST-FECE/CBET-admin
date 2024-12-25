@@ -6,6 +6,8 @@ export const _blogs = "/blogs";
 export const _blog = (id: string) => `${_blogs}/${id}`;
 export const _users = "/users";
 export const _members = "/mambers";
+export const _shops = `${_members}/shops`;
+export const _products = `${_members}/products`;
 export const _settings = "/settings";
 export const _reports = "/reports";
 export const _roles = "/roles";
