@@ -1,11 +1,13 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+import { Db } from "mongodb";
+import client from "./db";
 
-// export function cn(...inputs: ClassValue[]) {
-//     return twMerge(clsx(inputs))
-// }
 
-import connectToDB from "./db";
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs))
+}
 
-  
 /**
 *  RETURNS THE BASE URL BASED ON THE ENVIRONMENT
 */
@@ -18,10 +20,11 @@ export const baseUrl = () => {
     
 };
 
-export async function connectionProvider<T>(callback: (isProduction: boolean) => Promise<T>): Promise<T> {
-    await connectToDB();
-    const isProduction = process.env.NODE_ENV === 'production';
-    const data = JSON.stringify(await callback(isProduction));
-  
-    return JSON.parse(data || "[]") as T
+export async function conn<T>(callback: (db: Db, isLocal: boolean) => Promise<T>): Promise<T> {
+    await client.connect();
+
+    const db = client.db("cbet-platform");
+    const isLocal = process.env.NODE_ENV === 'development';
+
+    return await callback(db, isLocal) as T;
 };

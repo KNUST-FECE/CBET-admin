@@ -1,31 +1,37 @@
-export type QueryType = {
+import { Type } from "lucide-react";
+import { ZLogin } from "./schema";
+import { z } from "zod";
+
+export type IQuery = {
     params: {[key: string]: string}
 };
 
-export type ResourceFilterType = {
+export type ILogin = z.infer<typeof ZLogin>;
+
+export type IResourceFilter = {
 
 }
 
-export type BlogFilterType = {
+export type IBlogFilter = {
 
 }
 
-export type ShopFilterType = {
+export type IShopFilter = {
 
 }
 
-export type ProductFilterType = {
+export type IProductFilter = {
 
 }
 
-export type UserFilterType = {
+export type IUserFilter = {
 
 }
 
-export type MemberFilterType = {
+export type IMemberFilter = {
 
 }
 
-export type ReportFilterType = {
+export type IReportFilter = {
     
 }

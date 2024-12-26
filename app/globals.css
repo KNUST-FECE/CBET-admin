@@ -3,128 +3,128 @@
 @tailwind utilities;
 
 :root {
-  --primary: 0 0% 100%;
-  --primary-50: 210 40% 98%;
-  --primary-100: 210 40% 96.1% ;
-  --primary-200: 214.3 31.8% 91.4% ;
-  --primary-300: 212.7 26.8% 83.9% ;
-  --primary-400: 215 20.2% 65.1% ;
-  --primary-500: 215.4 16.3% 46.9% ;
-  --primary-600: 215.3 19.3% 34.5% ;
-  --primary-700: 215.3 25% 26.7% ;
-  --primary-800: 217.2 32.6% 17.5% ;
-  --primary-900: 222.2 47.4% 11.2% ;
-  --primary-950: 222.2 84% 4.9% ;
-  
-  --secondary-50: 213.8 100% 96.9%;
-  --secondary-100: 214.3 94.6% 92.7% ;
-  --secondary-200: 213.3 96.9% 87.3% ;
-  --secondary-300: 211.7 96.4% 78.4% ;
-  --secondary-400: 213.1 93.9% 67.8% ;
-  --secondary-500: 217.2 91.2% 59.8% ;
-  --secondary-600: 221.2 83.2% 53.3% ;
-  --secondary-700: 224.3 76.3% 48% ;
-  --secondary-800: 224.3 76.3% 48% ;
-  --secondary-900: 224.4 64.3% 32.9% ;
-  --secondary-950: 226.2 57% 21% ;
-  --secondary: 0 0% 100%;
+	--primary: 0 0% 100%;
+	--primary-50: 210 40% 98%;
+	--primary-100: 210 40% 96.1% ;
+	--primary-200: 214.3 31.8% 91.4% ;
+	--primary-300: 212.7 26.8% 83.9% ;
+	--primary-400: 215 20.2% 65.1% ;
+	--primary-500: 215.4 16.3% 46.9% ;
+	--primary-600: 215.3 19.3% 34.5% ;
+	--primary-700: 215.3 25% 26.7% ;
+	--primary-800: 217.2 32.6% 17.5% ;
+	--primary-900: 222.2 47.4% 11.2% ;
+	--primary-950: 222.2 84% 4.9% ;
+	
+	--secondary-50: 213.8 100% 96.9%;
+	--secondary-100: 214.3 94.6% 92.7% ;
+	--secondary-200: 213.3 96.9% 87.3% ;
+	--secondary-300: 211.7 96.4% 78.4% ;
+	--secondary-400: 213.1 93.9% 67.8% ;
+	--secondary-500: 217.2 91.2% 59.8% ;
+	--secondary-600: 221.2 83.2% 53.3% ;
+	--secondary-700: 224.3 76.3% 48% ;
+	--secondary-800: 224.3 76.3% 48% ;
+	--secondary-900: 224.4 64.3% 32.9% ;
+	--secondary-950: 226.2 57% 21% ;
+	--secondary: 0 0% 100%;
 
-  --success-50: 138.5 76.5% 96.7%;
-  --success-100: 140.6 84.2% 92.5% ;
-  --success-200: 141 78.9% 85.1% ;
-  --success-300: 141.7 76.6% 73.1% ;
-  --success-400: 141.9 69.2% 58% ;
-  --success-500: 142.1 70.6% 45.3% ;
-  --success-600: 142.1 76.2% 36.3% ;
-  --success-700: 142.4 71.8% 29.2% ;
-  --success-800: 142.8 64.2% 24.1% ;
-  --success-900: 143.8 61.2% 20.2% ;
-  --success-950: 144.9 80.4% 10% ;
+	--success-50: 138.5 76.5% 96.7%;
+	--success-100: 140.6 84.2% 92.5% ;
+	--success-200: 141 78.9% 85.1% ;
+	--success-300: 141.7 76.6% 73.1% ;
+	--success-400: 141.9 69.2% 58% ;
+	--success-500: 142.1 70.6% 45.3% ;
+	--success-600: 142.1 76.2% 36.3% ;
+	--success-700: 142.4 71.8% 29.2% ;
+	--success-800: 142.8 64.2% 24.1% ;
+	--success-900: 143.8 61.2% 20.2% ;
+	--success-950: 144.9 80.4% 10% ;
 
-  --danger-50: 33.3 100% 96.5%;
-  --danger-100: 34.3 100% 91.8% ;
-  --danger-200: 32.1 97.7% 83.1% ;
-  --danger-300: 30.7 97.2% 72.4% ;
-  --danger-400: 27 96% 61% ;
-  --danger-500: 24.6 95% 53.1% ;
-  --danger-600: 20.5 90.2% 48.2% ;
-  --danger-700: 17.5 88.3% 40.4% ;
-  --danger-800: 15 79.1% 33.7% ;
-  --danger-900: 15.3 74.6% 27.8% ;
-  --danger-950: 13 81.1% 14.5% ;
+	--danger-50: 33.3 100% 96.5%;
+	--danger-100: 34.3 100% 91.8% ;
+	--danger-200: 32.1 97.7% 83.1% ;
+	--danger-300: 30.7 97.2% 72.4% ;
+	--danger-400: 27 96% 61% ;
+	--danger-500: 24.6 95% 53.1% ;
+	--danger-600: 20.5 90.2% 48.2% ;
+	--danger-700: 17.5 88.3% 40.4% ;
+	--danger-800: 15 79.1% 33.7% ;
+	--danger-900: 15.3 74.6% 27.8% ;
+	--danger-950: 13 81.1% 14.5% ;
 
-  color-scheme: normal;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	color-scheme: normal;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --primary: 0 0% 100%;
-    --primary-50: 210 40% 98%;
-    --primary-100: 210 40% 96.1% ;
-    --primary-200: 214.3 31.8% 91.4% ;
-    --primary-300: 212.7 26.8% 83.9% ;
-    --primary-400: 215 20.2% 65.1% ;
-    --primary-500: 215.4 16.3% 46.9% ;
-    --primary-600: 215.3 19.3% 34.5% ;
-    --primary-700: 215.3 25% 26.7% ;
-    --primary-800: 217.2 32.6% 17.5% ;
-    --primary-900: 222.2 47.4% 11.2% ;
-    --primary-950: 222.2 84% 4.9% ;
-    
-    --secondary: 0 0% 100%;
-    --secondary-50: 213.8 100% 96.9%;
-    --secondary-100: 214.3 94.6% 92.7% ;
-    --secondary-200: 213.3 96.9% 87.3% ;
-    --secondary-300: 211.7 96.4% 78.4% ;
-    --secondary-400: 213.1 93.9% 67.8% ;
-    --secondary-500: 217.2 91.2% 59.8% ;
-    --secondary-600: 221.2 83.2% 53.3% ;
-    --secondary-700: 224.3 76.3% 48% ;
-    --secondary-800: 224.3 76.3% 48% ;
-    --secondary-900: 224.4 64.3% 32.9% ;
-    --secondary-950: 226.2 57% 21% ;
+	:root {
+		--primary: 0 0% 100%;
+		--primary-50: 210 40% 98%;
+		--primary-100: 210 40% 96.1% ;
+		--primary-200: 214.3 31.8% 91.4% ;
+		--primary-300: 212.7 26.8% 83.9% ;
+		--primary-400: 215 20.2% 65.1% ;
+		--primary-500: 215.4 16.3% 46.9% ;
+		--primary-600: 215.3 19.3% 34.5% ;
+		--primary-700: 215.3 25% 26.7% ;
+		--primary-800: 217.2 32.6% 17.5% ;
+		--primary-900: 222.2 47.4% 11.2% ;
+		--primary-950: 222.2 84% 4.9% ;
+		
+		--secondary: 0 0% 100%;
+		--secondary-50: 213.8 100% 96.9%;
+		--secondary-100: 214.3 94.6% 92.7% ;
+		--secondary-200: 213.3 96.9% 87.3% ;
+		--secondary-300: 211.7 96.4% 78.4% ;
+		--secondary-400: 213.1 93.9% 67.8% ;
+		--secondary-500: 217.2 91.2% 59.8% ;
+		--secondary-600: 221.2 83.2% 53.3% ;
+		--secondary-700: 224.3 76.3% 48% ;
+		--secondary-800: 224.3 76.3% 48% ;
+		--secondary-900: 224.4 64.3% 32.9% ;
+		--secondary-950: 226.2 57% 21% ;
 
-    --success-50: 138.5 76.5% 96.7%;
-    --success-100: 140.6 84.2% 92.5% ;
-    --success-200: 141 78.9% 85.1% ;
-    --success-300: 141.7 76.6% 73.1% ;
-    --success-400: 141.9 69.2% 58% ;
-    --success-500: 142.1 70.6% 45.3% ;
-    --success-600: 142.1 76.2% 36.3% ;
-    --success-700: 142.4 71.8% 29.2% ;
-    --success-800: 142.8 64.2% 24.1% ;
-    --success-900: 143.8 61.2% 20.2% ;
-    --success-950: 144.9 80.4% 10% ;
+		--success-50: 138.5 76.5% 96.7%;
+		--success-100: 140.6 84.2% 92.5% ;
+		--success-200: 141 78.9% 85.1% ;
+		--success-300: 141.7 76.6% 73.1% ;
+		--success-400: 141.9 69.2% 58% ;
+		--success-500: 142.1 70.6% 45.3% ;
+		--success-600: 142.1 76.2% 36.3% ;
+		--success-700: 142.4 71.8% 29.2% ;
+		--success-800: 142.8 64.2% 24.1% ;
+		--success-900: 143.8 61.2% 20.2% ;
+		--success-950: 144.9 80.4% 10% ;
 
-    --danger-50: 33.3 100% 96.5%;
-    --danger-100: 34.3 100% 91.8% ;
-    --danger-200: 32.1 97.7% 83.1% ;
-    --danger-300: 30.7 97.2% 72.4% ;
-    --danger-400: 27 96% 61% ;
-    --danger-500: 24.6 95% 53.1% ;
-    --danger-600: 20.5 90.2% 48.2% ;
-    --danger-700: 17.5 88.3% 40.4% ;
-    --danger-800: 15 79.1% 33.7% ;
-    --danger-900: 15.3 74.6% 27.8% ;
-    --danger-950: 13 81.1% 14.5% ;
-  }
+		--danger-50: 33.3 100% 96.5%;
+		--danger-100: 34.3 100% 91.8% ;
+		--danger-200: 32.1 97.7% 83.1% ;
+		--danger-300: 30.7 97.2% 72.4% ;
+		--danger-400: 27 96% 61% ;
+		--danger-500: 24.6 95% 53.1% ;
+		--danger-600: 20.5 90.2% 48.2% ;
+		--danger-700: 17.5 88.3% 40.4% ;
+		--danger-800: 15 79.1% 33.7% ;
+		--danger-900: 15.3 74.6% 27.8% ;
+		--danger-950: 13 81.1% 14.5% ;
+	}
 }
 
 /* ///////////////////////////////////// */
 /* ///////////// BASE STYLES ////////// */
 /* //////////////////////////////////// */
 @layer base {
-  html {
-    @apply scroll-smooth
-  }
+	html {
+		@apply scroll-smooth
+	}
 
-  body {
-    @apply w-full min-h-dvh bg-primary text-primary-950 scroll-smooth font-inter;
-  }
+	body {
+		@apply w-full min-h-dvh bg-primary text-primary-950 scroll-smooth font-inter;
+	}
 
 }
 
@@ -132,190 +132,238 @@
 /* /////////// UTILITY STYLES ////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
 
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
+	.flex-center {
+		@apply flex items-center justify-center;
+	}
 }
 
 /* ///////////////////////////////////// */
 /* ///////////// LOGIN STYLES ////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .login-container {
-    @apply w-full min-h-dvh flex-center;
-  }
+	.login-container {
+		@apply w-full min-h-dvh
+	}
+
+	.login-container>main {
+		@apply w-full h-dvh flex-center flex-col bg-primary-100
+	}
+
+	main>#logo-container {
+		@apply w-full py-5 flex-center
+	}
+
+	#logo-container>svg {
+		@apply size-10 text-secondary-500
+	}
+
+	main>#header-container {
+		@apply w-full py-5 flex-center
+	}
+
+	#header-container>h1 {
+		@apply text-xl text-primary-800 font-semibold
+	}
+
+	main>#form-container {
+		@apply w-full py-5 flex-center
+	}
+
+	#form-container>form {
+		@apply w-full max-w-xs space-y-4
+	}
+
+	#form-container>form>input {
+		@apply block w-full h-14 px-4 rounded-md border border-primary-300 text-lg outline-secondary-500 focus:outline
+	}
+
+	#form-container>form>button {
+		@apply block w-full h-14 rounded-md bg-secondary-500 text-primary-50 hover:bg-secondary-600 font-medium
+	}
+
+	#form-container>form>div {
+		@apply w-full flex p-2.5 items-center space-x-4 bg-danger-200 rounded-lg text-danger-600
+	}
+
+	#form-container>form>div>svg {
+		@apply size-5
+	}
+
+	#form-container>form>div>p {
+		@apply text-sm font-medium
+	}
 }
 
 /* ///////////////////////////////////// */
 /* //////// ADMIN MAIN STYLES ///////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .admin-container {
-    @apply w-full min-h-dvh flex;
-  }
+	.admin-container {
+		@apply w-full min-h-dvh flex;
+	}
 
-  .admin-container>header {
-    @apply w-64 h-dvh bg-primary-950 flex flex-col justify-between;
-  }
+	.admin-container>header {
+		@apply w-64 h-dvh bg-primary-950 flex flex-col justify-between;
+	}
 
-  .admin-container>header>#header-logo {
-    @apply w-full h-14 p-3 flex-center
-  }
+	.admin-container>header>#header-logo {
+		@apply w-full h-14 p-3 flex-center
+	}
 
-  #header-logo>#the-logo {
-    @apply h-full aspect-square size-10 text-secondary-500
-  }
+	#header-logo>#the-logo {
+		@apply h-full aspect-square size-10 text-secondary-500
+	}
 
-  .admin-container>header>nav {
-    @apply flex-1 w-full
-  }
+	.admin-container>header>nav {
+		@apply flex-1 w-full
+	}
 
-  nav>ul li {
-    @apply w-full h-14 p-3
-  }
+	nav>ul li {
+		@apply w-full h-14 p-3
+	}
 
-  nav>ul li>a {
-    @apply h-full flex items-center justify-start space-x-4 text-primary-500 hover:text-primary-200 data-[active=true]:text-primary-200
-  }
+	nav>ul li>a {
+		@apply h-full flex items-center justify-start space-x-4 text-primary-500 hover:text-primary-200 data-[active=true]:text-primary-200
+	}
 
-  nav>ul li>a>.header-icon {
-    @apply h-full aspect-square flex-center
-  }
+	nav>ul li>a>.header-icon {
+		@apply h-full aspect-square flex-center
+	}
 
-  nav>ul li>a>p {
-    @apply text-sm font-medium 
-  }
+	nav>ul li>a>p {
+		@apply text-sm font-medium 
+	}
 
-  .admin-container>header>#header-logout {
-    @apply w-full h-16 flex items-center p-3 space-x-4
-  }
+	.admin-container>header>#header-logout {
+		@apply w-full h-16 flex items-center p-3 space-x-4
+	}
 
-  #header-logout>#the-logout {
-    @apply overflow-hidden h-full w-full rounded-md bg-secondary-700 flex-center space-x-4 text-primary-100 hover:bg-secondary-600
-  }
+	#header-logout>#the-logout {
+		@apply overflow-hidden h-full w-full rounded-md bg-secondary-700 flex-center space-x-4 text-primary-100 hover:bg-secondary-600
+	}
 
-  #header-logout>#the-logout>p {
-    @apply flex-1 text-sm font-medium text-center
-  }
+	#header-logout>#the-logout>p {
+		@apply flex-1 text-sm font-medium text-center
+	}
 
-  #header-logout>#the-logout>span {
-    @apply h-full aspect-square flex-center bg-secondary-500 rounded-md
-  }
+	#header-logout>#the-logout>span {
+		@apply h-full aspect-square flex-center bg-secondary-500 rounded-md
+	}
 
-  #header-logout>#the-logout>span>svg {
-    @apply size-5
-  }
+	#header-logout>#the-logout>span>svg {
+		@apply size-5
+	}
 
-  .admin-container>main {
-    @apply flex-1 min-h-dvh flex bg-primary-100
-  }
+	.admin-container>main {
+		@apply flex-1 min-h-dvh flex bg-primary-100
+	}
 }
 
 /* ///////////////////////////////////// */
 /* //////////// HOME STYLES //////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .home-container {
-    @apply w-full min-h-dvh flex-center;
-  }
+	.home-container {
+		@apply w-full min-h-dvh flex-center;
+	}
 }
 
 /* ///////////////////////////////////// */
 /* ///////// RESOURCES STYLES ////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .resource-container {
-    @apply w-full min-h-dvh flex-center;
-  }
+	.resource-container {
+		@apply w-full min-h-dvh flex-center;
+	}
 }
 
 /* ///////////////////////////////////// */
 /* //////////// BLOG STYLES //////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .blogs-container {
-    @apply w-full min-h-dvh flex;
-  }
+	.blogs-container {
+		@apply w-full min-h-dvh flex;
+	}
 
-  .blogs-container>nav {
-    @apply w-64 h-dvh bg-secondary-300 flex-center;
-  }
+	.blogs-container>nav {
+		@apply w-64 h-dvh bg-secondary-300 flex-center;
+	}
 
-  .blogs-container>.blogs-home-container {
-    @apply flex-1 min-h-dvh flex-center
-  }
+	.blogs-container>.blogs-home-container {
+		@apply flex-1 min-h-dvh flex-center
+	}
 
-  .blogs-container>.blogs-form-container {
-    @apply flex-1 min-h-dvh flex-center
-  }
+	.blogs-container>.blogs-form-container {
+		@apply flex-1 min-h-dvh flex-center
+	}
 }
 
 /* ///////////////////////////////////// */
 /* /////////// MARKET STYLES /////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .market-container {
-    @apply w-full min-h-dvh flex flex-col;
-  }
+	.market-container {
+		@apply w-full min-h-dvh flex flex-col;
+	}
 
-  .market-container>nav {
-    @apply w-full h-28 flex-center bg-secondary-300
-  }
+	.market-container>nav {
+		@apply w-full h-28 flex-center bg-secondary-300
+	}
 
-  .market-container>.shops-container {
-    @apply w-full flex-1 flex-center
-  }
+	.market-container>.shops-container {
+		@apply w-full flex-1 flex-center
+	}
 
-  .market-container>.products-container {
-    @apply w-full flex-1 flex-center
-  }
+	.market-container>.products-container {
+		@apply w-full flex-1 flex-center
+	}
 }
 
 /* ///////////////////////////////////// */
 /* ///////// MEMBERS STYLES ////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .members-container {
-    @apply w-full min-h-dvh flex-center flex-col space-y-8;
-  }
+	.members-container {
+		@apply w-full min-h-dvh flex-center flex-col space-y-8;
+	}
 }
 
 /* ///////////////////////////////////// */
 /* /////////// USERS STYLES //////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .users-container {
-    @apply w-full min-h-dvh flex-center flex-col space-y-8;
-  }
+	.users-container {
+		@apply w-full min-h-dvh flex-center flex-col space-y-8;
+	}
 }
 
 /* ///////////////////////////////////// */
 /* ///////// REPORTS STYLES /////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .reports-container {
-    @apply w-full min-h-dvh flex-center;
-  }
+	.reports-container {
+		@apply w-full min-h-dvh flex-center;
+	}
 }
 
 /* ///////////////////////////////////// */
 /* /////////// ROLES STYLES //////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .roles-container {
-    @apply w-full min-h-dvh flex-center flex-col space-y-8;
-  }
+	.roles-container {
+		@apply w-full min-h-dvh flex-center flex-col space-y-8;
+	}
 }
 
 /* ///////////////////////////////////// */
 /* ////////// SETTINGS STYLES ////////// */
 /* //////////////////////////////////// */
 @layer utilities {
-  .settings-container {
-    @apply w-full min-h-dvh flex-center;
-  }
+	.settings-container {
+		@apply w-full min-h-dvh flex-center;
+	}
 }
