@@ -1,26 +1,31 @@
-import mongoose, { ConnectOptions } from 'mongoose';
+import { MongoClient, ServerApiVersion } from "mongodb"
+ 
+if (!process.env.MONGODB_URI) {
+  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
+}
+ 
+const uri = process.env.MONGODB_URI
+const options = {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+}
+ 
+let client: MongoClient
+ 
+if (process.env.NODE_ENV === "development") {
+  let globalWithMongo = global as typeof globalThis & {
+    _mongoClient?: MongoClient
+  }
+ 
+  if (!globalWithMongo._mongoClient) {
+    globalWithMongo._mongoClient = new MongoClient(uri, options)
+  }
+  client = globalWithMongo._mongoClient
+} else {
+  client = new MongoClient(uri, options)
+}
 
-let isConnected = false;
-
-const connectToDB = async (): Promise<void> => {
-    mongoose.set('strict', true);
-
-    if (isConnected) {
-        console.log("MongoDB is already connected");
-        return;
-    }
-
-    try {
-        await mongoose.connect(process.env.MONGODB_URI || '', {
-            dbName: "cbet-platform",
-        } as ConnectOptions);
-
-        isConnected = true;
-        console.log("MongoDB connected successfully");
-    } catch (error) {
-        console.error(error);
-        throw new Error("Error occurred while connecting to the database");
-    }
-};
-
-export default connectToDB;
+export default client
