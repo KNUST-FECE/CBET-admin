@@ -30,7 +30,7 @@ export default function Form() {
         <FormProvider {...form}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("email")} id="login-email" placeholder="Email" />
-                <input {...register("password")} type="password" id="login-password" placeholder="********" />
+                <input {...register("password")} type="password" id="login-password" placeholder="Password" />
                 <button type="submit">Login</button>
                 {error && (
                     <div>
