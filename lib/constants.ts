@@ -19,7 +19,7 @@ export const mainLinks = [
     },
     { 
         name: "Market",
-        link: routes._market,
+        link: routes._products,
         icon: Store
     },
     { 

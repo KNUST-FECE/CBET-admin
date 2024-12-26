@@ -2,7 +2,12 @@
 export default function Home() {
   return (
     <div className="home-container">
-      <p>HOME</p>
+      <section id="header-section">
+        <h1>Dashboard</h1>
+      </section>
+      <section id="resource-section">
+
+      </section>
     </div>
   );
 }

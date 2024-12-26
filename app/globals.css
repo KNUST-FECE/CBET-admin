@@ -139,6 +139,14 @@
 	.flex-center {
 		@apply flex items-center justify-center;
 	}
+
+	.common-header-section {
+		@apply w-full px-7 py-14
+	}
+
+	.common-header-section>h1 {
+		@apply text-2xl font-semibold tracking-tight text-primary-800
+	}
 }
 
 /* ///////////////////////////////////// */
@@ -268,7 +276,23 @@
 /* //////////////////////////////////// */
 @layer utilities {
 	.home-container {
-		@apply w-full min-h-dvh flex-center;
+		@apply w-full min-h-dvh;
+	}
+
+	.home-container>#header-section {
+		@apply common-header-section
+	}
+
+	.home-container>#resource-section {
+		@apply w-full px-7 py-10 h-72 rounded-xl bg-primary-200
+	}
+
+	#resource-section>h2 {
+		@apply text-lg font-medium tracking-tight
+	}
+
+	#resource-section>div {
+		@apply flex
 	}
 }
 
