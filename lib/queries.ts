@@ -1,7 +1,9 @@
-import { conn } from "./utils";
+import { format, getDb } from "@/lib/utils";
+import { IMember } from "@/lib/types";
 
-export const getMemberByEmail = async (email: string) => await conn(async (db) => {
-    const member = await db.collection("members").findOne({email});
+export async function getMemberByEmail(email: string){
+    await using db = await getDb();
+    const member = await db.M.findOne({email});
 
-    return member;
-})
+    return format.from<IMember>(member!)
+}

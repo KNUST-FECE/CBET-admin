@@ -4,7 +4,9 @@ import NextAuth, { CredentialsSignin } from "next-auth";
 import authConfig from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import client from "./lib/db";
+import bcrypt from "bcrypt";
 import { ZLogin } from "./lib/schema";
+import { getMemberByEmail } from "./lib/queries";
 
 class InvalidLoginError extends CredentialsSignin {
     code = "Invalid email or password"
@@ -30,19 +32,27 @@ export const { handlers, auth } = NextAuth({
                 password: { label: "Password", type: "password" },
             },
             authorize: async (credentials) => {
-                const validatedData = ZLogin.safeParse(credentials)
-                
-                if(!validatedData.success) {
+                const validatedData = ZLogin.safeParse(credentials);
+
+                if (!validatedData.success) throw new InvalidLoginError();
+
+                const { email, password } = validatedData.data;
+
+                try {
+
+                    const member = await getMemberByEmail(email);
+
+                    if (!member) throw new InvalidLoginError();
+
+                    const isPasswordValid = await bcrypt.compare(password, member.password);
+
+                    if (!isPasswordValid) throw new InvalidLoginError();
+
+                    return { id: member.id, email: member.email, name: member.name };
+
+                } catch (error) {
                     throw new InvalidLoginError();
-                };
-
-                // TODO: get member by email
-                // TODO: if not member throw error
-                // TODO: use bcrypt to compare member password and validated password
-                // TODO: if authorise return member object else throw error
-
-
-                return null;
+                }
             },
         }),
         ...authConfig.providers

@@ -5,16 +5,17 @@ import authConfig from "./auth.config"
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
-    // const url = req.nextUrl.clone();
+    const url = req.nextUrl.clone();
 
-    // if(req.auth &&  url.pathname === "/login") {
-    //     return NextResponse.redirect(new URL("/", req.url));
-    // }
+    if(req.auth &&  url.pathname === "/login") {
+        return NextResponse.redirect(new URL("/", req.url));
+    }
     
-    // if (!req.auth && url.pathname !== "/login") {
-    //     let { href } = url;
-    //     return NextResponse.redirect(new URL(`/login?redirect=${href}`, req.url));
-    // }
+    if (!req.auth && url.pathname !== "/login") {
+        let { href } = url;
+        href = encodeURIComponent(href);
+        return NextResponse.redirect(new URL(`/login?redirect=${href}`, req.url));
+    }
 
     return NextResponse.next();
 });

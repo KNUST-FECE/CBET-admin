@@ -8,6 +8,18 @@ export type IQuery = {
 
 export type ILogin = z.infer<typeof ZLogin>;
 
+export interface IMember {
+    id: string
+    name: string
+    email: string
+    password: string
+    emailVerified: string
+    image: string
+    roleID: string
+    updatedAt: string
+    createdAt: string
+}
+
 export type IResourceFilter = {
 
 }
