@@ -13,7 +13,7 @@ export default auth((req) => {
     
     if (!req.auth && url.pathname !== "/login") {
         let { href } = url;
-        // href = encodeURIComponent(href);
+        href = encodeURIComponent(href);
         return NextResponse.redirect(new URL(`/login?redirect=${href}`, req.url));
     }
 
