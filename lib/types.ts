@@ -28,6 +28,8 @@ export interface IUser {
     level: number
     shopID: string
     image: string
+    likedProducts: [string]
+    likedBlogs: [string]
     updatedAt: string
     createdAt: string
 }
@@ -51,6 +53,7 @@ export interface IBlog {
     author: string
     category: string
     tags: [string]
+    likes: number
     coverUrl: string
     content: string
     updatedAt: string
