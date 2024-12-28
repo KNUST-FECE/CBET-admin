@@ -2,6 +2,7 @@
 
 import { mainLinks } from "@/lib/constants";
 import { LifeBuoy, LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -30,7 +31,7 @@ export default function Header() {
                 </ul>
             </nav>
             <div id="header-logout">
-                <button id="the-logout" onClick={() => console.log("logout")}>
+                <button id="the-logout" onClick={() => signOut({redirectTo: "/login"})}>
                     <p>Logout</p>
                     <span>
                         <LogOut />

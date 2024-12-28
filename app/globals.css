@@ -41,17 +41,17 @@
 	--success-900: 143.8 61.2% 20.2% ;
 	--success-950: 144.9 80.4% 10% ;
 
-	--danger-50: 33.3 100% 96.5%;
-	--danger-100: 34.3 100% 91.8% ;
-	--danger-200: 32.1 97.7% 83.1% ;
-	--danger-300: 30.7 97.2% 72.4% ;
-	--danger-400: 27 96% 61% ;
-	--danger-500: 24.6 95% 53.1% ;
-	--danger-600: 20.5 90.2% 48.2% ;
-	--danger-700: 17.5 88.3% 40.4% ;
-	--danger-800: 15 79.1% 33.7% ;
-	--danger-900: 15.3 74.6% 27.8% ;
-	--danger-950: 13 81.1% 14.5% ;
+	--danger-50: 0 85.7% 97.3%;
+	--danger-100: 0 93.3% 94.1% ;
+	--danger-200: 0 96.3% 89.4% ;
+	--danger-300: 0 93.5% 81.8% ;
+	--danger-400: 0 90.6% 70.8% ;
+	--danger-500: 0 84.2% 60.2% ;
+	--danger-600: 0 72.2% 50.6% ;
+	--danger-700: 0 73.7% 41.8% ;
+	--danger-800: 0 70% 35.3% ;
+	--danger-900: 0 62.8% 30.6% ;
+	--danger-950: 0 74.7% 15.5% ;
 
 	color-scheme: normal;
 	font-synthesis: none;
@@ -100,17 +100,17 @@
 		--success-900: 143.8 61.2% 20.2% ;
 		--success-950: 144.9 80.4% 10% ;
 
-		--danger-50: 33.3 100% 96.5%;
-		--danger-100: 34.3 100% 91.8% ;
-		--danger-200: 32.1 97.7% 83.1% ;
-		--danger-300: 30.7 97.2% 72.4% ;
-		--danger-400: 27 96% 61% ;
-		--danger-500: 24.6 95% 53.1% ;
-		--danger-600: 20.5 90.2% 48.2% ;
-		--danger-700: 17.5 88.3% 40.4% ;
-		--danger-800: 15 79.1% 33.7% ;
-		--danger-900: 15.3 74.6% 27.8% ;
-		--danger-950: 13 81.1% 14.5% ;
+		--danger-50: 0 85.7% 97.3%;
+		--danger-100: 0 93.3% 94.1% ;
+		--danger-200: 0 96.3% 89.4% ;
+		--danger-300: 0 93.5% 81.8% ;
+		--danger-400: 0 90.6% 70.8% ;
+		--danger-500: 0 84.2% 60.2% ;
+		--danger-600: 0 72.2% 50.6% ;
+		--danger-700: 0 73.7% 41.8% ;
+		--danger-800: 0 70% 35.3% ;
+		--danger-900: 0 62.8% 30.6% ;
+		--danger-950: 0 74.7% 15.5% ;
 	}
 }
 
@@ -141,7 +141,7 @@
 	}
 
 	.common-header-section {
-		@apply w-full px-7 py-14
+		@apply w-full p-7 pt-14
 	}
 
 	.common-header-section>h1 {
@@ -284,15 +284,47 @@
 	}
 
 	.home-container>#resource-section {
-		@apply w-full px-7 py-10 h-72 rounded-xl bg-primary-200
-	}
-
-	#resource-section>h2 {
-		@apply text-lg font-medium tracking-tight
+		@apply w-full p-7
 	}
 
 	#resource-section>div {
-		@apply flex
+		@apply w-full flex space-x-8
+	}
+
+	#resource-section>div>.resource-stat-container {
+		@apply w-full max-w-72 h-52 rounded-xl p-7 bg-primary border border-primary-300 flex flex-col
+	}
+
+	.resource-stat-container>.stat-upper {
+		@apply flex-1 flex items-center justify-start space-x-4
+	}
+
+	.resource-stat-container>.stat-upper>svg {
+		@apply size-20 text-secondary-500
+	}
+
+	.users-total-container {
+		@apply relative flex-1 rounded-full h-12 p-2 flex items-center hover:bg-secondary-50
+	}
+
+	.users-total-container>.random-avatar {
+		@apply relative h-full aspect-square bg-secondary-300 rounded-full border-2 -ml-5 first:ml-0 border-primary box-border
+	}
+
+	.users-total-container>p {
+		@apply flex-1 text-sm text-primary-700 font-semibold ml-0.5
+	}
+
+	.users-total-container>svg {
+		@apply size-5 text-primary-700
+	}
+
+	.resource-stat-container>.stat-lower>h1 {
+		@apply capitalize text-base font-bold text-secondary-500 mb-1
+	}
+
+	.resource-stat-container>.stat-lower>p {
+		@apply text-xs font-medium text-primary-700
 	}
 }
 

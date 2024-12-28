@@ -23,5 +23,6 @@ export const keys = {
     report: (id: string) => ["reports", id] as const,
 
     settings: ["settings"] as const,
-    roles: ["roles"] as const
+    roles: ["roles"] as const,
+    departmentStats: (dep: string) => ["department-stat", dep] as const
 }

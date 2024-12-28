@@ -47,4 +47,6 @@ export const mainLinks = [
         link: routes._settings,
         icon: Settings
     },
-]
+];
+
+export const departments = ["computer", "biomedical", "electrical", "telecom"];

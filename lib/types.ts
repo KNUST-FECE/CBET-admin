@@ -20,6 +20,32 @@ export interface IMember {
     createdAt: string
 }
 
+export interface IUser {
+    id: string
+    name: string
+    studentID: string
+    indexNo: string
+    department: string
+    level: number
+    shopID: string
+    image: string
+    updatedAt: string
+    createdAt: string
+}
+
+export interface IResource {
+    id: string
+    name: string
+    type: string
+    dataUrl: string
+    parentID: [string]
+    fileCount: number
+    folderCount: number
+    size: number
+    updatedAt: string
+    createdAt: string
+}
+
 export type IResourceFilter = {
 
 }
