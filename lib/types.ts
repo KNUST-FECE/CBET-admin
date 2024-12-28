@@ -1,4 +1,3 @@
-import { Type } from "lucide-react";
 import { ZLogin } from "./schema";
 import { z } from "zod";
 
@@ -42,6 +41,77 @@ export interface IResource {
     fileCount: number
     folderCount: number
     size: number
+    updatedAt: string
+    createdAt: string
+}
+
+export interface IBlog {
+    id: string
+    name: string
+    author: string
+    category: string
+    tags: [string]
+    coverUrl: string
+    content: string
+    updatedAt: string
+    createdAt: string
+}
+
+export interface IProduct {
+    id: string
+    name: string
+    price: number
+    discount: number
+    description: string
+    category: string
+    inStock: number
+    tags: [string]
+    images: [string]
+    shopID: string
+    likes: number
+    published: boolean
+    approved: boolean
+    deniedMessage: string
+    updatedAt: string
+    createdAt: string
+}
+
+export interface IShop {
+    id: string
+    name: string
+    avatar: string
+    email: string
+    contacts: [string]
+    socials: {
+        facebook: string
+        instagram: string
+        twitter: string
+    }[]
+    productCount: number
+    userID: string
+    updatedAt: string
+    createdAt: string
+}
+
+export interface IReport {
+    id: string
+    userID: string
+    category: string
+    itemID: string
+    issueURL: string
+    issueCategory: string
+    issueDescription: string
+    serviced: boolean
+    updatedAt: string
+    createdAt: string
+}
+
+export interface IRole {
+    id: string
+    name: string
+    permissions: {
+        [key: string]: boolean
+    }
     updatedAt: string
     createdAt: string
 }
