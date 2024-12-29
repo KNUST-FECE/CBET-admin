@@ -1,7 +1,7 @@
 "use client";
 
 import { useGetDepartmentStat } from "@/lib/query-hooks";
-import { _users } from "@/lib/routes";
+import { _resources, _users } from "@/lib/routes";
 import { ChevronRight, FolderOpen } from "lucide-react";
 import Link from "next/link";
 
@@ -21,7 +21,7 @@ export default function DepartmentStat({dep}:{dep: string}) {
                 </Link>
             </div>
             <div className="stat-lower">
-                <h1>{dep}</h1>
+                <Link href={`${_resources}?f=${dep}`}>{dep}</Link>
                 <p>1298 files &bull; 27 folders</p>
             </div>
         </div>

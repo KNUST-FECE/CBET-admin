@@ -211,11 +211,11 @@
 /* //////////////////////////////////// */
 @layer utilities {
 	.admin-container {
-		@apply w-full min-h-dvh flex;
+		@apply relative w-full min-h-dvh flex;
 	}
 
 	.admin-container>header {
-		@apply w-64 h-dvh bg-primary-950 flex flex-col justify-between;
+		@apply sticky z-10 top-0 w-64 h-dvh bg-primary-950 flex flex-col justify-between;
 	}
 
 	.admin-container>header>#header-logo {
@@ -319,12 +319,44 @@
 		@apply size-5 text-primary-700
 	}
 
-	.resource-stat-container>.stat-lower>h1 {
-		@apply capitalize text-base font-bold text-secondary-500 mb-1
+	.resource-stat-container>.stat-lower>a {
+		@apply capitalize text-base font-bold text-secondary-500 mb-1 hover:text-secondary-600
 	}
 
 	.resource-stat-container>.stat-lower>p {
 		@apply text-xs font-medium text-primary-700
+	}
+
+	.table-section {
+		@apply w-full p-7 pt-14
+	}
+
+	.table-section>div {
+		@apply w-full space-y-4
+	}
+
+	.table-section>div>.table-section-header {
+		@apply w-full flex items-center justify-between
+	}
+
+	.table-section>div>.table-section-header>h2 {
+		@apply text-base font-semibold text-primary-800
+	}
+
+	.table-section>div>.table-section-header>a {
+		@apply flex items-center space-x-2 text-primary-700 py-2 px-3 rounded-full hover:bg-primary-200
+	}
+
+	.table-section>div>.table-section-header>a>p {
+		@apply text-sm font-semibold
+	}
+
+	.table-section>div>.table-section-header>a>svg {
+		@apply size-5
+	}
+
+	.table-section>div>.table-section-content {
+		@apply w-full
 	}
 }
 

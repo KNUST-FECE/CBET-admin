@@ -39,6 +39,7 @@ export interface IResource {
     name: string
     type: string
     dataUrl: string
+    dataType: string
     parentID: [string]
     fileCount: number
     folderCount: number

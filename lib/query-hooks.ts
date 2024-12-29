@@ -11,6 +11,20 @@ export function useGetDepartmentStat(dep: string) {
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };
 
+export function useGetRecentBlogs() {
+    const queryKey = keys.recentBlogs;
+    const queryFn = async () => await Q.getRecentBlogs();
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+};
+
+export function useGetRecentProducts() {
+    const queryKey = keys.recentProducts;
+    const queryFn = async () => await Q.getRecentProducts();
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+};
+
 // export function useAddCollection() {
 //     const queryClient = useQueryClient();
 //     const { setActiveTab } = useTabContext();
