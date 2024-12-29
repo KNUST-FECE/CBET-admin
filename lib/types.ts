@@ -51,9 +51,9 @@ export interface IResource {
 export interface IBlog {
     id: string
     name: string
-    author: string
+    authorID: string
     category: string
-    tags: [string]
+    tags: string[]
     likes: number
     coverUrl: string
     content: string
@@ -69,8 +69,8 @@ export interface IProduct {
     description: string
     category: string
     inStock: number
-    tags: [string]
-    images: [string]
+    tags: string[]
+    images: string[]
     shopID: string
     likes: number
     published: boolean

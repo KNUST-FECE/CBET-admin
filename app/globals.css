@@ -126,6 +126,18 @@
 		@apply w-full min-h-dvh bg-primary text-primary-950 scroll-smooth font-inter;
 	}
 
+	table {
+		@apply w-full border-collapse
+	}
+
+	thead {
+		@apply [&_tr]:border-b
+	}
+
+	tbody {
+		@apply [&_tr]:border-b
+	}
+
 }
 
 /* ///////////////////////////////////// */
@@ -276,7 +288,7 @@
 /* //////////////////////////////////// */
 @layer utilities {
 	.home-container {
-		@apply w-full min-h-dvh;
+		@apply w-full min-h-dvh pb-20;
 	}
 
 	.home-container>#header-section {
@@ -319,12 +331,16 @@
 		@apply size-5 text-primary-700
 	}
 
+	.resource-stat-container>.stat-lower {
+		@apply space-y-1
+	}
+
 	.resource-stat-container>.stat-lower>a {
-		@apply capitalize text-base font-bold text-secondary-500 mb-1 hover:text-secondary-600
+		@apply capitalize text-base font-bold text-secondary-500 hover:text-secondary-600
 	}
 
 	.resource-stat-container>.stat-lower>p {
-		@apply text-xs font-medium text-primary-700
+		@apply text-xs font-semibold text-primary-600
 	}
 
 	.table-section {
@@ -340,7 +356,7 @@
 	}
 
 	.table-section>div>.table-section-header>h2 {
-		@apply text-base font-semibold text-primary-800
+		@apply text-lg font-semibold text-primary-800
 	}
 
 	.table-section>div>.table-section-header>a {
@@ -357,6 +373,42 @@
 
 	.table-section>div>.table-section-content {
 		@apply w-full
+	}
+
+	.table-section-content>table>thead>tr>th {
+		@apply p-4 text-start text-sm font-medium text-primary-700
+	}
+
+	.blogs-body-row, .products-body-row {
+		@apply h-20 hover:bg-primary-200/50 cursor-pointer
+	}
+
+	.blogs-body-row>td, .products-body-row>td {
+		@apply h-full p-4
+	}
+
+	.blogs-body-row>td:has(.blogs-blog-h3) {
+		@apply space-y-1
+	}
+
+	.blogs-body-row>td:has(.blogs-tag-text) {
+		@apply flex space-x-4
+	}
+
+	.blogs-body-row>td>.blogs-blog-h3 {
+		@apply flex space-x-2 text-lg
+	}
+
+	.blogs-body-row>td>.blogs-blog-p {
+		@apply text-xs space-x-2 font-semibold text-primary-600
+	}
+
+	.blogs-body-row>td>.blogs-likes-p {
+		@apply flex items-center space-x-2
+	}
+
+	.blogs-body-row>td>.blogs-likes-p>svg {
+		@apply size-5
 	}
 }
 
