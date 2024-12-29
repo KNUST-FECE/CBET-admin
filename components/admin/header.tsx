@@ -1,8 +1,9 @@
 "use client";
 
 import { mainLinks } from "@/lib/constants";
-import { LifeBuoy, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -14,7 +15,7 @@ export default function Header() {
     return (
         <header>
             <div id="header-logo">
-                <LifeBuoy id="the-logo" />
+                <Image src="/logo.png" alt="logo" width={60} height={60} id="the-logo" />
             </div>
             <nav>
                 <ul>
