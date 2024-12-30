@@ -10,8 +10,8 @@ export const columns: ColumnDef<IBlog>[] = [
         cell: ({row: {original}}) => {
             return (
                 <>
-                    <h3 className="blogs-blog-h3">{original.name}</h3>
-                    <p className="blogs-blog-p">
+                    <h3>{original.name}</h3>
+                    <p>
                         <span className="author-text">{original.authorID}</span>
                         <span className="bull-dot">&bull;</span>
                         <span className="category-text">{original.category}</span>
@@ -22,47 +22,45 @@ export const columns: ColumnDef<IBlog>[] = [
             )
         },
         meta: {
-            headerClass: "blogs-blog-th",
-            cellClass: "blogs-blog-td",
+            headClass: "blogs-blog-col blogs-blog-th",
+            cellClass: "blogs-blog-col blogs-blog-td",
         }
     },
     {
         id: "tags",
         header: "Tag",
         cell: ({row: {original}}) => (
-            <>
+            <div>
                 {original.tags.map(tag => (
-                    <div key={tag} className="blogs-tag-text">
-                        <span>{tag}</span>
-                    </div>
+                    <p key={tag}> {tag}</p>
                 ))}
-            </>
+            </div>
         ),
         meta: {
-            headerClass: "blogs-tags-th",
-            cellClass: "blogs-tags-td",
+            headClass: "blogs-tags-col blogs-tags-th",
+            cellClass: "blogs-tags-col blogs-tags-td",
         }
     },
     {
         id: "likes",
         header: "Likes",
         cell: ({row: {original}}) => (
-            <p className="blogs-likes-p">
+            <p>
                 <Heart strokeWidth={1} />
                 <span>{original.likes}</span>
             </p>
         ),
         meta: {
-            headerClass: "blogs-likes-th",
-            cellClass: "blogs-likes-td",
+            headClass: "blogs-likes-col blogs-likes-th",
+            cellClass: "blogs-likes-col blogs-likes-td",
         },
     },
     {
         id: "icon",
         cell: () => (<ChevronRight strokeWidth={1} />),
         meta: {
-            headerClass: "blogs-icon-th",
-            cellClass: "blogs-icon-td",
+            headClass: "blogs-icon-col blogs-icon-th",
+            cellClass: "blogs-icon-col blogs-icon-td",
         }
     },
 ]

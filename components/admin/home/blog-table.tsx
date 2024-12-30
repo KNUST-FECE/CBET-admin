@@ -25,7 +25,7 @@ export default function BlogTable() {
                 {headerGroup.map(hg => (
                     <tr key={hg.id}>
                         {hg.headers.map(h => (
-                            <th key={h.id}>
+                            <th key={h.id}  className={h.column.columnDef.meta?.headClass}>
                                 {h.isPlaceholder ? null : flexRender( h.column.columnDef.header, h.getContext())}
                             </th>
                         ))}
@@ -34,10 +34,10 @@ export default function BlogTable() {
             </thead>
             <tbody>
                 {tableRows.map(r => (
-                    <tr key={r.id} className="blogs-body-row">
-                        {r.getAllCells().map(cell => (
-                            <td key={cell.id}>
-                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    <tr key={r.id}>
+                        {r.getAllCells().map(c => (
+                            <td key={c.id} className={c.column.columnDef.meta?.cellClass}>
+                                {flexRender(c.column.columnDef.cell, c.getContext())}
                             </td>
                         ))}
                     </tr>
