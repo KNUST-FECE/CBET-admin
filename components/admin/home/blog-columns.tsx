@@ -32,7 +32,7 @@ export const columns: ColumnDef<IBlog>[] = [
         cell: ({row: {original}}) => (
             <>
                 {original.tags.map(tag => (
-                    <div className="blogs-tag-text">
+                    <div key={tag} className="blogs-tag-text">
                         <span>{tag}</span>
                     </div>
                 ))}
