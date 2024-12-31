@@ -575,7 +575,31 @@
 /* //////////////////////////////////// */
 @layer utilities {
 	.members-container {
-		@apply w-full min-h-dvh flex-center flex-col space-y-8;
+		@apply w-full min-h-dvh pb-20;
+	}
+
+	.members-container>#header-section {
+		@apply common-header-section
+	}
+
+	.members-container>#filter-section {
+		@apply w-full h-16 px-7 py-2 border-b;
+	}
+
+	.members-container>#table-section {
+		@apply w-full;
+
+		table {
+			@apply w-full table-fixed;
+
+			th {
+				@apply text-start
+			}
+
+			.name-col {
+				@apply px-7
+			}
+		}
 	}
 }
 
@@ -593,6 +617,22 @@
 
 	.users-container>#filter-section {
 		@apply w-full h-16 px-7 py-2 border-b;
+	}
+
+	.users-container>#table-section {
+		@apply w-full;
+
+		table {
+			@apply w-full table-fixed;
+
+			th {
+				@apply text-start
+			}
+
+			.name-col {
+				@apply px-7
+			}
+		}
 	}
 }
 

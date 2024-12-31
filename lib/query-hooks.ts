@@ -3,7 +3,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import * as Q from "./queries";
 import { keys } from "./query-keys";
-import { IResourceFilter, IUserFilter } from "./types";
+import { IMemberFilter, IResourceFilter, IUserFilter } from "./types";
 
 export function useGetDepartmentStat(dep: string) {
     const queryKey = keys.departmentStats(dep);
@@ -36,6 +36,13 @@ export function useGetResources(filter:IResourceFilter) {
 export function useGetUsers(filter:IUserFilter) {
     const queryKey = keys.users(filter);
     const queryFn = async () => await Q.getUsers();
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+};
+
+export function useGetMembers(filter:IMemberFilter) {
+    const queryKey = keys.members(filter);
+    const queryFn = async () => await Q.getMembers();
 
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };

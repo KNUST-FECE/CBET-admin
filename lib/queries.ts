@@ -102,3 +102,18 @@ export async function getUsers() {
 
     return users;
 }
+
+export async function getMembers() {
+    const users: Types.IMember[] = [];
+
+    await using db = await getDb();
+
+    const cursor = db.U.find();
+
+    for await (const user of cursor) {
+        const formattedMember = format.from<Types.IMember>(user);
+        users.push(formattedMember);
+    }
+
+    return users;
+}
