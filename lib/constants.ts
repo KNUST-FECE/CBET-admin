@@ -134,7 +134,7 @@ export const demoProducts:IProduct[] = [
         images: [],
         shopID: "Kwesi Benku Books",
         likes: 20,
-        published: true,
+        published: false,
         approved: false,
         deniedMessage: "",
         updatedAt: "2 weeks ago",
@@ -153,7 +153,7 @@ export const demoProducts:IProduct[] = [
         shopID: "Kwesi Benku Books",
         likes: 20,
         published: true,
-        approved: false,
+        approved: true,
         deniedMessage: "",
         updatedAt: "2 weeks ago",
         createdAt: "2 weeks ago"

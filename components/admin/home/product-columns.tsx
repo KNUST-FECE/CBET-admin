@@ -8,60 +8,73 @@ export const columns: ColumnDef<IProduct>[] = [
         id: "name",
         header: "Name",
         cell: ({row: {original}}) => (
-            <p className="products-name-p">
+            <p>
                 <span>{original.name}</span>
             </p>
         ),
         meta: {
-            headerClass: "products-name-th",
-            cellClass: "products-name-td",
+            headClass: "products-name-col products-name-th",
+            cellClass: "products-name-col products-name-td",
         },
     },
     {
         id: "price",
         header: "Price",
         cell: ({row: {original}}) => (
-            <p className="products-price-p">
+            <p>
                 GHc <span>{original.price}</span>
             </p>
         ),
         meta: {
-            headerClass: "products-price-th",
-            cellClass: "products-price-td",
+            headClass: "products-price-col products-price-th",
+            cellClass: "products-price-col products-price-td",
         },
     },
     {
         id: "stock",
         header: "In Stock",
         cell: ({row: {original}}) => (
-            <p className="products-stock-p">
+            <p>
                 <span>{original.inStock}</span>
             </p>
         ),
         meta: {
-            headerClass: "products-stock-th",
-            cellClass: "products-stock-td",
+            headClass: "products-stock-col products-stock-th",
+            cellClass: "products-stock-col products-stock-td",
         },
     },
     {
-        id: "status",
-        header: "Status",
-        cell: ({row: {original}}) => (
-            <p className="">
-                <span>{original.likes}</span>
+        id: "published",
+        header: "Availability",
+        cell: ({row: {original : o}}) =>(
+            <p>
+                <span>{o.published? "Published" : "Draft"}</span>
             </p>
         ),
         meta: {
-            headerClass: "products-status-th",
-            cellClass: "products-status-td",
+            headClass: "products-published-col products-published-th",
+            cellClass: "products-published-col products-published-td",
+        },
+    },
+    {
+        id: "approved",
+        header: "Approval",
+        cell: ({row: {original : o}}) =>(
+            <p>
+                <span>{o.approved? "Approved" : "Denied"}</span>
+            </p>
+        ),
+        meta: {
+            headClass: "products-approved-col products-approved-th",
+            cellClass: "products-approved-col products-approved-td",
         },
     },
     {
         id: "icon",
         cell: () => (<ChevronRight strokeWidth={1} />),
         meta: {
-            headerClass: "products-icon-th",
-            cellClass: "products-icon-td",
+            headClass: "products-icon-col products-icon-th",
+            cellClass: "products-icon-col products-icon-td",
         }
     },
 ]

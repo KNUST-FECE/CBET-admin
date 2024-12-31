@@ -279,7 +279,7 @@
 	}
 
 	.admin-container>main {
-		@apply flex-1 min-h-dvh flex bg-primary-100
+		@apply flex-1 min-h-dvh flex bg-primary-50
 	}
 }
 
@@ -375,10 +375,10 @@
 	}
 
 	.table-section-content>table>tbody>tr {
-		@apply hover:bg-primary-200/50 cursor-pointer;
+		@apply hover:bg-primary-100 cursor-pointer text-primary-700;
 
 		&:hover {
-			.blogs-icon-td {
+			.blogs-icon-td, .products-icon-td {
 				@apply opacity-100;
 			}
 		}
@@ -393,11 +393,11 @@
 			@apply space-y-2;
 
 			h3 {
-				@apply flex space-x-2 text-xl;
+				@apply flex space-x-2 text-lg;
 			}
 
 			p {
-				@apply text-sm space-x-2 font-normal italic text-primary-600;
+				@apply text-sm space-x-2 font-medium;
 			}
 		}
 	}
@@ -410,7 +410,7 @@
 				@apply h-full flex gap-2 flex-wrap;
 
 				p {
-					@apply text-sm py-1 px-1.5 border border-primary-300 text-primary-600;
+					@apply text-sm py-1 px-1.5 border border-primary-300;
 				}
 			}
 		}
@@ -420,14 +420,10 @@
 	.blogs-likes-col {
 		&.blogs-likes-td {
 			p {
-				@apply flex items-center space-x-1;
+				@apply flex items-center space-x-1 text-sm;
 
 				svg {
 					@apply size-5
-				}
-
-				span {
-					@apply text-sm text-primary-700
 				}
 			}
 		}
@@ -438,7 +434,59 @@
 
 		&.blogs-icon-td { 
 			@apply opacity-0;
-			
+
+			svg {
+				@apply size-6;
+			}
+		}
+	}
+
+	.products-price-col {
+		@apply w-44;
+
+		&.products-price-td {
+			p {
+				@apply text-sm font-medium
+			}
+		}
+	}
+
+	.products-stock-col {
+		@apply w-36;
+
+		&.products-stock-td {
+			p>span {
+				@apply text-sm font-medium
+			}
+		}
+	}
+
+	.products-published-col {
+		@apply w-36;
+
+		&.products-published-td {
+			p>span {
+				@apply text-xs text-center font-medium px-2.5 py-1 rounded-full border border-primary-300;
+			}
+		}
+	}
+
+	.products-approved-col {
+		@apply w-36;
+
+		&.products-approved-td {
+			p>span {
+				@apply text-xs text-center font-medium px-2.5 py-1 rounded-full border border-primary-300;
+			}
+		}
+	}
+
+	.products-icon-col {
+		@apply w-14;
+
+		&.products-icon-td {
+			@apply opacity-0;
+
 			svg {
 				@apply size-6;
 			}
