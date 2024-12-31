@@ -500,7 +500,11 @@
 /* //////////////////////////////////// */
 @layer utilities {
 	.resource-container {
-		@apply w-full min-h-dvh flex-center;
+		@apply w-full min-h-dvh pb-20;
+	}
+
+	.resource-container>#header-section {
+		@apply common-header-section
 	}
 }
 

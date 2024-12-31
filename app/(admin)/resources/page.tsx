@@ -2,7 +2,9 @@
 export default function Page() {
     return (
         <div className="resource-container">
-            <p>RESOURCES</p>
+            <section id="header-section">
+                <h1>Resources</h1>
+            </section>
         </div>
     )
 }
