@@ -31,7 +31,7 @@ export interface IMember {
 export interface IUser {
     id: string
     name: string
-    studentID: string
+    studentNo: string
     indexNo: string
     department: string
     level: number

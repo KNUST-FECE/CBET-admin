@@ -1,10 +1,15 @@
+import DataContainer from "@/components/admin/users/data-container";
+import { IUserFilter } from "@/lib/types";
 
 export default function Page() {
+    const filter: IUserFilter = {};
+
     return (
         <div className="users-container">
-            <p>SHOW ALL USERS</p>
-            <p>ADD NEW USERS</p>
-            <p>MODIFY USERS</p>
+            <section id="header-section">
+                <h1>Users</h1>
+            </section>
+            <DataContainer filter={filter} />
         </div>
     )
 }
