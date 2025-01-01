@@ -3,7 +3,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import * as Q from "./queries";
 import { keys } from "./query-keys";
-import { IMemberFilter, IResourceFilter, IUserFilter } from "./types";
+import { IMemberFilter, IReportFilter, IResourceFilter, IUserFilter } from "./types";
 
 export function useGetDepartmentStat(dep: string) {
     const queryKey = keys.departmentStats(dep);
@@ -47,9 +47,16 @@ export function useGetMembers(filter:IMemberFilter) {
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };
 
-export function useGetReports(filter:IMemberFilter) {
+export function useGetReports(filter:IReportFilter) {
     const queryKey = keys.reports(filter);
     const queryFn = async () => await Q.getReports();
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+};
+
+export function useGetRoles() {
+    const queryKey = keys.roles;
+    const queryFn = async () => await Q.getRoles();
 
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };

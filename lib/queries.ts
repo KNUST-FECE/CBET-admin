@@ -104,7 +104,7 @@ export async function getUsers() {
 }
 
 export async function getMembers() {
-    const users: Types.IMember[] = [];
+    const members: Types.IMember[] = [];
 
     await using db = await getDb();
 
@@ -112,14 +112,14 @@ export async function getMembers() {
 
     for await (const member of cursor) {
         const formattedMember = format.from<Types.IMember>(member);
-        users.push(formattedMember);
+        members.push(formattedMember);
     }
 
-    return users;
+    return members;
 }
 
 export async function getReports() {
-    const users: Types.IReport[] = [];
+    const reports: Types.IReport[] = [];
 
     await using db = await getDb();
 
@@ -127,8 +127,23 @@ export async function getReports() {
 
     for await (const report of cursor) {
         const formattedReport = format.from<Types.IReport>(report);
-        users.push(formattedReport);
+        reports.push(formattedReport);
     }
 
-    return users;
+    return reports;
+}
+
+export async function getRoles() {
+    const roles: Types.IRole[] = [];
+
+    await using db = await getDb();
+
+    const cursor = db.RO.find();
+
+    for await (const role of cursor) {
+        const formattedRole = format.from<Types.IRole>(role);
+        roles.push(formattedRole);
+    }
+
+    return roles;
 }

@@ -1,9 +1,12 @@
+import DataContainer from "@/components/admin/roles/data-container";
 
 export default function Page() {
     return (
         <div className="roles-container">
-            <p>ALL ROLES ARE HERE</p>
-            <p>ADD ROLES HERE</p>
+            <section id="header-section">
+                <h1>Roles</h1>
+            </section>
+            <DataContainer />
         </div>
     )
 }
