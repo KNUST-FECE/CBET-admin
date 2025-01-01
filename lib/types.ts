@@ -110,10 +110,10 @@ export interface IReport {
     id: string
     userID: string
     category: string
-    itemID: string
-    issueURL: string
-    issueCategory: string
-    issueDescription: string
+    issueID: string
+    url: string
+    type: string
+    summary: string
     serviced: boolean
     updatedAt: string
     createdAt: string

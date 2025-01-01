@@ -291,11 +291,11 @@
 		@apply w-full min-h-dvh pb-20;
 	}
 
-	.home-containe>#header-section {
+	.home-container>#header-section {
 		@apply common-header-section
 	}
 
-	.home-containe>#resource-section {
+	.home-container>#resource-section {
 		@apply w-full p-7;
 
 		>div {
@@ -641,7 +641,31 @@
 /* //////////////////////////////////// */
 @layer utilities {
 	.reports-container {
-		@apply w-full min-h-dvh flex-center;
+		@apply w-full min-h-dvh pb-20;
+	}
+
+	.reports-container>#header-section {
+		@apply common-header-section
+	}
+
+	.reports-container>#filter-section {
+		@apply w-full h-16 px-7 py-2 border-b;
+	}
+
+	.reports-container>#table-section {
+		@apply w-full;
+
+		table {
+			@apply w-full table-fixed;
+
+			th {
+				@apply text-start
+			}
+
+			.user-col {
+				@apply px-7
+			}
+		}
 	}
 }
 

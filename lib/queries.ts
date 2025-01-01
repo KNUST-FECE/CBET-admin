@@ -108,11 +108,26 @@ export async function getMembers() {
 
     await using db = await getDb();
 
-    const cursor = db.U.find();
+    const cursor = db.M.find();
 
-    for await (const user of cursor) {
-        const formattedMember = format.from<Types.IMember>(user);
+    for await (const member of cursor) {
+        const formattedMember = format.from<Types.IMember>(member);
         users.push(formattedMember);
+    }
+
+    return users;
+}
+
+export async function getReports() {
+    const users: Types.IReport[] = [];
+
+    await using db = await getDb();
+
+    const cursor = db.RT.find();
+
+    for await (const report of cursor) {
+        const formattedReport = format.from<Types.IReport>(report);
+        users.push(formattedReport);
     }
 
     return users;

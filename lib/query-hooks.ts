@@ -47,6 +47,13 @@ export function useGetMembers(filter:IMemberFilter) {
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };
 
+export function useGetReports(filter:IMemberFilter) {
+    const queryKey = keys.reports(filter);
+    const queryFn = async () => await Q.getReports();
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+};
+
 // export function useAddCollection() {
 //     const queryClient = useQueryClient();
 //     const { setActiveTab } = useTabContext();
