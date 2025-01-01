@@ -118,6 +118,36 @@ export async function getMembers() {
     return members;
 }
 
+export async function getShops() {
+    const shops: Types.IShop[] = [];
+
+    await using db = await getDb();
+
+    const cursor = db.S.find();
+
+    for await (const shop of cursor) {
+        const formattedShop = format.from<Types.IShop>(shop);
+        shops.push(formattedShop);
+    }
+
+    return shops;
+}
+
+export async function getProducts() {
+    const products: Types.IProduct[] = [];
+
+    await using db = await getDb();
+
+    const cursor = db.P.find();
+
+    for await (const product of cursor) {
+        const formattedProduct = format.from<Types.IProduct>(product);
+        products.push(formattedProduct);
+    }
+
+    return products;
+}
+
 export async function getReports() {
     const reports: Types.IReport[] = [];
 

@@ -3,7 +3,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import * as Q from "./queries";
 import { keys } from "./query-keys";
-import { IMemberFilter, IReportFilter, IResourceFilter, IUserFilter } from "./types";
+import { IMemberFilter, IProductFilter, IReportFilter, IResourceFilter, IShopFilter, IUserFilter } from "./types";
 
 export function useGetDepartmentStat(dep: string) {
     const queryKey = keys.departmentStats(dep);
@@ -43,6 +43,20 @@ export function useGetUsers(filter:IUserFilter) {
 export function useGetMembers(filter:IMemberFilter) {
     const queryKey = keys.members(filter);
     const queryFn = async () => await Q.getMembers();
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+};
+
+export function useGetShops(filter:IShopFilter) {
+    const queryKey = keys.shops(filter);
+    const queryFn = async () => await Q.getShops();
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+};
+
+export function useGetProducts(filter:IProductFilter) {
+    const queryKey = keys.products(filter);
+    const queryFn = async () => await Q.getProducts();
 
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };

@@ -554,19 +554,56 @@
 /* //////////////////////////////////// */
 @layer utilities {
 	.market-container {
-		@apply w-full min-h-dvh flex flex-col;
+		@apply w-full min-h-dvh pb-20;
 	}
 
-	.market-container>nav {
-		@apply w-full h-28 flex-center bg-secondary-300
+	.market-container>#header-section {
+		@apply common-header-section
 	}
 
-	.market-container>.shops-container {
-		@apply w-full flex-1 flex-center
+	.market-container>#shops-section {
+		@apply w-full;
+		
+		#filter-section {
+			@apply w-full h-16 px-7 py-2 border-b;
+		}
+		#table-section {
+			@apply w-full;
+	
+			table {
+				@apply w-full table-fixed;
+	
+				th {
+					@apply text-start
+				}
+	
+				.name-col {
+					@apply px-7
+				}
+			}
+		}
 	}
+	.market-container>#products-section {
+		@apply w-full;
 
-	.market-container>.products-container {
-		@apply w-full flex-1 flex-center
+		#filter-section {
+			@apply w-full h-16 px-7 py-2 border-b;
+		}
+		#table-section {
+			@apply w-full;
+	
+			table {
+				@apply w-full table-fixed;
+	
+				th {
+					@apply text-start
+				}
+	
+				.name-col {
+					@apply px-7
+				}
+			}
+		}
 	}
 }
 

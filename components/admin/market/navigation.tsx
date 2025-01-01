@@ -1,8 +1,8 @@
 
 export default function Navigation() {
     return (
-        <nav>
-            <p>NAVIGATION</p>
-        </nav>
+        <section id="header-section">
+            <h1>Market</h1>
+        </section>
     )
 }
