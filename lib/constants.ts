@@ -1,5 +1,5 @@
 import * as routes from "./routes";
-import { Crown, Database, Fingerprint, LayoutGrid, Newspaper, Settings, SquareChartGantt, Store, Users } from "lucide-react";
+import { Crown, Database, Fingerprint, LayoutGrid, Newspaper, Settings, ShoppingBag, ShoppingBasket, SquareChartGantt, Store, Users } from "lucide-react";
 import { IBlog, IProduct } from "./types";
 
 export const mainLinks = [
@@ -49,6 +49,19 @@ export const mainLinks = [
         icon: Settings
     },
 ];
+
+export const marketLinks = [
+    {
+        name: "shops",
+        link: routes._shops,
+        icon: ShoppingBag
+    },
+    {
+        name: "products",
+        link: routes._products,
+        icon: ShoppingBasket
+    },
+]
 
 export const departments = ["computer", "biomedical", "electrical", "telecom"];
 

@@ -153,11 +153,11 @@
 	}
 
 	.common-header-section {
-		@apply w-full p-7 pt-14
-	}
+		@apply w-full p-7 pt-14;
 
-	.common-header-section>h1 {
-		@apply text-2xl font-semibold tracking-tight text-primary-800
+		>h1 {
+			@apply text-2xl font-semibold tracking-tight text-primary-800
+		}
 	}
 }
 
@@ -228,54 +228,50 @@
 
 	.admin-container>header {
 		@apply sticky z-10 top-0 w-64 h-dvh bg-primary-950 flex flex-col justify-between;
-	}
 
-	.admin-container>header>#header-logo {
-		@apply w-full h-20 p-2 flex-center
-	}
+		>#header-logo {
+			@apply w-full h-20 p-2 flex-center;
 
-	#header-logo>#the-logo {
-		@apply text-secondary-500
-	}
+			>#the-logo {
+				@apply text-secondary-500
+			}
+		}
+		>nav {
+			@apply flex-1 w-full;
 
-	.admin-container>header>nav {
-		@apply flex-1 w-full
-	}
+			>ul li {
+				@apply w-full h-14 p-3;
 
-	nav>ul li {
-		@apply w-full h-14 p-3
-	}
+				>a {
+					@apply h-full flex items-center justify-start space-x-4 text-primary-500 hover:text-primary-200 data-[active=true]:text-primary-200;
 
-	nav>ul li>a {
-		@apply h-full flex items-center justify-start space-x-4 text-primary-500 hover:text-primary-200 data-[active=true]:text-primary-200
-	}
+					>.header-icon {
+						@apply h-full aspect-square flex-center
+					}
+					>p {
+						@apply text-sm font-medium 
+					}
+				}
+			}
+		}
+		>#header-logout {
+			@apply w-full h-16 flex items-center p-3 space-x-4;
 
-	nav>ul li>a>.header-icon {
-		@apply h-full aspect-square flex-center
-	}
+			>#the-logout {
+				@apply overflow-hidden h-full w-full rounded-md bg-secondary-700 flex-center space-x-4 text-primary-100 hover:bg-secondary-600;
 
-	nav>ul li>a>p {
-		@apply text-sm font-medium 
-	}
+				>p {
+					@apply flex-1 text-sm font-medium text-center
+				}
+				>span {
+					@apply h-full aspect-square flex-center bg-secondary-500 rounded-md;
 
-	.admin-container>header>#header-logout {
-		@apply w-full h-16 flex items-center p-3 space-x-4
-	}
-
-	#header-logout>#the-logout {
-		@apply overflow-hidden h-full w-full rounded-md bg-secondary-700 flex-center space-x-4 text-primary-100 hover:bg-secondary-600
-	}
-
-	#header-logout>#the-logout>p {
-		@apply flex-1 text-sm font-medium text-center
-	}
-
-	#header-logout>#the-logout>span {
-		@apply h-full aspect-square flex-center bg-secondary-500 rounded-md
-	}
-
-	#header-logout>#the-logout>span>svg {
-		@apply size-5
+					>svg {
+						@apply size-5
+					}
+				}
+			}
+		}
 	}
 
 	.admin-container>main {
@@ -558,7 +554,24 @@
 	}
 
 	.market-container>#header-section {
-		@apply common-header-section
+		@apply common-header-section;
+		@apply flex space-x-4 items-center;
+
+		>nav {
+			>ul {
+				@apply flex space-x-4;
+
+				li {
+					a {
+						@apply relative px-3 py-2 text-sm font-medium rounded-full border flex-center;
+
+						&[data-active="true"] {
+							@apply border-secondary-300 bg-secondary-50 text-secondary-500
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.market-container>#shops-section {
@@ -616,7 +629,7 @@
 	}
 
 	.members-container>#header-section {
-		@apply common-header-section
+		@apply common-header-section;
 	}
 
 	.members-container>#filter-section {
