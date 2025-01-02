@@ -2,7 +2,9 @@
 export default function Page() {
     return (
         <div className="settings-container">
-            <p>MEMBER EDITS GMAIL OR PASSWORD</p>
+            <section id="header-section">
+                <h1>Settings</h1>
+            </section>
         </div>
     )
 }

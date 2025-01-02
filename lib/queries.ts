@@ -88,6 +88,21 @@ export async function getResources() {
     return resources;
 }
 
+export async function getBlogs() {
+    const blogs: Types.IBlog[] = [];
+
+    await using db = await getDb();
+
+    const cursor = db.B.find();
+
+    for await (const resource of cursor) {
+        const formattedBlog = format.from<Types.IBlog>(resource);
+        blogs.push(formattedBlog);
+    }
+
+    return blogs;
+}
+
 export async function getUsers() {
     const users: Types.IUser[] = [];
 

@@ -1,8 +1,8 @@
 
 export default function Page() {
     return (
-        <div className="blogs-form-container">
+        <section id="blog-container">
             <p>BLOG EDITTOR GOES HERE</p>
-        </div>
+        </section>
     )
 }

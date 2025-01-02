@@ -3,7 +3,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import * as Q from "./queries";
 import { keys } from "./query-keys";
-import { IMemberFilter, IProductFilter, IReportFilter, IResourceFilter, IShopFilter, IUserFilter } from "./types";
+import { IBlogFilter, IMemberFilter, IProductFilter, IReportFilter, IResourceFilter, IShopFilter, IUserFilter } from "./types";
 
 export function useGetDepartmentStat(dep: string) {
     const queryKey = keys.departmentStats(dep);
@@ -29,6 +29,13 @@ export function useGetRecentProducts() {
 export function useGetResources(filter:IResourceFilter) {
     const queryKey = keys.resources(filter);
     const queryFn = async () => await Q.getResources();
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+};
+
+export function useGetBlogs(filter:IBlogFilter) {
+    const queryKey = keys.blogs(filter);
+    const queryFn = async () => await Q.getBlogs();
 
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };
