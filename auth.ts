@@ -6,7 +6,7 @@ import Credentials from "next-auth/providers/credentials";
 import client from "./lib/db";
 import bcrypt from "bcrypt";
 import { ZLogin } from "./lib/schema";
-import { getMemberByEmail } from "./lib/queries";
+import { getMemberByEmail } from "./lib/queries/members";
 
 class InvalidLoginError extends CredentialsSignin {
     code = "Invalid email or password"

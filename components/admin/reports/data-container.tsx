@@ -1,11 +1,11 @@
 "use client";
 
 import Table from "@/components/common/table";
-import { useGetReports } from "@/lib/query-hooks";
 import { columns } from './columns';
 import { IReport, IReportFilter } from "@/lib/types";
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
+import { useGetReports } from "@/lib/query-hooks/reports";
 
 export default function DataContainer({ filter }: { filter: IReportFilter }) {
     const { data: reports } = useGetReports(filter);

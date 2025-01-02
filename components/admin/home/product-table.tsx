@@ -1,10 +1,10 @@
 "use client";
 
-import { useGetRecentProducts } from "@/lib/query-hooks";
 import { IProduct } from "@/lib/types";
 import { columns } from "./product-columns";
 import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { demoProducts } from "@/lib/constants";
+import { useGetRecentProducts } from "@/lib/query-hooks/products";
 
 export default function ProductTable() {
     const { data: recentProducts } = useGetRecentProducts();

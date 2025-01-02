@@ -1,10 +1,10 @@
 "use client";
 
-import { useGetRecentBlogs } from "@/lib/query-hooks";
 import { columns } from "./blog-columns";
 import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { IBlog } from "@/lib/types";
 import { demoBlogs } from "@/lib/constants";
+import { useGetRecentBlogs } from "@/lib/query-hooks/blogs";
 
 export default function BlogTable() {
     const { data: recentBlogs } = useGetRecentBlogs();

@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetDepartmentStat } from "@/lib/query-hooks";
+import { useGetDepartmentStat } from "@/lib/query-hooks/resources";
 import { _resources, _users } from "@/lib/routes";
 import { ChevronRight, FolderOpen } from "lucide-react";
 import Link from "next/link";

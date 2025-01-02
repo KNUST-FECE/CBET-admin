@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetBlogs } from "@/lib/query-hooks";
+import { useGetBlogs } from "@/lib/query-hooks/blogs";
 import { _blog } from "@/lib/routes";
 import { IBlogFilter } from "@/lib/types";
 import Link from "next/link";

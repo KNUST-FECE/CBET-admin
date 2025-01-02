@@ -1,11 +1,11 @@
 "use client";
 
-import { useGetShops } from "@/lib/query-hooks";
 import { IShop, IShopFilter } from "@/lib/types";
 import { columns } from "./columns";
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
 import Table from "@/components/common/table";
+import { useGetShops } from "@/lib/query-hooks/shops";
 
 export default function DataContainer({ filter }: { filter: IShopFilter }) {
     const { data: resources } = useGetShops(filter);

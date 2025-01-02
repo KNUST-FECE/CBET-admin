@@ -1,13 +1,13 @@
 "use client";
 
 import Table from "@/components/common/table";
-import { useGetProducts } from "@/lib/query-hooks";
 import { IProduct, IProductFilter } from "@/lib/types";
 import { columns } from "./columns";
 import { ColumnFiltersState, SortingState, useReactTable } from "@tanstack/react-table";
 import { getCoreRowModel } from "@tanstack/react-table";
 import { getFilteredRowModel, getPaginationRowModel, getSortedRowModel } from "@tanstack/react-table";
 import { useState } from "react";
+import { useGetProducts } from "@/lib/query-hooks/products";
 
 export default function DataContainer({ filter }: { filter: IProductFilter }) {
     const { data: resources } = useGetProducts(filter);

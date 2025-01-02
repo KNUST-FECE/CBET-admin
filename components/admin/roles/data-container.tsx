@@ -1,10 +1,10 @@
 "use client";
 
 import Table from "@/components/common/table";
-import { useGetRoles } from "@/lib/query-hooks";
 import { IRole } from "@/lib/types";
 import { columns } from "./columns";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { useGetRoles } from "@/lib/query-hooks/roles";
 
 export default function DataContainer() {
     const { data: roles } = useGetRoles();

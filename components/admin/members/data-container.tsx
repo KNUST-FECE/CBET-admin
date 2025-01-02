@@ -1,11 +1,11 @@
 "use client";
 
 import Table from "@/components/common/table";
-import { useGetMembers } from "@/lib/query-hooks";
 import { IMember, IMemberFilter } from "@/lib/types";
 import { columns } from './columns';
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
+import { useGetMembers } from "@/lib/query-hooks/members";
 
 export default function DataContainer({ filter }: { filter: IMemberFilter }) {
     const { data: resources } = useGetMembers(filter);

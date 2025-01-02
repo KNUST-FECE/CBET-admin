@@ -1,11 +1,11 @@
 "use client";
 
-import { useGetResources } from "@/lib/query-hooks";
 import { IResource, IResourceFilter } from "@/lib/types";
 import { columns } from './columns';
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import Table from "@/components/common/table";
 import { useState } from "react";
+import { useGetResources } from "@/lib/query-hooks/resources";
 
 export default function DataContainer({ filter }: { filter: IResourceFilter }) {
     const { data: resources } = useGetResources(filter);
