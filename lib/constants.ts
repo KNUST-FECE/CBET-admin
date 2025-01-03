@@ -4,47 +4,47 @@ import { IBlog, IProduct } from "./types";
 
 export const mainLinks = [
     { 
-        name: "Home",
+        name: "home",
         link: routes._home,
         icon: LayoutGrid
     },
     { 
-        name: "Resources",
+        name: "resources",
         link: routes._resources,
         icon: Database
     },
     { 
-        name: "Blogs",
+        name: "blogs",
         link: routes._blogs,
         icon: Newspaper
     },
     { 
-        name: "Market",
-        link: routes._products,
+        name: "market",
+        link: routes._market,
         icon: Store
     },
     { 
-        name: "Users",
+        name: "users",
         link: routes._users,
         icon: Users
     },
     { 
-        name: "Members",
+        name: "members",
         link: routes._members,
         icon: Crown
     },
     { 
-        name: "Reports",
+        name: "reports",
         link: routes._reports,
         icon: SquareChartGantt
     },
     { 
-        name: "Roles",
+        name: "roles",
         link: routes._roles,
         icon: Fingerprint
     },
     { 
-        name: "Settings",
+        name: "settings",
         link: routes._settings,
         icon: Settings
     },

@@ -1,6 +1,7 @@
 "use client";
 
 import { mainLinks } from "@/lib/constants";
+import { _products } from "@/lib/routes";
 import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
@@ -21,7 +22,10 @@ export default function Header() {
                 <ul>
                     {mainLinks.map(item => (
                         <li key={item.name}>
-                            <Link href={item.link} data-active={getActive(item.link)}>
+                            <Link 
+                                href={item.name === "market" ? _products : item.link} 
+                                data-active={getActive(item.link)}
+                            >
                                 <div className="header-icon">
                                     <item.icon />
                                 </div>

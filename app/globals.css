@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
 :root {
 	--primary: 0 0% 100%;
 	--primary-50: 210 40% 98%;
@@ -249,7 +253,7 @@
 						@apply h-full aspect-square flex-center
 					}
 					>p {
-						@apply text-sm font-medium 
+						@apply capitalize text-sm font-medium 
 					}
 				}
 			}
