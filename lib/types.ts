@@ -11,7 +11,8 @@ declare module '@tanstack/react-table' {
 }
 
 export type IQuery = {
-    params: {[key: string]: string}
+    params: {[key: string]: string},
+    searchParams: { [key: string]: string | string[] | undefined }
 };
 
 export type ILogin = z.infer<typeof ZLogin>;
@@ -37,8 +38,8 @@ export interface IUser {
     level: number
     shopID: string
     image: string
-    likedProducts: [string]
-    likedBlogs: [string]
+    likedProducts: string[]
+    likedBlogs: string[]
     updatedAt: string
     createdAt: string
 }
@@ -48,10 +49,11 @@ export interface IResource {
     name: string
     type: string
     dataUrl: string
-    dataType: string
-    parentID: [string]
+    fileType: string
+    parentID: string[]
     fileCount: number
     folderCount: number
+    creatorID: string
     size: number
     updatedAt: string
     createdAt: string

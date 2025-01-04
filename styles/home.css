@@ -1,0 +1,209 @@
+
+@layer utilities {
+	.home-container {
+		@apply w-full min-h-dvh pb-20;
+	}
+
+	.home-container>#header-section {
+		@apply common-header-section
+	}
+
+	.home-container>#resource-section {
+		@apply w-full p-7;
+
+		>div {
+			@apply w-full flex space-x-8;
+		}
+	}
+
+	#resource-section>div>.resource-stat-container {
+		@apply w-full max-w-72 h-52 rounded-xl p-7 bg-primary border border-primary-300 flex flex-col;
+
+		.stat-upper {
+			@apply flex-1 flex items-center justify-start space-x-4;
+
+			>svg {
+				@apply size-20 text-secondary-500
+			}
+			.users-total-container {
+				@apply relative flex-1 rounded-full h-12 p-2 flex items-center hover:bg-secondary-50;
+
+				>.random-avatar {
+					@apply relative h-full aspect-square bg-secondary-300 rounded-full border-2 -ml-5 first:ml-0 border-primary box-border;
+				}
+				>p {
+					@apply flex-1 text-sm text-primary-500 font-medium ml-0.5;
+				}
+				>svg {
+					@apply size-5 text-primary-700
+				}
+			}
+		}
+		.stat-lower {
+			@apply space-y-1;
+
+			>a {
+				@apply capitalize text-base font-semibold text-secondary-500 hover:text-secondary-600
+			}
+			>p {
+				@apply text-xs font-medium text-primary-500
+			}
+		}
+	}
+
+	.table-section {
+		@apply w-full p-7 pt-14
+	}
+
+	.table-section>div {
+		@apply w-full space-y-4
+	}
+
+	.table-section>div>.table-section-header {
+		@apply w-full flex items-center justify-between
+	}
+
+	.table-section>div>.table-section-header>h2 {
+		@apply text-lg font-semibold text-primary-800
+	}
+
+	.table-section>div>.table-section-header>a {
+		@apply flex items-center space-x-2 text-primary-700 py-2 px-3 rounded-full hover:bg-primary-200
+	}
+
+	.table-section>div>.table-section-header>a>p {
+		@apply text-sm font-semibold
+	}
+
+	.table-section>div>.table-section-header>a>svg {
+		@apply size-5
+	}
+
+	.table-section>div>.table-section-content {
+		@apply w-full
+	}
+
+	.table-section-content>table>thead>tr>th {
+		@apply p-4 text-start text-sm font-medium text-primary-700 cursor-default
+	}
+
+	.table-section-content>table>tbody>tr {
+		@apply hover:bg-primary-100 cursor-pointer text-primary-700;
+
+		&:hover {
+			.blogs-icon-td, .products-icon-td {
+				@apply opacity-100;
+			}
+		}
+	}
+
+	.table-section-content>table>tbody>tr>td {
+		@apply p-4
+	}
+
+	.blogs-blog-col {
+		&.blogs-blog-td {
+			@apply space-y-2;
+
+			h3 {
+				@apply flex space-x-2 text-lg;
+			}
+
+			p {
+				@apply text-sm space-x-2 font-medium;
+			}
+		}
+	}
+
+	.blogs-tags-col {
+		@apply h-full min-w-80 max-w-80 px-8;
+
+		&.blogs-tags-td {
+			div {
+				@apply h-full flex gap-2 flex-wrap;
+
+				p {
+					@apply text-sm py-1 px-1.5 border border-primary-300;
+				}
+			}
+		}
+
+	}
+
+	.blogs-likes-col {
+		&.blogs-likes-td {
+			p {
+				@apply flex items-center space-x-1 text-sm;
+
+				svg {
+					@apply size-5
+				}
+			}
+		}
+	}
+
+	.blogs-icon-col {
+		@apply w-14;
+
+		&.blogs-icon-td { 
+			@apply opacity-0;
+
+			svg {
+				@apply size-6;
+			}
+		}
+	}
+
+	.products-price-col {
+		@apply w-44;
+
+		&.products-price-td {
+			p {
+				@apply text-sm font-medium
+			}
+		}
+	}
+
+	.products-stock-col {
+		@apply w-36;
+
+		&.products-stock-td {
+			p>span {
+				@apply text-sm font-medium
+			}
+		}
+	}
+
+	.products-published-col {
+		@apply w-36;
+
+		&.products-published-td {
+			p>span {
+				@apply text-xs text-center font-medium px-2.5 py-1 rounded-full border border-primary-300;
+			}
+		}
+	}
+
+	.products-approved-col {
+		@apply w-36;
+
+		&.products-approved-td {
+			p>span {
+				@apply text-xs text-center font-medium px-2.5 py-1 rounded-full border border-primary-300;
+			}
+		}
+	}
+
+	.products-icon-col {
+		@apply w-14;
+
+		&.products-icon-td {
+			@apply opacity-0;
+
+			svg {
+				@apply size-6;
+			}
+		}
+	}
+
+}

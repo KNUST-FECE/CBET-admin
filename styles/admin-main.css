@@ -1,0 +1,58 @@
+
+@layer utilities {
+	.admin-container {
+		@apply relative w-full min-h-dvh flex;
+	}
+
+	.admin-container>header {
+		@apply sticky z-10 top-0 w-64 h-dvh bg-primary-950 flex flex-col justify-between;
+
+		>#header-logo {
+			@apply w-full h-20 p-2 flex-center;
+
+			>#the-logo {
+				@apply text-secondary-500
+			}
+		}
+		>nav {
+			@apply flex-1 w-full;
+
+			>ul li {
+				@apply w-full h-14 p-3;
+
+				>a {
+					@apply h-full flex items-center justify-start space-x-4 text-primary-500 hover:text-primary-200 data-[active=true]:text-primary-200;
+
+					>.header-icon {
+						@apply h-full aspect-square flex-center
+					}
+					>p {
+						@apply capitalize text-sm font-medium 
+					}
+				}
+			}
+		}
+		>#header-logout {
+			@apply w-full h-16 flex items-center p-3 space-x-4;
+
+			>#the-logout {
+				@apply overflow-hidden h-full w-full rounded-md bg-secondary-700 flex-center space-x-4 text-primary-100 hover:bg-secondary-600;
+
+				>p {
+					@apply flex-1 text-sm font-medium text-center
+				}
+				>span {
+					@apply h-full aspect-square flex-center bg-secondary-500 rounded-md;
+
+					>svg {
+						@apply size-5
+					}
+				}
+			}
+		}
+	}
+
+	.admin-container>main {
+		@apply flex-1 min-h-dvh flex bg-primary-50
+	}
+}

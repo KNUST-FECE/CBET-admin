@@ -1,0 +1,30 @@
+
+@layer utilities {
+	.users-container {
+		@apply w-full min-h-dvh pb-20;
+	}
+
+	.users-container>#header-section {
+		@apply common-header-section
+	}
+
+	.users-container>#filter-section {
+		@apply w-full h-16 px-7 py-2 border-b;
+	}
+
+	.users-container>#table-section {
+		@apply w-full;
+
+		table {
+			@apply w-full table-fixed;
+
+			th {
+				@apply text-start
+			}
+
+			.name-col {
+				@apply px-7
+			}
+		}
+	}
+}

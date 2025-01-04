@@ -1,0 +1,73 @@
+
+@layer utilities {
+	.market-container {
+		@apply w-full min-h-dvh pb-20;
+	}
+
+	.market-container>#header-section {
+		@apply common-header-section;
+		@apply flex space-x-4 items-center;
+
+		>nav {
+			>ul {
+				@apply flex space-x-4;
+
+				li {
+					a {
+						@apply relative px-3 py-2 text-sm font-medium rounded-full border flex-center;
+
+						&[data-active="true"] {
+							@apply border-secondary-300 bg-secondary-50 text-secondary-500
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.market-container>#shops-section {
+		@apply w-full;
+		
+		#filter-section {
+			@apply w-full h-16 px-7 py-2 border-b;
+		}
+		#table-section {
+			@apply w-full;
+	
+			table {
+				@apply w-full table-fixed;
+	
+				th {
+					@apply text-start
+				}
+	
+				.name-col {
+					@apply px-7
+				}
+			}
+		}
+	}
+
+	.market-container>#products-section {
+		@apply w-full;
+
+		#filter-section {
+			@apply w-full h-16 px-7 py-2 border-b;
+		}
+		#table-section {
+			@apply w-full;
+	
+			table {
+				@apply w-full table-fixed;
+	
+				th {
+					@apply text-start
+				}
+	
+				.name-col {
+					@apply px-7
+				}
+			}
+		}
+	}
+}

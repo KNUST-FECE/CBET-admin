@@ -1,0 +1,54 @@
+
+@layer utilities {
+	.login-container {
+		@apply w-full min-h-dvh
+	}
+
+	.login-container>main {
+		@apply w-full h-dvh flex-center flex-col bg-primary-100
+	}
+
+	main>#logo-container {
+		@apply w-full py-5 flex-center
+	}
+
+	#logo-container>img {
+		@apply text-secondary-500
+	}
+
+	main>#header-container {
+		@apply w-full py-5 flex-center
+	}
+
+	#header-container>h1 {
+		@apply text-xl text-primary-800 font-semibold
+	}
+
+	main>#form-container {
+		@apply w-full py-5 flex-center
+	}
+
+	#form-container>form {
+		@apply w-full max-w-xs space-y-4
+	}
+
+	#form-container>form>input {
+		@apply block w-full h-14 px-4 rounded-md border border-primary-300 text-lg outline-secondary-500 focus:outline
+	}
+
+	#form-container>form>button {
+		@apply block w-full h-14 rounded-md bg-secondary-500 text-primary-50 hover:bg-secondary-600 font-medium
+	}
+
+	#form-container>form>div {
+		@apply w-full flex p-2.5 items-center space-x-4 bg-danger-200 rounded-lg text-danger-600
+	}
+
+	#form-container>form>div>svg {
+		@apply size-5
+	}
+
+	#form-container>form>div>p {
+		@apply text-sm font-medium
+	}
+}

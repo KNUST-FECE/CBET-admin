@@ -1,0 +1,31 @@
+
+@layer utilities {
+	.blogs-container {
+		@apply w-full min-h-dvh flex;
+	}
+
+	.blogs-container>#navigation-container {
+		@apply w-full max-w-xs h-dvh bg-primary-100 border-r;
+
+		>#header-section {
+			@apply common-header-section;
+		}
+
+		>#filter-section {
+			@apply w-full h-14 p-2 border-b;
+		}
+
+		>#data-section {
+			@apply py-4 px-2;
+		}
+
+	}
+
+	.blogs-container>#home-container {
+		@apply flex-1 min-h-dvh flex-center
+	}
+
+	.blogs-container>#blog-container {
+		@apply flex-1 min-h-dvh flex-center
+	}
+}

@@ -1,0 +1,10 @@
+
+@layer utilities {
+	.settings-container {
+		@apply w-full min-h-dvh pb-20;
+	}
+
+	.settings-container>#header-section {
+		@apply common-header-section;
+	}
+}
