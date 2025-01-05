@@ -1,30 +1,63 @@
 
 @layer utilities {
 	.resource-container {
-		@apply w-full min-h-dvh pb-20;
+		@apply w-full min-h-dvh flex flex-col;
 	}
 
 	.resource-container>#header-section {
-		@apply common-header-section
+		@apply w-full p-5 pt-10 flex justify-between items-center;
+
+		div#info {
+			@apply flex items-center space-x-4;
+
+			>h1 {
+				@apply text-2xl font-semibold tracking-tight text-primary-800;
+			}
+			>#folder-selector {
+				@apply bg-fuchsia-200  p-2 -skew-x-12 text-sm w-64;
+			}
+		}
+
+		div#action-buttons {
+			#create-button {
+				@apply bg-green-200 p-2 -skew-x-12 text-sm;
+			}
+		}
 	}
 
 	.resource-container>#filter-section {
-		@apply w-full h-16 px-7 py-2 border-b;
+		@apply w-full h-12 px-7 py-2;
 	}
-
+	
 	.resource-container>#table-section {
-		@apply w-full;
-
+		@apply w-full flex-1 overflow-scroll;
+		
 		table {
-			@apply w-full table-fixed;
+			@apply w-full table-auto;
 
-			th {
-				@apply text-start
+			th, td {
+				@apply w-0 border border-primary-300;
 			}
 
-			.name-col {
-				@apply px-7
+			thead {
+				@apply bg-primary-100
+			}
+			
+			thead th>div {
+				@apply h-10 w-52 flex items-center justify-start px-2 text-xs uppercase text-primary-700
+			}
+
+			tbody td>div {
+				@apply h-10 w-52 flex items-center justify-start px-2 text-sm text-primary-600 capitalize;
+			}
+
+			.name-col>div {
+				@apply w-64;
 			}
 		}
+	}
+	
+	.resource-container>#footer-section {
+		@apply w-full h-12 px-7 py-2 border-b bg-primary-200;
 	}
 }

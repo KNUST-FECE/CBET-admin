@@ -18,3 +18,22 @@ export function useGetResources(filter:IResourceFilter) {
 
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };
+
+export function useGetFolders(resourceID: string) {
+    const queryKey = keys.folders(resourceID);
+    const queryFn = async () => await Q.getFolders(resourceID);
+
+    return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+}
+
+export function useModifyResource() {
+
+}
+
+export function useSoftRemoveResource() {
+
+}
+
+export function useHardRemoveResource() {
+    
+}

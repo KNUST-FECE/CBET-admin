@@ -41,6 +41,9 @@ export default function DataContainer({ filter }: { filter: IResourceFilter }) {
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
             </section>
+            <section id="footer-section">
+                footer section
+            </section>
         </>
     )
 }

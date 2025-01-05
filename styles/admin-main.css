@@ -5,7 +5,7 @@
 	}
 
 	.admin-container>header {
-		@apply sticky z-10 top-0 w-64 h-dvh bg-primary-950 flex flex-col justify-between;
+		@apply sticky z-10 top-0 w-64 min-w-64 h-dvh bg-primary-950 flex flex-col justify-between;
 
 		>#header-logo {
 			@apply w-full h-20 p-2 flex-center;
@@ -53,6 +53,6 @@
 	}
 
 	.admin-container>main {
-		@apply flex-1 min-h-dvh flex bg-primary-50
+		@apply w-[calc(100%_-_256px)] min-h-dvh flex bg-primary-50
 	}
 }

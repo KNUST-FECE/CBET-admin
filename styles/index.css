@@ -121,17 +121,8 @@
 	}
 
 	table {
-		@apply w-full border-collapse
+		@apply w-full
 	}
-
-	thead {
-		@apply [&_tr]:border-b
-	}
-
-	tbody {
-		@apply [&_tr]:border-b
-	}
-
 }
 
 @layer utilities {

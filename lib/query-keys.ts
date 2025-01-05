@@ -3,7 +3,8 @@ import * as Types from "./types";
 export const keys = {
     resources: (filter: Types.IResourceFilter) => ["resources", filter] as const,
     resource: (id: string) => ["resources", id] as const,
-    departmentStats: (dep: string) => ["department-stat", dep] as const,
+    departmentStats: (dep: string) => ["resources","department-stat", dep] as const,
+    folders: (id: string) => ["resources", "folders", id] as const,
 
     blogs: (filter: Types.IBlogFilter) => ["blogs", filter] as const,
     recentBlogs: ["blogs", "recent"] as const,

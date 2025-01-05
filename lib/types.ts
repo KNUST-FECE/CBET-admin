@@ -54,6 +54,7 @@ export interface IResource {
     fileCount: number
     folderCount: number
     creatorID: string
+    status: string
     size: number
     updatedAt: string
     createdAt: string
