@@ -1,7 +1,7 @@
 "use server";
 
+import { format, getDb } from "../mongo-utils";
 import { IMember } from "../types";
-import { format, getDb } from "../utils";
 
 /**
  * Retrieves a member from the database by their email address.

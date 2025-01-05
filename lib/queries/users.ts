@@ -1,7 +1,7 @@
 "use server";
 
+import { format, getDb } from "../mongo-utils";
 import { IUser } from "../types";
-import { format, getDb } from "../utils";
 
 export async function getUsers() {
     const data: IUser[] = [];

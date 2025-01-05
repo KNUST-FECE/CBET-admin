@@ -1,7 +1,7 @@
 "use server";
 
+import { format, getDb } from "../mongo-utils";
 import { IBlog } from "../types";
-import { format, getDb } from "../utils";
 
 export async function getRecentBlogs() {
     const data: IBlog[] = [];

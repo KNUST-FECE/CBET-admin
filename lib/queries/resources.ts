@@ -1,7 +1,7 @@
 "use server";
 
+import { _id, format, getDb } from "../mongo-utils";
 import { IResource } from "../types";
-import { _id, format, getDb } from "../utils";
 
 /**
  * Retrieves statistics for a department. 
