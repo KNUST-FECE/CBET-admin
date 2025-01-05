@@ -6,6 +6,7 @@ import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPagination
 import Table from "@/components/common/table";
 import { useState } from "react";
 import { useGetResources } from "@/lib/query-hooks/resources";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function DataContainer({ filter }: { filter: IResourceFilter }) {
     const { data: resources } = useGetResources(filter);

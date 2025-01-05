@@ -1,13 +1,52 @@
+"use client";
+
+import { Checkbox } from "@/components/ui/checkbox";
 import { IResource } from "@/lib/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from 'date-fns';
+import { File, Folder } from "lucide-react";
 
 // columns -> selector - name - type - file type - size - creator - createdAt - modifiedAt
 export const columns: ColumnDef<IResource>[] = [
     {
-        accessorKey: "name",
+        id: "select",
+        header: ({ table }) => (
+            <div>
+                <Checkbox
+                    checked={
+                        table.getIsAllPageRowsSelected() ||
+                        (table.getIsSomePageRowsSelected() && "indeterminate")
+                    }
+                    onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+                    aria-label="Select all"
+                />
+            </div>
+        ),
+        cell: ({ row }) => (
+            <div>
+                <Checkbox
+                    checked={row.getIsSelected()}
+                    onCheckedChange={(value) => row.toggleSelected(!!value)}
+                    aria-label="Select row"
+                />
+            </div>
+        ),
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+            headClass: "select-col select-th",
+            cellClass: "select-col select-td",
+        }
+    },
+    {
+        id : "name",
         header: () => <TableHeader value="name" />,
-        cell: ({getValue}) => <TableCell value={getValue()} />,
+        cell: ({row: { original }}) => (
+            <div>
+                {original.type === "folder"? (<Folder />) : (<File />)}
+                <p>{original.name}</p>
+            </div>
+        ),
         meta: {
             headClass: "name-col name-th",
             cellClass: "name-col name-td",
@@ -60,7 +99,7 @@ export const columns: ColumnDef<IResource>[] = [
     },
     {
         accessorKey: "createdAt",
-        header: () => <TableHeader value="created at" />,
+        header: () => <TableHeader value="date created" />,
         cell: ({getValue}) => <TableCell value={format(getValue() as string, "dd-MM-yyyy")} />,
         meta: {
             headClass: "created-col created-th",
@@ -69,7 +108,7 @@ export const columns: ColumnDef<IResource>[] = [
     },
     {
         accessorKey: "updatedAt",
-        header: () => <TableHeader value="updated at" />,
+        header: () => <TableHeader value="date modified" />,
         cell: ({getValue}) => <TableCell value={format(getValue() as string, "dd-MM-yyyy")} />,
         meta: {
             headClass: "modified-col modified-th",

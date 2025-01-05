@@ -14,7 +14,7 @@
 				@apply text-2xl font-semibold tracking-tight text-primary-800;
 			}
 			>#folder-selector {
-				@apply bg-fuchsia-200  p-2 -skew-x-12 text-sm w-64;
+				@apply bg-fuchsia-200  p-2 -skew-x-12 text-sm;
 			}
 		}
 
@@ -44,15 +44,23 @@
 			}
 			
 			thead th>div {
-				@apply h-10 w-52 flex items-center justify-start px-2 text-xs uppercase text-primary-700
+				@apply h-9 w-52 flex items-center justify-start px-2 text-xs text-primary-700 uppercase;
 			}
 
 			tbody td>div {
-				@apply h-10 w-52 flex items-center justify-start px-2 text-sm text-primary-600 capitalize;
+				@apply h-9 w-52 flex items-center justify-start px-2 text-sm text-primary-600 capitalize;
+			}
+
+			.select-col>div {
+				@apply w-9;
 			}
 
 			.name-col>div {
-				@apply w-64;
+				@apply w-64 space-x-2;
+
+				>svg {
+					@apply size-5 stroke-1;
+				}
 			}
 		}
 	}

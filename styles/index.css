@@ -141,4 +141,16 @@
 			@apply text-2xl font-semibold tracking-tight text-primary-800
 		}
 	}
+
+	.checkbox {
+		@apply size-4 shrink-0 rounded-[4px] border border-primary-500 shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-500 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-700 data-[state=checked]:text-primary-100;
+
+		>span {
+			@apply flex items-center justify-center text-current;
+
+			>svg {
+				@apply size-4;
+			}
+		}
+	}
 }
