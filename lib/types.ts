@@ -1,4 +1,4 @@
-import { ZLogin } from "./schema";
+import { ZLogin, ZNewResource } from "./schema";
 import { z } from "zod";
 import '@tanstack/react-table' //or vue, svelte, solid, qwik, etc.
 import { RowData } from "@tanstack/react-table";
@@ -16,6 +16,7 @@ export type IQuery = {
 };
 
 export type ILogin = z.infer<typeof ZLogin>;
+export type INewResource = z.infer<typeof ZNewResource>;
 
 export interface IMember {
     id: string
