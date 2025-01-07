@@ -5,7 +5,7 @@ import { columns } from './columns';
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import Table from "@/components/common/table";
 import { useState } from "react";
-import { useGetResources } from "@/lib/query-hooks/resources";
+import { useGetResources } from "@/lib/query-hooks/resources"
 
 export default function DataContainer({ filter }: { filter: IResourceFilter }) {
     const { data: resources } = useGetResources(filter);
@@ -35,9 +35,6 @@ export default function DataContainer({ filter }: { filter: IResourceFilter }) {
 
     return (
         <>
-            <section id="filter-section">
-                filter section
-            </section>
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
             </section>
