@@ -7,18 +7,37 @@
 	.resource-container>#header-section {
 		@apply w-full p-5 pt-10 flex justify-between items-center;
 
-		div#info {
+		#info {
 			@apply flex items-center space-x-4;
 
 			>h1 {
-				@apply text-2xl font-semibold tracking-tight text-primary-800;
+				@apply text-xl font-semibold tracking-tight text-primary-800;
 			}
 			>#folder-selector {
-				@apply bg-fuchsia-200  p-2 -skew-x-12 text-sm;
+				.selector-trigger {
+					@apply rounded-full bg-secondary-50 text-secondary-600 font-medium border-none focus:ring-secondary-300 space-x-2;
+
+					div {
+						@apply flex items-center space-x-2;
+
+						svg {
+							@apply size-4 stroke-1
+						}
+
+						div {
+							@apply relative w-28 overflow-hidden;
+
+							&::before {
+								@apply content-[""] absolute h-full aspect-square top-0 right-0;
+								@apply bg-gradient-to-l from-secondary-50;
+							}
+						}
+					}
+				}
 			}
 		}
 
-		div#action-buttons {
+		#action-buttons {
 			#create-button {
 				@apply bg-green-200 p-2 -skew-x-12 text-sm;
 			}
@@ -44,11 +63,11 @@
 			}
 			
 			thead th>div {
-				@apply h-9 w-52 flex items-center justify-start px-2 text-xs text-primary-700 uppercase;
+				@apply h-9 w-44 flex items-center justify-start px-2 text-xs text-primary-700 capitalize;
 			}
 
 			tbody td>div {
-				@apply h-9 w-52 flex items-center justify-start px-2 text-sm text-primary-600 capitalize;
+				@apply h-9 w-44 flex items-center justify-start px-2 text-xs font-medium text-primary-700 capitalize;
 			}
 
 			.select-col>div {
@@ -59,7 +78,7 @@
 				@apply w-64 space-x-2;
 
 				>svg {
-					@apply size-5 stroke-1;
+					@apply size-4 stroke-1;
 				}
 			}
 		}
