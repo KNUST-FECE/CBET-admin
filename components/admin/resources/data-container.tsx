@@ -39,7 +39,22 @@ export default function DataContainer({ filter }: { filter: IResourceFilter }) {
                 <Table HG={headerGroup} TR={tableRows} />
             </section>
             <section id="footer-section">
-                footer section
+                <div id="data-info">
+                    <p id="page-number">
+                        page 
+                        <span>0</span>
+                        of
+                        <span>10</span>
+                    </p>
+                </div>
+                <div id="data-pagination">
+                    <button id="prev-btn">
+                        prev
+                    </button>
+                    <button id="next-btn">
+                        next
+                    </button>
+                </div>
             </section>
         </>
     )
