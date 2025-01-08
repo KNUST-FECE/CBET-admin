@@ -33,7 +33,7 @@
 
 							&::before {
 								@apply content-[""] absolute h-full aspect-square top-0 right-0;
-								@apply bg-gradient-to-l from-primary-50;
+								@apply bg-gradient-to-l from-primary;
 							}
 						}
 					}
@@ -71,7 +71,7 @@
 				@apply flex items-center space-x-2;
 
 				button {
-					@apply relative p-1 px-2 rounded-full flex-center space-x-1 border text-primary-600 text-xs font-semibold hover:bg-primary-200;
+					@apply relative p-1 px-2 rounded-full flex-center space-x-1 border text-primary-600 text-xs font-semibold hover:bg-primary-50;
 
 					svg {
 						@apply size-4 stroke-2;
@@ -91,16 +91,26 @@
 				@apply w-0 border border-primary-300;
 			}
 
-			thead {
-				@apply bg-primary-100
-			}
-			
-			thead th>div {
-				@apply h-9 w-44 flex items-center justify-start px-2 text-xs text-primary-700 capitalize;
+			tr th, tr td{
+				@apply first-of-type:border-l-0
 			}
 
-			tbody td>div {
-				@apply h-9 w-44 flex items-center justify-start px-2 text-xs font-medium text-primary-700 capitalize;
+			tr th, tr td{
+				@apply last-of-type:border-r-0
+			}
+
+			thead {
+				@apply bg-primary-50;
+
+				th>div {
+					@apply h-9 w-44 flex items-center justify-start px-2 text-xs text-primary-700 capitalize;
+				}
+			}
+
+			tbody {
+				td>div {
+					@apply h-9 w-44 flex items-center justify-start px-2 text-xs font-medium text-primary-700 capitalize;
+				}
 			}
 
 			.select-col>div {
@@ -136,7 +146,7 @@
 			@apply flex items-center justify-end space-x-2;
 
 			button {
-				@apply p-1 px-2 rounded-full flex-center space-x-1 border text-primary-600 text-xs font-semibold hover:bg-primary-200;
+				@apply p-1 px-2 rounded-full flex-center space-x-1 border text-primary-700 text-xs font-semibold hover:bg-primary-200;
 			}
 		}
 	}
