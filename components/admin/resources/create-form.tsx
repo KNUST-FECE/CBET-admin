@@ -1,9 +1,12 @@
 "use client";
 
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { DropMenu, DropMenuContent, DropMenuItem, DropMenuTrigger } from "@/components/ui/dropdown-menu";
 import { ZNewResource } from "@/lib/schema";
 import { INewResource } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChevronDown, CirclePlus } from "lucide-react";
+import { ChevronDown, CirclePlus, File, Folder } from "lucide-react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type Props = {
@@ -11,6 +14,7 @@ type Props = {
 }
 
 export default function CreateForm(props: Props) {
+    const [ open, setOpen ] = useState(false);
     const form = useForm<INewResource>({
         resolver: zodResolver(ZNewResource),
         defaultValues: {
@@ -35,17 +39,40 @@ export default function CreateForm(props: Props) {
     return (
         <FormProvider {...form}>
             <form onSubmit={handleSubmit(onSubmit)} id="create-form">
-                <div id="trigger-buttons">
-                    <button type="button" className="dropdown-trigger">
-                        <CirclePlus />
-                        <span>New</span>
-                        <ChevronDown /> 
-                    </button>
-                </div>
+                <DropdownSelector />
+                <Dialog open={open} onOpenChange={setOpen}>
+                    <DialogContent>
+                        simple
+                    </DialogContent>
+                </Dialog>
                 {/* TODO: a radix select to create file/folder */}
                 {/* selecting file opens the dialog with file form selected */}
                 {/* selecting folder opens the dialog with folder form selected */}
             </form>
         </FormProvider>
+    )
+}
+
+function DropdownSelector() {
+    return (
+        <DropMenu>
+            <DropMenuTrigger asChild>
+                <button type="button" className="dropdown-trigger">
+                    <CirclePlus />
+                    <span>New</span>
+                    <ChevronDown /> 
+                </button>
+            </DropMenuTrigger>
+            <DropMenuContent collisionPadding={14}>
+                <DropMenuItem>
+                    <Folder className="size-4 text-primary-700 stroke-1" />
+                    Folder
+                </DropMenuItem>
+                <DropMenuItem>
+                    <File className="size-4 text-primary-700 stroke-1" />
+                    File
+                </DropMenuItem>
+            </DropMenuContent>
+        </DropMenu>
     )
 }

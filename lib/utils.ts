@@ -16,3 +16,11 @@ export const baseUrl = () => {
         return (`http://${process.env.NEXT_PUBLIC_VERCEL_URL}`)
     
 };
+
+export function getFilterString() {
+
+}
+
+export function getFilterObject() {
+    
+}

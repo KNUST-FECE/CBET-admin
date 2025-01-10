@@ -280,7 +280,7 @@
 
 	.drop-menu {
 		&.trigger {
-			@apply flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-primary-100 data-[state=open]:bg-primary-100;
+			@apply flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-primary data-[state=open]:bg-primary;
 
 			&svg {
 				@apply pointer-events-none size-4 shrink-0 ml-auto;
@@ -291,30 +291,30 @@
 		}
 
 		&.content {
-			@apply z-50 min-w-[8rem] overflow-hidden rounded-md border bg-primary-50 p-1 text-primary-700 shadow-md;
+			@apply z-50 min-w-[8rem] overflow-hidden rounded-md border bg-primary p-1 text-primary-700 shadow-md;
 			@apply data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
 
-			&[state=open] {
+			&[data-state=open] {
 				@apply animate-in fade-in-0 zoom-in-95
 			}
-			&[state=closed] {
+			&[data-state=closed] {
 				@apply animate-out fade-out-0 zoom-out-95
 			}
 			.sub-content {
-				@apply z-50 min-w-[8rem] overflow-hidden rounded-md border bg-primary-50 p-1 text-primary-700 shadow-lg;
+				@apply z-50 min-w-[8rem] overflow-hidden rounded-md border bg-primary p-1 text-primary-700 shadow-lg;
 				@apply data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
 
-				&[state=open] {
+				&[data-state=open] {
 					@apply animate-in fade-in-0 zoom-in-95
 				}
 
-				&[state=closed] {
+				&[data-state=closed] {
 					@apply animate-out fade-out-0 zoom-out-95
 				}
 			}
 
 			.item {
-				@apply relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-primary-100 focus:text-primary-700 data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
+				@apply relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-xs font-medium outline-none transition-colors focus:bg-primary-50 focus:text-primary-700 data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
 				
 				&svg {
 					@apply size-4 shrink-0;

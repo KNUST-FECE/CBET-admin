@@ -43,15 +43,11 @@
 
 		#action-buttons {
 			#create-form {
-				#trigger-buttons {
-					@apply flex items-center;
+				.dropdown-trigger {
+					@apply flex items-center space-x-2 p-2 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-lg text-secondary-50;
 
-					.dropdown-trigger {
-						@apply flex items-center space-x-2 p-2 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-lg text-secondary-50;
-
-						svg {
-							@apply size-4 stroke-2;
-						}
+					svg {
+						@apply size-4 stroke-2;
 					}
 				}
 			}
