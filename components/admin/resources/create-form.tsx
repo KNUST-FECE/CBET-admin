@@ -6,7 +6,7 @@ import { ZNewResource } from "@/lib/schema";
 import { INewResource } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChevronDown, CirclePlus, File, Folder } from "lucide-react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type Props = {
@@ -39,7 +39,7 @@ export default function CreateForm(props: Props) {
     return (
         <FormProvider {...form}>
             <form onSubmit={handleSubmit(onSubmit)} id="create-form">
-                <DropdownSelector />
+                <DropdownSelector setOpen={setOpen} />
                 <Dialog open={open} onOpenChange={setOpen}>
                     <DialogContent>
                         simple
@@ -47,13 +47,13 @@ export default function CreateForm(props: Props) {
                 </Dialog>
                 {/* TODO: a radix select to create file/folder */}
                 {/* selecting file opens the dialog with file form selected */}
-                {/* selecting folder opens the dialog with folder form selected */}
+                {/* selecting folder opens the dialog with folder form selected */} 
             </form>
         </FormProvider>
     )
 }
 
-function DropdownSelector() {
+function DropdownSelector({setOpen}:{setOpen: Dispatch<SetStateAction<boolean>>}) {
     return (
         <DropMenu>
             <DropMenuTrigger asChild>
@@ -64,11 +64,11 @@ function DropdownSelector() {
                 </button>
             </DropMenuTrigger>
             <DropMenuContent collisionPadding={14}>
-                <DropMenuItem>
+                <DropMenuItem onClick={() => setOpen(true)}>
                     <Folder className="size-4 text-primary-700 stroke-1" />
                     Folder
                 </DropMenuItem>
-                <DropMenuItem>
+                <DropMenuItem onClick={() => setOpen(true)}>
                     <File className="size-4 text-primary-700 stroke-1" />
                     File
                 </DropMenuItem>
