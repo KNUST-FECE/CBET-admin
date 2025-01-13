@@ -222,7 +222,7 @@
 
 	.dialog {
 		&.overlay {
-			@apply fixed inset-0 z-50 bg-black/80;
+			@apply fixed inset-0 z-50 bg-black/30;
 
 			&[data-state=open] {
 				@apply animate-in fade-in-0;
@@ -233,7 +233,7 @@
 		}
 
 		&.content {
-			@apply fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-primary-50 p-6 shadow-lg duration-200 sm:rounded-lg;
+			@apply overflow-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-primary p-4 shadow-lg duration-200 sm:rounded-lg;
 
 			&[data-state=open] {
 				@apply animate-in fade-in-0 zoom-in-95 slide-in-from-left-1/2 slide-in-from-top-[48%];
@@ -245,15 +245,15 @@
 			.close {
 				@apply absolute right-4 top-4 rounded-sm opacity-70 ring-offset-1 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 disabled:pointer-events-none;
 
-				&[state=open] {
+				&[data-state=open] {
 					@apply bg-primary-300 text-primary-700;
 				}
 			}
 			.title {
-				@apply text-lg font-semibold leading-none tracking-tight;
+				@apply text-sm font-medium leading-none tracking-tight capitalize;
 			}
 			.description {
-				@apply text-sm text-primary-500;
+				@apply text-xs font-medium text-primary-700;
 			}
 		}
 	}

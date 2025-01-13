@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { DropMenu, DropMenuContent, DropMenuItem, DropMenuTrigger } from "@/components/ui/dropdown-menu";
 import { ZNewResource } from "@/lib/schema";
 import { INewResource } from "@/lib/types";
@@ -41,11 +41,19 @@ export default function CreateForm(props: Props) {
             <form onSubmit={handleSubmit(onSubmit)} id="create-form">
                 <DropdownSelector setOpen={setOpen} />
                 <Dialog open={open} onOpenChange={setOpen}>
-                    <DialogContent>
-                        simple
+                    <DialogContent className="form-content">
+                        <div className="form-header">
+                            <DialogTitle>new resource</DialogTitle>
+                            <DialogDescription>Help organise resources with folders</DialogDescription>
+                        </div>
+                        <div className="form-body">
+
+                        </div>
+                        <div className="form-footer">
+                            <button className="create-btn">Create</button>
+                        </div>
                     </DialogContent>
                 </Dialog>
-                {/* TODO: a radix select to create file/folder */}
                 {/* selecting file opens the dialog with file form selected */}
                 {/* selecting folder opens the dialog with folder form selected */} 
             </form>
