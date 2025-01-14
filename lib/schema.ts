@@ -10,26 +10,27 @@ export const ZLogin = z.object({
     password: z.string().min(8)
 });
 
-export const ZNewResource = z.object({
-    type: z.enum(["folder", "file"]),
-    name: z.string(),
-    file: z.instanceof(File).nullable()
+export const ZNewFolder = z.object({
+    name: z.string()
+});
+
+export const ZNewFile = z.object({
+    files: z.array(z.instanceof(File))
 });
 
 export const ZResourceFilter = z.object({
     folder: z.string().nullable(),
     search: z.string().nullable(),
-    limit: z.number(),
-    page: z.number(),
+    limit: z.number().nullable(),
+    page: z.number().nullable(),
     sort: z.object({
         name: z.boolean(),
-        type: z.boolean(),
         fileType: z.boolean(),
         size: z.boolean(),
         status: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }),
+    }).nullable(),
     filter: z.object({
         type: z.array(z.string()),
         fileType: z.array(z.string()),
@@ -37,14 +38,14 @@ export const ZResourceFilter = z.object({
         size: ZMinMax,
         createAt: ZMinMax,
         updatedAt: ZMinMax
-    })
+    }).nullable()
 });
 
 export const ZProductFilter = z.object({
     shop: z.string().nullable(),
     search: z.string().nullable(),
-    limit: z.number(),
-    page: z.number(),
+    limit: z.number().nullable(),
+    page: z.number().nullable(),
     sort: z.object({
         name: z.boolean(),
         price: z.boolean(),
@@ -54,7 +55,7 @@ export const ZProductFilter = z.object({
         category: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }),
+    }).nullable(),
     filter: z.object({
         tags: z.array(z.string()),
         category: z.array(z.string()),
@@ -64,33 +65,33 @@ export const ZProductFilter = z.object({
         stock: ZMinMax,
         createAt: ZMinMax,
         updatedAt: ZMinMax
-    })
+    }).nullable()
 });
 
 export const ZShopFilter = z.object({
     search: z.string().nullable(),
-    limit: z.number(),
-    page: z.number(),
+    limit: z.number().nullable(),
+    page: z.number().nullable(),
     sort: z.object({
         name: z.boolean(),
         email: z.boolean(),
         productCount: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }),
+    }).nullable(),
     filter: z.object({
         socials: z.array(z.string()),
         productCount: ZMinMax,
         stock: ZMinMax,
         createAt: ZMinMax,
         updatedAt: ZMinMax
-    })
+    }).nullable()
 });
 
 export const ZReportFilter = z.object({
     search: z.string().nullable(),
-    limit: z.number(),
-    page: z.number(),
+    limit: z.number().nullable(),
+    page: z.number().nullable(),
     sort: z.object({
         user: z.boolean(),
         category: z.boolean(),
@@ -99,20 +100,20 @@ export const ZReportFilter = z.object({
         serviced: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }),
+    }).nullable(),
     filter: z.object({
         category: z.array(z.string()),
         type: z.array(z.string()),
         serviced: z.array(z.string()),
         createAt: ZMinMax,
         updatedAt: ZMinMax
-    })
+    }).nullable()
 });
 
 export const ZUserFilter = z.object({
     search: z.string().nullable(),
-    limit: z.number(),
-    page: z.number(),
+    limit: z.number().nullable(),
+    page: z.number().nullable(),
     sort: z.object({
         user: z.boolean(),
         studentNo: z.boolean(),
@@ -121,29 +122,29 @@ export const ZUserFilter = z.object({
         level: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }),
+    }).nullable(),
     filter: z.object({
         departemnt: z.array(z.string()),
         level: z.array(z.string()),
         createAt: ZMinMax,
         updatedAt: ZMinMax
-    })
+    }).nullable()
 });
 
 export const ZMemberFilter = z.object({
     search: z.string().nullable(),
-    limit: z.number(),
-    page: z.number(),
+    limit: z.number().nullable(),
+    page: z.number().nullable(),
     sort: z.object({
         name: z.boolean(),
         email: z.boolean(),
         role: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }),
+    }).nullable(),
     filter: z.object({
         role: z.array(z.string()),
         createAt: ZMinMax,
         updatedAt: ZMinMax
-    })
+    }).nullable()
 });

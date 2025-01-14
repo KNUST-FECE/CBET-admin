@@ -1,6 +1,6 @@
-import { ZLogin, ZMemberFilter, ZNewResource, ZProductFilter, ZReportFilter, ZResourceFilter, ZShopFilter, ZUserFilter } from "./schema";
+import { ZLogin, ZMemberFilter, ZNewFile, ZNewFolder, ZProductFilter, ZReportFilter, ZResourceFilter, ZShopFilter, ZUserFilter } from "./schema";
 import { z } from "zod";
-import '@tanstack/react-table' //or vue, svelte, solid, qwik, etc.
+import '@tanstack/react-table';
 import { RowData } from "@tanstack/react-table";
 
 declare module '@tanstack/react-table' {
@@ -16,7 +16,8 @@ export type IQuery = {
 };
 
 export type ILogin = z.infer<typeof ZLogin>;
-export type INewResource = z.infer<typeof ZNewResource>;
+export type INewFolder = z.infer<typeof ZNewFolder>;
+export type INewFile = z.infer<typeof ZNewFile>;
 export type IResourceFilter = z.infer<typeof ZResourceFilter>;
 export type IProductFilter = z.infer<typeof ZProductFilter>;
 export type IShopFilter = z.infer<typeof ZShopFilter>;

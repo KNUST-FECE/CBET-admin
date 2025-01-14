@@ -248,6 +248,10 @@
 				&[data-state=open] {
 					@apply bg-primary-300 text-primary-700;
 				}
+
+				svg {
+					@apply size-4;
+				}
 			}
 			.title {
 				@apply text-sm font-medium leading-none tracking-tight capitalize;

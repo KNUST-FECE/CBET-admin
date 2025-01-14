@@ -1,7 +1,6 @@
 "use client"
 
 import * as D from "@radix-ui/react-dialog"
-import { X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ComponentPropsWithoutRef as NoRef, ElementRef as Ref, forwardRef } from "react"
 
@@ -31,10 +30,6 @@ const DialogContent = forwardRef<Ref<IContent>,NoRef<IContent>>(
       <DialogOverlay />
       <D.Content ref={ref} className={cn("dialog content",className)} {...props}>
         {children}
-        <D.Close className="close">
-          <X className="h-4 w-4" />
-          <span className="sr-only">Close</span>
-        </D.Close>
       </D.Content>
     </DialogPortal>
   )

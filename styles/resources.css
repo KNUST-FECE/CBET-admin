@@ -42,13 +42,11 @@
 		}
 
 		#action-buttons {
-			#create-form {
-				.dropdown-trigger {
-					@apply flex items-center space-x-2 p-2 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-lg text-secondary-50;
+			#resource-form-selector {
+				@apply flex items-center space-x-2 p-2 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-lg text-secondary-50 focus:outline-secondary-300;
 
-					svg {
-						@apply size-4 stroke-2;
-					}
+				svg {
+					@apply size-4 stroke-2;
 				}
 			}
 		}
@@ -148,8 +146,35 @@
 	}
 
 	/* DIALOGS AND POPUPS */
+	.drop-menu {
+		&#resource-form-selector-content {
+			svg {
+				@apply size-4 text-primary-700 stroke-1;
+			}
+		}
+	}
+
 	.dialog {
-		&.form-content {
+		&#new-folder-form {
+			@apply w-full max-w-screen-md m-4 p-0 border;
+
+			>.form-header {
+				@apply w-full p-4 border-b space-y-1.5;
+			}
+
+			>.form-body {
+				@apply w-full p-4 h-44;
+			}
+
+			>.form-footer {
+				@apply w-full p-4 border-t flex-center !justify-end space-x-4;
+
+				button.create-btn {
+					@apply p-1.5 px-2.5 rounded-full flex-center space-x-1 text-xs font-semibold bg-secondary-800 text-secondary hover:bg-secondary-700;
+				}
+			}
+		}
+		&#new-file-form {
 			@apply w-full max-w-screen-md m-4 p-0 border;
 
 			>.form-header {
