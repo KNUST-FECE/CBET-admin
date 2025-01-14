@@ -7,6 +7,7 @@ import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import logo from "@/public/logo.png";
 
 
 export default function Header() {
@@ -16,7 +17,7 @@ export default function Header() {
     return (
         <header>
             <div id="header-logo">
-                <Image src="/logo.png" alt="logo" width={60} height={60} id="the-logo" />
+                <Image src={logo} alt="logo" width={60} height={60} id="the-logo" priority={true} />
             </div>
             <nav>
                 <ul>
