@@ -22,6 +22,11 @@ export default function FormSelector(props: Props) {
     const [ openFolderForm, setOpenFolderForm ] = useState(false);
     const [ openFileForm, setOpenFileForm ] = useState(false);
 
+    const formTypes = [
+        { label: "Folder", icon: Folder, onClick: setOpenFolderForm},
+        { label: "File", icon: File, onClick: setOpenFileForm},
+    ]
+
     return (
         <>
             <DropMenu>
@@ -33,14 +38,12 @@ export default function FormSelector(props: Props) {
                     </button>
                 </DropMenuTrigger>
                 <DropMenuContent collisionPadding={14} id="resource-form-selector-content">
-                    <DropMenuItem onClick={() => setOpenFolderForm(true)}>
-                        <Folder />
-                        Folder
-                    </DropMenuItem>
-                    <DropMenuItem onClick={() => setOpenFileForm(true)}>
-                        <File />
-                        File
-                    </DropMenuItem>
+                    {formTypes.map(type => (
+                        <DropMenuItem onClick={() => type.onClick(true)}>
+                            <type.icon />
+                            {type.label}
+                        </DropMenuItem>
+                    ))}
                 </DropMenuContent>
             </DropMenu>
             <FolderForm open={openFolderForm} setOpen={setOpenFolderForm} />
@@ -78,10 +81,13 @@ function FolderForm(props:TriggerProps) {
                         </DialogClose>
                         <div className="form-header">
                             <DialogTitle>new folder</DialogTitle>
-                            <DialogDescription>Help organise resources with folders</DialogDescription>
+                            <DialogDescription>~ Help organise resources with folders</DialogDescription>
                         </div>
                         <div className="form-body">
-
+                            <label htmlFor="folder-name">
+                                <p>Folder Name</p>
+                                <input id="folder-name" {...register("name")} />
+                            </label>
                         </div>
                         <div className="form-footer">
                             <button className="create-btn">Create</button>
@@ -123,7 +129,7 @@ function FileForm(props:TriggerProps) {
                         </DialogClose>
                         <div className="form-header">
                             <DialogTitle>new file</DialogTitle>
-                            <DialogDescription>Store relevant data such as PDF, DOCX, PNG etc.</DialogDescription>
+                            <DialogDescription>~ Store data such as PDF, DOCX, PNG etc.</DialogDescription>
                         </div>
                         <div className="form-body">
 
