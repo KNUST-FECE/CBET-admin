@@ -141,3 +141,5 @@ export interface IRole {
     updatedAt: string
     createdAt: string
 }
+
+export type IFolderTrace = Pick<IResource, "id" | "name">;

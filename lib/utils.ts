@@ -1,6 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
-import { ReadonlyURLSearchParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
+import { useSearchParams } from "next/navigation";
+import { z } from "zod";
+import { IFolderTrace } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
@@ -18,14 +20,59 @@ export const baseUrl = () => {
     
 };
 
-export function getFilterString<T>(filter: T): string {
+export function getFilterString<T extends Record<string, any>>(filter: T): string {
+    const params: Record<string, string> = {};
 
-    const filterString = "";
-    return filterString;
+    Object.entries(filter).forEach(([key, value]) => {
+        if (value === null || value === undefined) {
+            // Skip null or undefined values
+            return;
+        }
+        if (typeof value === "string" || typeof value === "number") {
+            // Directly add primitive types
+            params[key] = value.toString();
+        } else if (Array.isArray(value)) {
+            // Join array values with commas
+            params[key] = value.join(",");
+        } else if (typeof value === "object" && "min" in value && "max" in value) {
+            // Handle MinMax object (e.g., { min: "10", max: "100" })
+            params[key] = `min:${value.min},max:${value.max}`;
+        } else if (key === "sort" && typeof value === "object") {
+            // Handle sort object (e.g., { name: true, email: false })
+            const sortKeys = Object.entries(value)
+                .filter(([, sortValue]) => sortValue === true) // Only include true values
+                .map(([sortKey]) => sortKey)
+                .join(",");
+            if (sortKeys) {
+                params[key] = sortKeys;
+            }
+        }
+    });
+
+    return new URLSearchParams(params).toString();
 }
 
-export function getFilterObject<T>(searchParams: ReadonlyURLSearchParams) {
-    return {} as T;
+export function getFilterObject<T>(searchParams: URLSearchParams, schema: z.ZodType<T>): T {
+    const filterObject: Record<string, unknown> = {};
+
+    searchParams.forEach((value, key) => {
+        if (value.includes(":")) {
+            const nested = Object.fromEntries(
+                value.split(",").map((pair) => pair.split(":") as [string, string])
+            );
+            filterObject[key] = nested;
+        }
+        else if (value.includes(",")) {
+            filterObject[key] = value.split(",");
+        } 
+        else {
+            const numberValue = Number(value);
+            filterObject[key] = isNaN(numberValue) ? value : numberValue;
+        }
+    });
+
+    // Validate and return the parsed object
+    return schema.parse(filterObject);
 }
 
 export const convertFileSize = (sizeInBytes: number, digits?: number) => {

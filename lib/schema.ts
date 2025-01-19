@@ -15,14 +15,24 @@ export const ZNewFolder = z.object({
 });
 
 export const ZNewFile = z.object({
-    files: z.array(z.instanceof(File))
+    files: z.array(
+        z.object({
+          file: z.instanceof(File),
+        })
+      ),
 });
 
 export const ZResourceFilter = z.object({
-    folder: z.string().nullable(),
-    search: z.string().nullable(),
-    limit: z.number().nullable(),
-    page: z.number().nullable(),
+    folder: z.string().optional(),
+    search: z.string().optional(),
+    limit: z.number().optional(),
+    page: z.number().optional(),
+    type: z.array(z.string()).optional(),
+    fileType: z.array(z.string()).optional(),
+    status: z.array(z.string()).optional(),
+    size: ZMinMax.optional(),
+    createAt: ZMinMax.optional(),
+    updatedAt: ZMinMax.optional(),
     sort: z.object({
         name: z.boolean(),
         fileType: z.boolean(),
@@ -30,15 +40,7 @@ export const ZResourceFilter = z.object({
         status: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }).nullable(),
-    filter: z.object({
-        type: z.array(z.string()),
-        fileType: z.array(z.string()),
-        status: z.array(z.string()),
-        size: ZMinMax,
-        createAt: ZMinMax,
-        updatedAt: ZMinMax
-    }).nullable()
+    }).optional(),
 });
 
 export const ZBlogFilter = z.object({
@@ -63,10 +65,18 @@ export const ZBlogFilter = z.object({
 });
 
 export const ZProductFilter = z.object({
-    shop: z.string().nullable(),
-    search: z.string().nullable(),
-    limit: z.number().nullable(),
-    page: z.number().nullable(),
+    shop: z.string().optional(),
+    search: z.string().optional(),
+    limit: z.number().optional(),
+    page: z.number().optional(),
+    tags: z.array(z.string()).optional(),
+    category: z.array(z.string()).optional(),
+    published: z.array(z.string()).optional(),
+    approved: z.array(z.string()).optional(),
+    price: ZMinMax.optional(),
+    stock: ZMinMax.optional(),
+    createAt: ZMinMax.optional(),
+    updatedAt: ZMinMax.optional(),
     sort: z.object({
         name: z.boolean(),
         price: z.boolean(),
@@ -76,43 +86,36 @@ export const ZProductFilter = z.object({
         category: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }).nullable(),
-    filter: z.object({
-        tags: z.array(z.string()),
-        category: z.array(z.string()),
-        published: z.array(z.string()),
-        approved: z.array(z.string()),
-        price: ZMinMax,
-        stock: ZMinMax,
-        createAt: ZMinMax,
-        updatedAt: ZMinMax
-    }).nullable()
+    }).optional(),
 });
 
 export const ZShopFilter = z.object({
-    search: z.string().nullable(),
-    limit: z.number().nullable(),
-    page: z.number().nullable(),
+    search: z.string().optional(),
+    limit: z.number().optional(),
+    page: z.number().optional(),
+    socials: z.array(z.string()).optional(),
+    productCount: ZMinMax.optional(),
+    stock: ZMinMax.optional(),
+    createAt: ZMinMax.optional(),
+    updatedAt: ZMinMax.optional(),
     sort: z.object({
         name: z.boolean(),
         email: z.boolean(),
         productCount: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }).nullable(),
-    filter: z.object({
-        socials: z.array(z.string()),
-        productCount: ZMinMax,
-        stock: ZMinMax,
-        createAt: ZMinMax,
-        updatedAt: ZMinMax
-    }).nullable()
+    }).optional(),
 });
 
 export const ZReportFilter = z.object({
-    search: z.string().nullable(),
-    limit: z.number().nullable(),
-    page: z.number().nullable(),
+    search: z.string().optional(),
+    limit: z.number().optional(),
+    page: z.number().optional(),
+    category: z.array(z.string()).optional(),
+    type: z.array(z.string()).optional(),
+    serviced: z.array(z.string()).optional(),
+    createAt: ZMinMax.optional(),
+    updatedAt: ZMinMax.optional(),
     sort: z.object({
         user: z.boolean(),
         category: z.boolean(),
@@ -121,20 +124,17 @@ export const ZReportFilter = z.object({
         serviced: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }).nullable(),
-    filter: z.object({
-        category: z.array(z.string()),
-        type: z.array(z.string()),
-        serviced: z.array(z.string()),
-        createAt: ZMinMax,
-        updatedAt: ZMinMax
-    }).nullable()
+    }).optional(),
 });
 
 export const ZUserFilter = z.object({
-    search: z.string().nullable(),
-    limit: z.number().nullable(),
-    page: z.number().nullable(),
+    search: z.string().optional(),
+    limit: z.number().optional(),
+    page: z.number().optional(),
+    departemnt: z.array(z.string()).optional(),
+    level: z.array(z.string()).optional(),
+    createAt: ZMinMax.optional(),
+    updatedAt: ZMinMax.optional(),
     sort: z.object({
         user: z.boolean(),
         studentNo: z.boolean(),
@@ -143,29 +143,21 @@ export const ZUserFilter = z.object({
         level: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }).nullable(),
-    filter: z.object({
-        departemnt: z.array(z.string()),
-        level: z.array(z.string()),
-        createAt: ZMinMax,
-        updatedAt: ZMinMax
-    }).nullable()
+    }).optional(),
 });
 
 export const ZMemberFilter = z.object({
-    search: z.string().nullable(),
-    limit: z.number().nullable(),
-    page: z.number().nullable(),
+    search: z.string().optional(),
+    limit: z.number().optional(),
+    page: z.number().optional(),
+    role: z.array(z.string()).optional(),
+    createAt: ZMinMax.optional(),
+    updatedAt: ZMinMax.optional(),
     sort: z.object({
         name: z.boolean(),
         email: z.boolean(),
         role: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }).nullable(),
-    filter: z.object({
-        role: z.array(z.string()),
-        createAt: ZMinMax,
-        updatedAt: ZMinMax
-    }).nullable()
+    }).optional(),
 });

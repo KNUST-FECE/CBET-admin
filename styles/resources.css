@@ -208,45 +208,40 @@
 							@apply size-7 text-secondary;
 						}
 					}
-
 					>p {
 						@apply text-xs font-medium text-primary-500
 					}
 				}
 				.absolute-upload-message {
-					@apply absolute top-0 left-0 w-full h-full bg-black/10 backdrop-blur-sm p-2 flex;
-
-					>div {
-						@apply w-full h-full rounded-lg border border-dashed border-primary-400 bg-primary flex-center flex-col space-y-16;
+					@apply absolute top-0 left-0 w-full h-full bg-primary/40 backdrop-blur p-2 flex-center flex-col space-y-16;
 						
-						div#upload-svg-container {
-							@apply relative flex-center;
+					div#upload-svg-container {
+						@apply relative flex-center;
 
-							div.circle {
-								@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-dotted;
+						div.circle {
+							@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-dotted;
 
-								&.one {
-									@apply size-40 border-4 border-secondary-100;
-								}
-								&.two {
-									@apply size-32 border-4 border-secondary-300;
-								}
-								&.three {
-									@apply size-24 border-secondary-400;
-									border-width: 5px;
-								}
+							&.one {
+								@apply size-40 border-4 border-secondary-200;
 							}
-							div.upload-svg {
-								@apply size-16 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-500 flex-center shadow-xl shadow-secondary-200;
-
-								svg {
-									@apply size-7 text-secondary;
-								}
+							&.two {
+								@apply size-32 border-4 border-secondary-400;
+							}
+							&.three {
+								@apply size-24 border-secondary-500;
+								border-width: 5px;
 							}
 						}
-						p {
-							@apply font-semibold text-primary-700
+						div.upload-svg {
+							@apply size-16 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-600 flex-center shadow-xl shadow-secondary-200;
+
+							svg {
+								@apply size-7 text-secondary;
+							}
 						}
+					}
+					p {
+						@apply text-xs font-medium text-primary-500
 					}
 				}
 			}

@@ -1,50 +1,51 @@
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { useAddResource, useGetFolderTrace } from "@/lib/query-hooks/resources";
+import { useAddResource } from "@/lib/query-hooks/resources";
 import { ZNewFile } from "@/lib/schema";
 import { INewFile, IResource, IResourceFilter } from "@/lib/types";
-import { getFileMeta, getFilterObject, saveFile } from "@/lib/utils";
+import { getFileMeta, saveFile } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UploadCloud, X } from "lucide-react";
-import { useSearchParams } from "next/navigation";
-import { Dispatch, SetStateAction, useCallback } from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import {useDropzone} from 'react-dropzone';
+import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
+import { FormProvider, useFieldArray, useForm } from "react-hook-form";
+import {FileWithPath, useDropzone} from 'react-dropzone';
+import { useSession } from "next-auth/react";
 
 type TriggerProps = {
     open: boolean
-    setOpen: Dispatch<SetStateAction<boolean>>
+    setOpen: Dispatch<SetStateAction<boolean>>,
+    stringTrace: string[],
+    filter: IResourceFilter
 }
 type CardProps = {
     file: File
 }
 
 export default function FileForm(props:TriggerProps) {
-    const searchParams = useSearchParams();
-    const filter = getFilterObject<IResourceFilter>(searchParams); // get the page filter object
-    const { data: folderTrace } = useGetFolderTrace(filter.folder || ""); // get the parent folders of current folder up to the root folder
-    const { mutate: addResource } = useAddResource(filter); // add resource function to create new resource
-    const form = useForm<INewFile>({
-        resolver: zodResolver(ZNewFile),
-        defaultValues: {
-            files: [],
-        }
-    });
-    const onDrop = useCallback((acceptedFiles: File[]) => {
-        // Do something with the files
-      }, [])
+    const { data: session } = useSession();
+    const { mutate: addResource } = useAddResource(props.filter); // add resource function to create new resource
+
+    const defaultValues = { files: [] };
+    const form = useForm<INewFile>({ resolver: zodResolver(ZNewFile), defaultValues });
+    const { handleSubmit, control, reset } = form;
+    const { fields, append, remove } = useFieldArray({ control, name: "files" });
+
+    const onDrop = useCallback((acceptedFiles: readonly FileWithPath[]) => {
+        const filesToAdd = acceptedFiles.map((file) => ({ file: file}));
+        append(filesToAdd);
+    }, [append])
 
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
-    const { handleSubmit, register, getValues } = form;
-    const files = getValues("files");
 
     async function onSubmit(values: INewFile ) {
         const fileList: Omit<IResource, "id">[] = [];
+        const creatorID = session?.user?.id; // get from authjs using the useSession hook
+        const parentID: string[] = []; // useSearchParams to get FolderID and get its parentID list and append the folderID 
 
-        for (const file of values.files) {
-            const { name, fileType, size } = getFileMeta(file);
-            const { fileUrl } = await saveFile(file);
-            const creatorID = "098956789957687"; // get from authjs using the useSession hook
-            const parentID: string[] = []; // useSearchParams to get FolderID and get its parentID list and append the folderID 
+        if(!creatorID) throw new Error("Failed to create resources");
+
+        for (const item of values.files) {
+            const { name, fileType, size } = getFileMeta(item.file);
+            const { fileUrl } = await saveFile(item.file);
             const fileObject = {
                 name,
                 type: "file",
@@ -65,6 +66,12 @@ export default function FileForm(props:TriggerProps) {
         addResource({resource: fileList});
     }
 
+    useEffect(() => {
+        if (props.open) {
+            reset(defaultValues);
+        }
+    }, [props.open, reset]);
+
     return (
         <FormProvider {...form}>
             <Dialog open={props.open} onOpenChange={props.setOpen}>
@@ -80,11 +87,11 @@ export default function FileForm(props:TriggerProps) {
                         </div>
                         <div {...getRootProps()} className="form-body">
                             <input {...getInputProps()} />
-                            {files.length !== 0 ? 
+                            {fields && fields.length !== 0 ? 
                                 (
                                     <div className="files-container">
-                                        {files.map(file => (
-                                            <FileCard file={file} />
+                                        {fields.map(item => (
+                                            <FileCard key={item.id} file={item.file} />
                                         ))}
                                     </div>
                                 ): (
@@ -98,17 +105,15 @@ export default function FileForm(props:TriggerProps) {
                             }
                             {isDragActive && (
                                 <div className="absolute-upload-message">
-                                    <div>
-                                        <div id="upload-svg-container">
-                                            <div className="circle one" />
-                                            <div className="circle two" />
-                                            <div className="circle three" />
-                                            <div className="upload-svg">
-                                                <UploadCloud />
-                                            </div>
+                                    <div id="upload-svg-container">
+                                        <div className="circle one" />
+                                        <div className="circle two" />
+                                        <div className="circle three" />
+                                        <div className="upload-svg">
+                                            <UploadCloud />
                                         </div>
-                                        <p>Upload your file</p>
                                     </div>
+                                    <p>Drop files here</p>
                                 </div>
                             )}
 

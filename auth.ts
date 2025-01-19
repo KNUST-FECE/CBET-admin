@@ -7,6 +7,13 @@ import client from "./lib/db";
 import bcrypt from "bcrypt";
 import { ZLogin } from "./lib/schema";
 import { getMemberByEmail } from "./lib/queries/members";
+import { JWT } from "next-auth/jwt"
+ 
+declare module "next-auth/jwt" {
+  interface JWT {
+    id?: string
+  }
+}
 
 class InvalidLoginError extends CredentialsSignin {
     code = "Invalid email or password"
@@ -56,5 +63,24 @@ export const { handlers, auth } = NextAuth({
             },
         }),
         ...authConfig.providers
-    ]
+    ],
+    callbacks: {
+        async jwt({ token, user }) {
+          if (user) {
+            token.id = user.id;
+            token.email = user.email;
+            token.name = user.name;
+          }
+          return token;
+        },
+        async session({ session, token }) {
+          if (token) {
+            session.user = { id: token.id || "", email: token.email || "", name: token.name, emailVerified: new Date() };
+          }
+          return session;
+        },
+    },
+    session: {
+        strategy: "jwt",
+    },
 });

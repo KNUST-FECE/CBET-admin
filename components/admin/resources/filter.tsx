@@ -4,14 +4,17 @@ import FilterButton from "@/components/common/filter-button";
 import DataFilter from "@/components/form/data-filter";
 import DataSearch from "@/components/form/data-search";
 import DataSort from "@/components/form/data-sort";
-import RunFilter from "@/components/form/run-filter";
 import { ZResourceFilter } from "@/lib/schema";
 import { IResourceFilter } from "@/lib/types";
+import { getFilterObject } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Search, Filter as FilterIcon, ArrowUpDown, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-export default function Filter({ filter }: { filter: IResourceFilter }) {
+export default function Filter() {
+    const searchParams = useSearchParams();
+    const filter = getFilterObject(searchParams, ZResourceFilter);
     const form = useForm<IResourceFilter>({
         resolver: zodResolver(ZResourceFilter),
         defaultValues: {

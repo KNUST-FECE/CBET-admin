@@ -1,7 +1,7 @@
 "use server";
 
 import { _id, format, getDb } from "../mongo-utils";
-import { IResource } from "../types";
+import { IFolderTrace, IResource } from "../types";
 
 /**
  * Retrieves statistics for a department. 
@@ -43,26 +43,28 @@ export async function getResources() {
         data.push(parsedData);
     }
 
-    return data;
+    return data || [];
 }
 
 export async function getFolderTrace(resourceID: string) {
     // TODO: omit other attributes in IResource and return only id, name
-    const folders: IResource[] = [];
+    const folders: IFolderTrace[] = [];
 
     await using db = await getDb();
 
     // TODO: make sure typescript knows parentID is a list of object ids
-    const resource: any = await db.RC.findOne({ _id: _id(resourceID) }, { projection: { parentID: 1} });
+    const resource: any = await db.RC.findOne({ _id: _id(resourceID) }, { projection: { _id: 1, name: 1, parentID: 1} });
 
     if(!resource) return [];
 
-    for ( const id of resource.parentID ) {
+    const { parentID, ...currentFolder } = resource;
+
+    for ( const id of parentID ) {
         let folder = await db.RC.findOne({ _id: id }, { projection: {_id: 1, name: 1} });
         if (!folder) return [];
-        let folderParsed = format.from<IResource>(folder);
-        folders.push(folderParsed);
+        folders.push(format.from<IFolderTrace>(folder));
     }
+    folders.push(format.from<IFolderTrace>(currentFolder));
 
     return folders;
 }

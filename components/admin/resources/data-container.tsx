@@ -6,8 +6,13 @@ import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPagination
 import Table from "@/components/common/table";
 import { useState } from "react";
 import { useGetResources } from "@/lib/query-hooks/resources"
+import { useSearchParams } from "next/navigation";
+import { getFilterObject } from "@/lib/utils";
+import { ZResourceFilter } from "@/lib/schema";
 
-export default function DataContainer({ filter }: { filter: IResourceFilter }) {
+export default function DataContainer() {
+    const searchParams = useSearchParams();
+    const filter = getFilterObject(searchParams, ZResourceFilter);
     const { data: resources } = useGetResources(filter);
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
