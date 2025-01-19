@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { keys } from "../query-keys";
 import { IResourceFilter } from "../types";
 import * as Q from "@/lib/queries/resources";
@@ -19,11 +19,22 @@ export function useGetResources(filter:IResourceFilter) {
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };
 
-export function useGetFolders(resourceID: string) {
+export function useGetFolderTrace(resourceID: string) {
     const queryKey = keys.folders(resourceID);
-    const queryFn = async () => await Q.getFolders(resourceID);
+    const queryFn = async () => await Q.getFolderTrace(resourceID);
 
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
+}
+
+export function useAddResource(filter:IResourceFilter) {
+    const queryClient = useQueryClient();
+
+    return useMutation({ 
+        mutationFn: Q.addResource,
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: keys.resources(filter)})
+        },
+    })
 }
 
 export function useModifyResource() {

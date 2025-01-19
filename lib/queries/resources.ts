@@ -46,7 +46,7 @@ export async function getResources() {
     return data;
 }
 
-export async function getFolders(resourceID: string) {
+export async function getFolderTrace(resourceID: string) {
     // TODO: omit other attributes in IResource and return only id, name
     const folders: IResource[] = [];
 
@@ -67,13 +67,25 @@ export async function getFolders(resourceID: string) {
     return folders;
 }
 
-export async function addResource(resource: IResource) {
-    const parsedData = format.to<IResource>(resource);
+export async function addResource({resource}:{resource: Omit<IResource, "id">[]}) {
 
-    await using db = await getDb();
-    await db.RC.insertOne(parsedData);
+    console.log({resource});
+    return
 
-    return "success";
+    // const parsedData = format.to<IResource>(resource);
+    // const immediateParentID = _id(parsedData.parentID[-1]); // future _id is not needed as would be handled by the parsing function 
+
+    // await using db = await getDb();
+
+    // const parentMeta = await db.RC.findOne({_id: immediateParentID}, {projection: {fileCount: 1, folderCount: 1}});
+
+    // if(parentMeta && parsedData.type === "folder") parentMeta.folderCount = parentMeta.folderCount + 1;
+    // if(parentMeta && parsedData.type === "file") parentMeta.fileCount = parentMeta.fileCount + 1;
+
+    // await db.RC.updateOne({_id: immediateParentID}, {...parentMeta});
+    // await db.RC.insertOne(parsedData);
+
+    // return "success";
 };
 
 export async function modifyResources() {

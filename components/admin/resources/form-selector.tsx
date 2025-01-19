@@ -1,21 +1,13 @@
 "use client";
 
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { DropMenu, DropMenuContent, DropMenuItem, DropMenuTrigger } from "@/components/ui/dropdown-menu";
-import { ZNewFile, ZNewFolder } from "@/lib/schema";
-import { INewFile, INewFolder } from "@/lib/types";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { ChevronDown, CirclePlus, File, Folder, X } from "lucide-react";
-import { Dispatch, SetStateAction, useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { useState } from "react";
+import FolderForm from "./folder-form";
+import FileForm from "./file-form";
 
 type Props = {
     folderID: string
-}
-
-type TriggerProps = {
-    open: boolean
-    setOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export default function FormSelector(props: Props) {
@@ -39,7 +31,7 @@ export default function FormSelector(props: Props) {
                 </DropMenuTrigger>
                 <DropMenuContent collisionPadding={14} id="resource-form-selector-content">
                     {formTypes.map(type => (
-                        <DropMenuItem onClick={() => type.onClick(true)}>
+                        <DropMenuItem key={type.label} onClick={() => type.onClick(true)}>
                             <type.icon />
                             {type.label}
                         </DropMenuItem>
@@ -49,97 +41,5 @@ export default function FormSelector(props: Props) {
             <FolderForm open={openFolderForm} setOpen={setOpenFolderForm} />
             <FileForm open={openFileForm} setOpen={setOpenFileForm} />
         </>
-    )
-}
-
-function FolderForm(props:TriggerProps) {
-    const form = useForm<INewFolder>({
-        resolver: zodResolver(ZNewFolder),
-        defaultValues: {
-            name: "",
-        }
-    });
-
-    const { handleSubmit, register } = form;
-
-    function onSubmit(values: INewFolder ) {
-        // TODO: get the folder list here
-        // TODO: get the active user id here
-        // TODO: a new object containing all relevant info
-        // attributes are: name(folder name) type(folder) dataUrl(null) fileType(null) parentID(folder list) fileCount(0) 
-        // folderCount(0) creatorID(user id) status(active) size(0) updatedAt(Date.Now()) createdAt(Date.Now())
-    }
-
-    return (
-        <FormProvider {...form}>
-            <Dialog open={props.open} onOpenChange={props.setOpen}>
-                <DialogContent asChild id="new-folder-form">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <DialogClose className="close">
-                            <X />
-                            <span className="sr-only">Close</span>
-                        </DialogClose>
-                        <div className="form-header">
-                            <DialogTitle>new folder</DialogTitle>
-                            <DialogDescription>~ Help organise resources with folders</DialogDescription>
-                        </div>
-                        <div className="form-body">
-                            <label htmlFor="folder-name">
-                                <p>Folder Name</p>
-                                <input id="folder-name" {...register("name")} />
-                            </label>
-                        </div>
-                        <div className="form-footer">
-                            <button className="create-btn">Create</button>
-                        </div>
-                    </form>
-                </DialogContent>
-            </Dialog>
-        </FormProvider>
-    )
-}
-
-function FileForm(props:TriggerProps) {
-    const form = useForm<INewFile>({
-        resolver: zodResolver(ZNewFile),
-        defaultValues: {
-            files: [],
-        }
-    });
-
-    const { handleSubmit, register } = form;
-
-    function onSubmit(values: INewFile ) {
-        // TODO: use a util function to figure out the extension and size of file
-        // TODO: save the files and return the urls;
-        // TODO: get the active user id here
-        // TODO: a new object containing all relevant info
-        // attributes are: name(name of file) type(file) dataUrl(file url) fileType(extension) parentID(list of current folder) fileCount(0) 
-        // folderCount(0) creatorID(id gotten) status(active) size(size gotten) updatedAt(Date.Now()) createdAt(Date.Now())
-    }
-
-    return (
-        <FormProvider {...form}>
-            <Dialog open={props.open} onOpenChange={props.setOpen}>
-                <DialogContent asChild id="new-file-form">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <DialogClose className="close">
-                            <X />
-                            <span className="sr-only">Close</span>
-                        </DialogClose>
-                        <div className="form-header">
-                            <DialogTitle>new file</DialogTitle>
-                            <DialogDescription>~ Store data such as PDF, DOCX, PNG etc.</DialogDescription>
-                        </div>
-                        <div className="form-body">
-
-                        </div>
-                        <div className="form-footer">
-                            <button className="create-btn">Create</button>
-                        </div>
-                    </form>
-                </DialogContent>
-            </Dialog>
-        </FormProvider>
     )
 }

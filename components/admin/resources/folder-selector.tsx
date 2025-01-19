@@ -1,7 +1,7 @@
 "use client";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useGetFolders } from "@/lib/query-hooks/resources";
+import { useGetFolderTrace } from "@/lib/query-hooks/resources";
 import { Folder } from "lucide-react";
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 const sample = ["computer", "level 100", "semester 2", "electrical drawing", "mensah slides"]
 
 export default function FolderSelector(props: Props) {
-    const { data: folders, } = useGetFolders(props.folderID);
+    const { data: folders, } = useGetFolderTrace(props.folderID);
 
     return (
         <div id="folder-selector">

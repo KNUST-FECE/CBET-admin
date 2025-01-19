@@ -41,6 +41,27 @@ export const ZResourceFilter = z.object({
     }).nullable()
 });
 
+export const ZBlogFilter = z.object({
+    search: z.string().nullable(),
+    limit: z.number().nullable(),
+    page: z.number().nullable(),
+    sort: z.object({
+        name: z.boolean(),
+        category: z.boolean(),
+        likes: z.boolean(),
+        status: z.boolean(),
+        createdAt: z.boolean(),
+        updatedAt: z.boolean(),
+    }).nullable(),
+    filter: z.object({
+        category: z.array(z.string()),
+        tags: z.array(z.string()),
+        status: z.array(z.string()),
+        createAt: ZMinMax,
+        updatedAt: ZMinMax
+    }).nullable()
+});
+
 export const ZProductFilter = z.object({
     shop: z.string().nullable(),
     search: z.string().nullable(),

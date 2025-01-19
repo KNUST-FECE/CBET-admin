@@ -159,7 +159,7 @@
 			@apply w-full max-w-screen-md m-4 p-0 border;
 
 			>.form-header {
-				@apply w-full p-3.5 border-b flex items-center space-x-2 bg-primary-50/50;
+				@apply w-full p-3.5 border-b flex items-center space-x-2;
 
 				.title {
 					@apply font-semibold text-primary-700
@@ -171,10 +171,10 @@
 			}
 
 			>.form-footer {
-				@apply w-full p-2.5 border-t flex-center !justify-end bg-primary-50/50;
+				@apply w-full p-2.5 border-t flex-center !justify-end;
 
 				button.create-btn {
-					@apply p-1.5 px-2.5 rounded-full flex-center space-x-1 text-xs font-semibold bg-secondary-800 text-secondary hover:bg-secondary-700;
+					@apply p-1.5 px-2.5 rounded-full flex-center space-x-1 text-xs font-semibold bg-secondary-600 text-secondary hover:bg-secondary-500;
 				}
 			}
 		}
@@ -196,7 +196,59 @@
 		}
 		&#new-file-form {
 			>.form-body {
-				@apply w-full p-4 h-72;
+				@apply relative w-full p-4 h-96;
+
+				.relative-upload-message {
+					@apply w-full h-full flex-center flex-col space-y-7;
+
+					>div {
+						@apply size-16 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-500 flex-center shadow-xl shadow-secondary-200;
+
+						svg {
+							@apply size-7 text-secondary;
+						}
+					}
+
+					>p {
+						@apply text-xs font-medium text-primary-500
+					}
+				}
+				.absolute-upload-message {
+					@apply absolute top-0 left-0 w-full h-full bg-black/10 backdrop-blur-sm p-2 flex;
+
+					>div {
+						@apply w-full h-full rounded-lg border border-dashed border-primary-400 bg-primary flex-center flex-col space-y-16;
+						
+						div#upload-svg-container {
+							@apply relative flex-center;
+
+							div.circle {
+								@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-dotted;
+
+								&.one {
+									@apply size-40 border-4 border-secondary-100;
+								}
+								&.two {
+									@apply size-32 border-4 border-secondary-300;
+								}
+								&.three {
+									@apply size-24 border-secondary-400;
+									border-width: 5px;
+								}
+							}
+							div.upload-svg {
+								@apply size-16 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-500 flex-center shadow-xl shadow-secondary-200;
+
+								svg {
+									@apply size-7 text-secondary;
+								}
+							}
+						}
+						p {
+							@apply font-semibold text-primary-700
+						}
+					}
+				}
 			}
 		}
 	}
