@@ -2,6 +2,7 @@
 
 import { _id, format, getDb } from "../mongo-utils";
 import { IFolderTrace, IResource } from "../types";
+import { addTimeStamp } from "../utils";
 
 /**
  * Retrieves statistics for a department. 
@@ -39,21 +40,28 @@ export async function getResources() {
     const cursor = db.RC.find();
 
     for await (const object of cursor) {
+        console.log(object);
+        
         const parsedData = format.from<IResource>(object);
         data.push(parsedData);
     }
 
+    console.log({data});
+    
+
     return data || [];
 }
 
-export async function getFolderTrace(resourceID: string) {
+export async function getFolderTrace(resourceID: string | null) {
     // TODO: omit other attributes in IResource and return only id, name
     const folders: IFolderTrace[] = [];
+
+    if (!resourceID) return [];
 
     await using db = await getDb();
 
     // TODO: make sure typescript knows parentID is a list of object ids
-    const resource: any = await db.RC.findOne({ _id: _id(resourceID) }, { projection: { _id: 1, name: 1, parentID: 1} });
+    const resource = await db.RC.findOne({ _id: _id(resourceID) }, { projection: { _id: 1, name: 1, parentID: 1} });
 
     if(!resource) return [];
 
@@ -69,25 +77,27 @@ export async function getFolderTrace(resourceID: string) {
     return folders;
 }
 
-export async function addResource({resource}:{resource: Omit<IResource, "id">[]}) {
+export async function addResource({resource}:{resource: Omit<IResource, "id"|"updatedAt"|"createdAt">[]}) {
 
-    console.log({resource});
-    return
+    const dataWithStamps = addTimeStamp(resource);
+    const parsedData = dataWithStamps.map(format.to);
+    const immediateParentID = parsedData[0]?.parentID?.at(-1);
+     
+    await using db = await getDb();
 
-    // const parsedData = format.to<IResource>(resource);
-    // const immediateParentID = _id(parsedData.parentID[-1]); // future _id is not needed as would be handled by the parsing function 
+    const parentMeta = await db.RC.findOne({_id: immediateParentID}, {projection: {fileCount: 1, folderCount: 1}});
 
-    // await using db = await getDb();
+    if(parentMeta) {
+        const folderCount = parentMeta.folderCount + parsedData.length;
+        const fileCount = parentMeta.fileCount + parsedData.length;
+        parsedData?.at(0)?.type === "folder" ?
+            await db.RC.updateOne({_id: immediateParentID}, {...parentMeta, folderCount}) :
+            await db.RC.updateOne({_id: immediateParentID}, {...parentMeta, fileCount})
+    };
 
-    // const parentMeta = await db.RC.findOne({_id: immediateParentID}, {projection: {fileCount: 1, folderCount: 1}});
+    await db.RC.insertMany(parsedData);
 
-    // if(parentMeta && parsedData.type === "folder") parentMeta.folderCount = parentMeta.folderCount + 1;
-    // if(parentMeta && parsedData.type === "file") parentMeta.fileCount = parentMeta.fileCount + 1;
-
-    // await db.RC.updateOne({_id: immediateParentID}, {...parentMeta});
-    // await db.RC.insertOne(parsedData);
-
-    // return "success";
+    return "success";
 };
 
 export async function modifyResources() {

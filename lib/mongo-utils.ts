@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { Document, MongoClient, ObjectId, WithId } from "mongodb";
 import client from "./db";
 
 
@@ -30,33 +30,55 @@ export const getDb = async (onClose?: (client: MongoClient) => Promise<void>) =>
 }
 
 export const format = {
-    /** Takes a MongoDB object and returns a plain old JavaScript object */
+    /** Converts MongoDB object to a plain JavaScript object */
     from<T = Record<string, unknown>>(object: Record<string, any>): T {
-        const newObject: Record<string, unknown> = {};
-        for (const key in object) {
-            const value = object[key];
-            if (key === "_id") {
-                newObject.id = value.toHexString();
-            } else if (key === "userId") {
-                newObject[key] = value.toHexString();
-            } else {
-                newObject[key] = value;
+        const parseValue = (value: any): any => {
+            if (value instanceof ObjectId) {
+                return value.toHexString();
+            } else if (Array.isArray(value)) {
+                return value.map(parseValue);
+            } else if (typeof value === "object" && value !== null) {
+                return parseObject(value);
             }
-        }
-        return newObject as T;
-    },
-    /** Takes a plain old JavaScript object and turns it into a MongoDB object */
-    to<T = Record<string, unknown>>(object: Record<string, any>) {
-        const newObject: Record<string, unknown> = {
-            _id: _id(object.id),
+            return value;
         };
-        for (const key in object) {
-            const value = object[key];
-            if (key === "userId") newObject[key] = _id(value);
-            else if (key === "id") continue;
-            else newObject[key] = value;
-        }
 
-        return newObject as T & { _id: ObjectId };
+        const parseObject = (obj: Record<string, any>): Record<string, any> => {
+            const newObject: Record<string, any> = {};
+            for (const key in obj) {
+                key === "_id" ?
+                    newObject.id = parseValue(obj[key]) :
+                    newObject[key] = parseValue(obj[key])
+            }
+            return newObject;
+        };
+
+        return parseObject(object) as T;
+    },
+
+    /** Converts a plain JavaScript object to a MongoDB object */
+    to(object: Record<string, any>):WithId<Document>[] {
+        const parseValue = (value: any): any => {
+            if (typeof value === "string" && ObjectId.isValid(value)) {
+                return _id(value);
+            } else if (Array.isArray(value)) {
+                return value.map(parseValue);
+            } else if (typeof value === "object" && value !== null) {
+                return parseObject(value);
+            }
+            return value;
+        };
+
+        const parseObject = (obj: Record<string, any>): Record<string, any> => {
+            const newObject: Record<string, any> = {};
+            for (const key in obj) {
+                key === "id" ?
+                    newObject._id = parseValue(obj[key]) :
+                    newObject[key] = parseValue(obj[key])
+            }
+            return newObject;
+        };
+
+        return parseObject(object) as WithId<Document>[];
     },
 };

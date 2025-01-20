@@ -1,10 +1,10 @@
 "use client";
 
-import { IResource, IResourceFilter } from "@/lib/types";
+import { IResource } from "@/lib/types";
 import { columns } from './columns';
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import Table from "@/components/common/table";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useGetResources } from "@/lib/query-hooks/resources"
 import { useSearchParams } from "next/navigation";
 import { getFilterObject } from "@/lib/utils";
@@ -14,6 +14,7 @@ export default function DataContainer() {
     const searchParams = useSearchParams();
     const filter = getFilterObject(searchParams, ZResourceFilter);
     const { data: resources } = useGetResources(filter);
+
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [rowSelection, setRowSelection] = useState({});
@@ -35,7 +36,7 @@ export default function DataContainer() {
         },
     });
 
-    const headerGroup = table.getHeaderGroups();
+    const headerGroup = useMemo(() => table.getHeaderGroups(), [table]);
     const tableRows = table.getRowModel().rows;
 
     return (

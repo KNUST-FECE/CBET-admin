@@ -57,16 +57,16 @@ export interface IResource {
     id: string
     name: string
     type: string
-    fileUrl: string
-    fileType: string
+    fileUrl: string | null
+    fileType: string | null
     parentID: string[]
     fileCount: number
     folderCount: number
     creatorID: string
     status: string
     size: string
-    updatedAt: string
-    createdAt: string
+    updatedAt: Date
+    createdAt: Date
 }
 
 export interface IBlog {

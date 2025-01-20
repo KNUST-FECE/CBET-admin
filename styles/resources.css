@@ -189,7 +189,7 @@
 						@apply text-xs font-medium text-primary-600
 					}
 					input {
-						@apply block w-full max-w-xs px-2 py-1 rounded-md border border-primary-300 text-sm outline-secondary-500 focus:outline
+						@apply block w-full max-w-xs px-2 py-1 rounded-md border border-primary-300 text-xs outline-secondary-500 focus:outline
 					}
 				}
 			}

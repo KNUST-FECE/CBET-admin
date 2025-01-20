@@ -16,7 +16,6 @@ export default function FormSelector() {
     const searchParams = useSearchParams();
     const filter = getFilterObject(searchParams, ZResourceFilter); // get the page filter object
     const { data: folderTrace } = useGetFolderTrace(filter.folder || ""); // get the parent folders of current folder up to the root folder
-    const stringTrace = folderTrace?.map(folder => folder.name) || [];
 
     const formTypes = [
         { label: "Folder", icon: Folder, onClick: setOpenFolderForm},
@@ -42,8 +41,8 @@ export default function FormSelector() {
                     ))}
                 </DropMenuContent>
             </DropMenu>
-            <FolderForm open={openFolderForm} setOpen={setOpenFolderForm} />
-            <FileForm open={openFileForm} setOpen={setOpenFileForm} filter={filter} stringTrace={stringTrace} />
+            <FolderForm open={openFolderForm} setOpen={setOpenFolderForm} filter={filter} folderTrace={folderTrace || []} />
+            <FileForm open={openFileForm} setOpen={setOpenFileForm} filter={filter} folderTrace={folderTrace || []} />
         </>
     )
 }

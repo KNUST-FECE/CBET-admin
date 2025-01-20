@@ -1,7 +1,7 @@
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useAddResource } from "@/lib/query-hooks/resources";
 import { ZNewFile } from "@/lib/schema";
-import { INewFile, IResource, IResourceFilter } from "@/lib/types";
+import { IFolderTrace, INewFile, IResource, IResourceFilter } from "@/lib/types";
 import { getFileMeta, saveFile } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UploadCloud, X } from "lucide-react";
@@ -10,17 +10,17 @@ import { FormProvider, useFieldArray, useForm } from "react-hook-form";
 import {FileWithPath, useDropzone} from 'react-dropzone';
 import { useSession } from "next-auth/react";
 
-type TriggerProps = {
+type Props = {
     open: boolean
     setOpen: Dispatch<SetStateAction<boolean>>,
-    stringTrace: string[],
+    folderTrace: IFolderTrace[],
     filter: IResourceFilter
 }
 type CardProps = {
     file: File
 }
 
-export default function FileForm(props:TriggerProps) {
+export default function FileForm(props:Props) {
     const { data: session } = useSession();
     const { mutate: addResource } = useAddResource(props.filter); // add resource function to create new resource
 
@@ -37,8 +37,8 @@ export default function FileForm(props:TriggerProps) {
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
     async function onSubmit(values: INewFile ) {
-        const fileList: Omit<IResource, "id">[] = [];
-        const creatorID = session?.user?.id; // get from authjs using the useSession hook
+        const fileList = [];
+        const creatorID = session?.user?.id;
         const parentID: string[] = []; // useSearchParams to get FolderID and get its parentID list and append the folderID 
 
         if(!creatorID) throw new Error("Failed to create resources");
@@ -56,9 +56,7 @@ export default function FileForm(props:TriggerProps) {
                 parentID,
                 fileCount: 0,
                 folderCount: 0,
-                status: "active",
-                updatedAt: Date.now().toString(),
-                createdAt: Date.now().toString(),
+                status: "active"
             }
             fileList.push(fileObject);
         };
