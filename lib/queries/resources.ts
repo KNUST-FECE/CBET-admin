@@ -40,14 +40,9 @@ export async function getResources() {
     const cursor = db.RC.find();
 
     for await (const object of cursor) {
-        console.log(object);
-        
         const parsedData = format.from<IResource>(object);
         data.push(parsedData);
     }
-
-    console.log({data});
-    
 
     return data || [];
 }
@@ -91,8 +86,8 @@ export async function addResource({resource}:{resource: Omit<IResource, "id"|"up
         const folderCount = parentMeta.folderCount + parsedData.length;
         const fileCount = parentMeta.fileCount + parsedData.length;
         parsedData?.at(0)?.type === "folder" ?
-            await db.RC.updateOne({_id: immediateParentID}, {...parentMeta, folderCount}) :
-            await db.RC.updateOne({_id: immediateParentID}, {...parentMeta, fileCount})
+            await db.RC.updateOne({_id: immediateParentID}, { $set: {folderCount} }) :
+            await db.RC.updateOne({_id: immediateParentID}, { $set: {fileCount} });
     };
 
     await db.RC.insertMany(parsedData);

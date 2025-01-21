@@ -9,6 +9,7 @@ import { useGetResources } from "@/lib/query-hooks/resources"
 import { useSearchParams } from "next/navigation";
 import { getFilterObject } from "@/lib/utils";
 import { ZResourceFilter } from "@/lib/schema";
+import { X } from "lucide-react";
 
 export default function DataContainer() {
     const searchParams = useSearchParams();
@@ -38,11 +39,33 @@ export default function DataContainer() {
 
     const headerGroup = useMemo(() => table.getHeaderGroups(), [table]);
     const tableRows = table.getRowModel().rows;
+    const selectedRows = table.getFilteredSelectedRowModel().rows;
 
     return (
         <>
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
+                <div className="selected-popup" data-active={!!selectedRows.length}>
+                    <div className="total-selected">
+                        <p>{selectedRows.length}</p>
+                    </div>
+                    <div className="action-buttons">
+                        <button>
+                            rename
+                        </button>
+                        <button>
+                            delete
+                        </button>
+                        <button>
+                            hide
+                        </button>
+                    </div>
+                    <div className="clear-selection">
+                        <button onClick={() => table.resetRowSelection()}>
+                            <X />
+                        </button>
+                    </div>
+                </div>
             </section>
             <section id="footer-section">
                 <div id="data-info">

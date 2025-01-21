@@ -17,7 +17,7 @@ type Props = {
 
 export default function FolderForm(props:Props) {
     const { data: session } = useSession();
-    const { mutate: addResource } = useAddResource(props.filter); // add resource function to create new resource
+    const { mutate: addResource, data: result } = useAddResource(props.filter); // add resource function to create new resource
     
     const defaultValues = { name: "" };
     const form = useForm<INewFolder>({ resolver: zodResolver(ZNewFolder),defaultValues});
@@ -41,7 +41,6 @@ export default function FolderForm(props:Props) {
         }
 
         addResource({resource: [folderObject]});
-
         props.setOpen(false);
     }
 

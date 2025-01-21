@@ -21,7 +21,7 @@ export default function Table<TData>(props: Prop<TData>) {
             </thead>
             <tbody>
                 {props.TR.map(r => (
-                    <tr key={r.id}>
+                    <tr key={r.id} data-state={r.getIsSelected() && "selected"}>
                         {r.getAllCells().map(c => (
                             <td key={c.id} className={c.column.columnDef.meta?.cellClass}>
                                 {flexRender(c.column.columnDef.cell, c.getContext())}

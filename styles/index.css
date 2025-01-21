@@ -145,7 +145,7 @@
 
 @layer components {
 	.checkbox {
-		@apply size-4 shrink-0 rounded-[4px] border border-primary-500 shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-500 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-700 data-[state=checked]:text-primary-100;
+		@apply size-4 shrink-0 rounded-[4px] border border-primary-400 shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-500 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-secondary-700 data-[state=checked]:text-secondary-50;
 
 		>span {
 			@apply flex items-center justify-center text-current;

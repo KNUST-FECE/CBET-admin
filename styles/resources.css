@@ -76,7 +76,7 @@
 	}
 	
 	.resource-container>#table-section {
-		@apply w-full flex-1 overflow-scroll;
+		@apply relative w-full flex-1 overflow-scroll;
 		
 		table {
 			@apply w-full table-auto;
@@ -84,38 +84,99 @@
 			th, td {
 				@apply w-0 border border-primary-300;
 			}
-
 			tr th, tr td{
-				@apply first-of-type:border-l-0
+				@apply first-of-type:border-l-0 last-of-type:border-r-0
 			}
-
-			tr th, tr td{
-				@apply last-of-type:border-r-0
-			}
-
 			thead {
-				@apply bg-primary-50;
+				@apply bg-primary-100;
 
 				th>div {
 					@apply h-9 w-44 flex items-center justify-start px-2 text-xs text-primary-700 capitalize;
 				}
 			}
-
 			tbody {
+				tr {
+					@apply hover:bg-primary-50;
+
+					&[data-state=selected] {
+						@apply bg-primary-50
+					}
+				}
 				td>div {
 					@apply h-9 w-44 flex items-center justify-start px-2 text-xs font-medium text-primary-700 capitalize;
 				}
 			}
-
-			.select-col>div {
-				@apply w-9;
+			.select-col {
+				div {
+					@apply w-8;
+				}
 			}
-
 			.name-col>div {
 				@apply w-64 space-x-2;
 
 				>svg {
 					@apply size-4 stroke-1;
+				}
+			}
+			.status-col {
+				&.status-td {
+					p {
+						@apply text-xs px-2 py-1 rounded-full flex-center space-x-1.5 tracking-wide justify-start lowercase !important;
+
+						&[data-status=active] {
+							@apply bg-success-50 text-success-600;
+
+							span.indicator {
+								@apply bg-success-600
+							}
+						}
+						&[data-status=hidden] {
+							@apply bg-danger-50 text-danger-600;
+
+							span.indicator {
+								@apply bg-danger-600
+							}
+						}
+						span.indicator {
+							@apply size-1.5 rounded-full;
+						}
+					}
+				}
+			}
+
+		}
+		.selected-popup {
+			@apply absolute bottom-4 left-1/2 -translate-x-1/2 p-2 min-w-28 rounded-full flex items-center space-x-2 shadow-sm bg-primary border;
+			
+			&[data-active=true] {
+				@apply flex fade-in-0 slide-in-from-bottom;
+			}
+			&[data-active=false] {
+				@apply hidden fade-out-0 slide-out-to-bottom;;
+			}
+
+			.total-selected {
+				@apply pr-2 border-r;
+				p {
+					@apply h-7 px-2 min-w-9 flex-center rounded-full text-sm font-semibold bg-secondary-500 text-secondary-50
+				}
+			}
+			.action-buttons {
+				@apply flex items-center space-x-2;
+
+				button {
+					@apply h-7 text-xs font-semibold px-2 border bg-secondary-50 hover:bg-secondary-500 text-primary-600 hover:text-primary rounded-full
+				}
+			}
+			.clear-selection {
+				@apply pl-2 border-l;
+
+				button {
+					@apply size-7 flex-center rounded-full bg-primary-100 text-primary-600 hover:bg-secondary-500 hover:text-secondary-50;
+
+					svg {
+						@apply size-5
+					}
 				}
 			}
 		}
