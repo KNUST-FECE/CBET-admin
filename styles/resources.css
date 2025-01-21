@@ -117,6 +117,9 @@
 				>svg {
 					@apply size-4 stroke-1;
 				}
+				>a {
+					@apply hover:underline;
+				}
 			}
 			.status-col {
 				&.status-td {

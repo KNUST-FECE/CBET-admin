@@ -1,10 +1,12 @@
 "use client";
 
 import { Checkbox } from "@/components/ui/checkbox";
+import { _resources } from "@/lib/routes";
 import { IResource } from "@/lib/types";
 import { ColumnDef, Row, Table } from "@tanstack/react-table";
 import { format } from 'date-fns';
 import { File, Folder } from "lucide-react";
+import Link from "next/link";
 
 export const columns: ColumnDef<IResource>[] = [
     {
@@ -21,12 +23,7 @@ export const columns: ColumnDef<IResource>[] = [
     {
         id : "name",
         header: () => <TableHeader value="name" />,
-        cell: ({row: { original }}) => (
-            <div>
-                {original.type === "folder"? (<Folder />) : (<File />)}
-                <p>{original.name}</p>
-            </div>
-        ),
+        cell: ({row: { original:o }}) => (<NameCell value={o.name} id={o.id} type={o.type} />),
         meta: {
             headClass: "name-col name-th",
             cellClass: "name-col name-td",
@@ -140,6 +137,15 @@ function StatusCell(props: { value: string }) {
                 <span className="indicator" />
                 <span className="value">{props.value}</span>
             </p>
+        </div>
+    )
+}
+
+function NameCell(props: {value: string, id: string, type: string}) {
+    return (
+        <div>
+            {props.type === "folder"? (<Folder />) : (<File />)}
+            <Link href={`${_resources}/?folder=${props.id}`}>{props.value}</Link>
         </div>
     )
 }

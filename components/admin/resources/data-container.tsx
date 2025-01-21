@@ -20,6 +20,8 @@ export default function DataContainer() {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [rowSelection, setRowSelection] = useState({});
 
+    console.log({filter});
+
     const table = useReactTable<IResource>({ 
         data: resources || [], 
         columns,
