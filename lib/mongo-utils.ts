@@ -57,7 +57,7 @@ export const format = {
     },
 
     /** Converts a plain JavaScript object to a MongoDB object */
-    to(object: Record<string, any>):WithId<Document>[] {
+    to<T = WithId<Document>>(object: Record<string, any>):T {
         const parseValue = (value: any): any => {
             if (typeof value === "string" && ObjectId.isValid(value)) {
                 return _id(value);
@@ -79,6 +79,6 @@ export const format = {
             return newObject;
         };
 
-        return parseObject(object) as WithId<Document>[];
+        return parseObject(object) as T;
     },
 };
