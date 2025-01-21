@@ -20,14 +20,14 @@ export const baseUrl = () => {
     
 };
 
-export const addTimeStamp = (list: Record<string, any>[], isUpdate = false) => {
+export function addTimeStamp<T>(list: Record<string, any>[], isUpdate = false):T[] {
     const createdAt = new Date().toISOString();
     const updatedAt = new Date().toISOString();
 
     return list.map(item => isUpdate ? 
         ({ ...item, updatedAt}) : 
         ({ ...item, createdAt, updatedAt})
-    )
+    ) as T[];
 }
 
 export function getFilterString<T extends Record<string, any>>(filter: T): string {

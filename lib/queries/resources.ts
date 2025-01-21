@@ -74,7 +74,7 @@ export async function getFolderTrace(resourceID: string | null) {
 
 export async function addResource({resource}:{resource: Omit<IResource, "id"|"updatedAt"|"createdAt">[]}) {
 
-    const dataWithStamps = addTimeStamp(resource);
+    const dataWithStamps = addTimeStamp<IResource>(resource);
     const parsedData = dataWithStamps.map(format.to);
     const immediateParentID = parsedData[0]?.parentID?.at(-1);
      
