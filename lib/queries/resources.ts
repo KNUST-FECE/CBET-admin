@@ -80,14 +80,10 @@ export async function addResource({resource}:{resource: Omit<IResource, "id"|"up
      
     await using db = await getDb();
 
-    const parentMeta = await db.RC.findOne({_id: immediateParentID}, {projection: {fileCount: 1, folderCount: 1}});
-
-    if(parentMeta) {
-        const folderCount = parentMeta.folderCount + parsedData.length;
-        const fileCount = parentMeta.fileCount + parsedData.length;
+    if(immediateParentID) {
         parsedData?.at(0)?.type === "folder" ?
-            await db.RC.updateOne({_id: immediateParentID}, { $set: {folderCount} }) :
-            await db.RC.updateOne({_id: immediateParentID}, { $set: {fileCount} });
+            await db.RC.updateOne({_id: immediateParentID}, { $inc: {folderCount: 1} }) :
+            await db.RC.updateOne({_id: immediateParentID}, { $inc: {fileCount: 1} });
     };
 
     await db.RC.insertMany(parsedData);
