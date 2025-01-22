@@ -94,6 +94,8 @@ export async function addResource({resource}:{resource: Omit<IResource, "id"|"up
 export async function modifyResources() {
     await using db = await getDb();
     // TODO: write function to update the name, status
+
+    // await db.RC.bulkWrite()
 }
 
 export async function softRemoveOneResource(id: string) {
