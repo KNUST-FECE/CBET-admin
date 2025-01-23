@@ -10,17 +10,10 @@ export default function DepartmentStat({dep}:{dep: string}) {
 
     return (
         <div className="resource-stat-container">
-            <div className="stat-upper">
+            <div className="stat-start">
                 <FolderOpen strokeWidth={1} />
-                <Link href={_users} className="users-total-container">
-                    <div className="random-avatar" />
-                    <div className="random-avatar" />
-                    <div className="random-avatar" />
-                    <p className="user-tota3">+3028</p>
-                    <ChevronRight strokeWidth={1} />
-                </Link>
             </div>
-            <div className="stat-lower">
+            <div className="stat-end">
                 <Link href={`${_resources}?f=${dep}`}>{dep}</Link>
                 <p>1298 files &bull; 27 folders</p>
             </div>

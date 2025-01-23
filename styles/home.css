@@ -5,48 +5,37 @@
 	}
 
 	.home-container>#header-section {
-		@apply common-header-section
+		@apply w-full p-5 pt-10 bg-primary-50;
+
+		>h1 {
+			@apply text-xl font-semibold tracking-tight text-primary-800
+		}
 	}
 
 	.home-container>#resource-section {
-		@apply w-full p-7;
+		@apply w-full p-5 bg-primary-50 border-b;
 
 		>div {
-			@apply w-full flex space-x-8;
-		}
-	}
+			@apply w-full flex space-x-5;
 
-	#resource-section>div>.resource-stat-container {
-		@apply w-full max-w-72 h-52 rounded-xl p-7 bg-primary border border-primary-300 flex flex-col;
-
-		.stat-upper {
-			@apply flex-1 flex items-center justify-start space-x-4;
-
-			>svg {
-				@apply size-20 text-secondary-500
-			}
-			.users-total-container {
-				@apply relative flex-1 rounded-full h-12 p-2 flex items-center hover:bg-secondary-50;
-
-				>.random-avatar {
-					@apply relative h-full aspect-square bg-secondary-300 rounded-full border-2 -ml-5 first:ml-0 border-primary box-border;
+			.resource-stat-container {
+				@apply w-full max-w-72 rounded-xl p-4 bg-primary border border-primary-300 flex items-center space-x-2;
+		
+				.stat-start {
+					@apply flex-center p-3 bg-secondary-50 rounded-full;
+		
+					>svg {
+						@apply size-7 text-secondary-500 stroke-2
+					}
 				}
-				>p {
-					@apply flex-1 text-sm text-primary-500 font-medium ml-0.5;
+				.stat-end {
+					>a {
+						@apply capitalize text-sm font-semibold text-primary-600 hover:text-primary-500
+					}
+					>p {
+						@apply text-xs font-medium text-primary-500
+					}
 				}
-				>svg {
-					@apply size-5 text-primary-700
-				}
-			}
-		}
-		.stat-lower {
-			@apply space-y-1;
-
-			>a {
-				@apply capitalize text-base font-semibold text-secondary-500 hover:text-secondary-600
-			}
-			>p {
-				@apply text-xs font-medium text-primary-500
 			}
 		}
 	}

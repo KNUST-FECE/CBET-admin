@@ -19,33 +19,8 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="table-section">
-        <div>
-          <div className="table-section-header">
-            <h2>Recent Blogs</h2>
-            <Link href={_blogs}>
-              <p>See More</p>
-              <ChevronRight strokeWidth={1} />
-            </Link>
-          </div>
-          <div className="table-section-content">
-            <BlogTable />
-          </div>
-        </div>
-      </section>
-      <section className="table-section">
-        <div>
-          <div className="table-section-header">
-            <h2>Recent Products</h2>
-            <Link href={_products}>
-              <p>See More</p>
-              <ChevronRight strokeWidth={1} />
-            </Link>
-          </div>
-          <div className="table-section-content">
-            <ProductTable />
-          </div>
-        </div>
+      <section className="other-section">
+        
       </section>
     </div>
   );
