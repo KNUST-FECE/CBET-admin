@@ -14,7 +14,7 @@ export function useGetDepartmentStat(dep: string) {
 
 export function useGetResources(filter:IResourceFilter) {
     const queryKey = keys.resources(filter);
-    const queryFn = async () => await Q.getResources();
+    const queryFn = async () => await Q.getResources(filter);
 
     return useQuery({ queryKey, queryFn, refetchOnWindowFocus: false });
 };

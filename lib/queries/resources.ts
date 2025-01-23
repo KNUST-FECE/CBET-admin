@@ -1,8 +1,9 @@
 "use server";
 
 import { _id, format, getDb } from "../mongo-utils";
-import { IFolderTrace, IResource } from "../types";
-import { addTimeStamp } from "../utils";
+import { ZResourceFilter } from "../schema";
+import { IFolderTrace, IResource, IResourceFilter } from "../types";
+import { addTimeStamp, buildQuery } from "../utils";
 
 /**
  * Retrieves statistics for a department. 
@@ -30,14 +31,22 @@ export async function getDepartmentStat(dep:string){
     return { userCount, folderCount, fileCount };
 }
 
-export async function getResources() {
+export async function getResources(filters: IResourceFilter) {
     const data: IResource[] = [];
 
     await using db = await getDb();
 
+    const { data: checkedFilter, success} = ZResourceFilter.safeParse(filters);
+    if (!success) {
+        throw new Error("Invalid filters");
+    }
+    const finalFilters = { ...checkedFilter, folder: checkedFilter.folder ?? "" };
+
+    const { query, sort, skip, limit } = buildQuery(finalFilters, ["name"]);
+    
     // TODO: get resources the current user has access to
     // TODO: get resources having status => accessible | hidden but not deleted
-    const cursor = db.RC.find();
+    const cursor = db.RC.find(query).sort(sort).skip(skip).limit(limit);;
 
     for await (const object of cursor) {
         const parsedData = format.from<IResource>(object);

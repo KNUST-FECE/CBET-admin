@@ -82,7 +82,7 @@ export function getFilterObject<T>(searchParams: URLSearchParams, schema: z.ZodT
     });
 
     // Validate and return the parsed object
-    return schema.parse(filterObject);
+    return schema.parse(filterObject) as T;
 }
 
 export const convertFileSize = (sizeInBytes: number, digits?: number) => {
@@ -139,4 +139,41 @@ export const saveFile = async (file:File) => {
     // TODO: save the file
 
     return { fileUrl: "" }
+}
+
+export function buildQuery(filters: Record<string, any>, searchKeys: string[]) {
+    const query: Record<string, any> = {};
+    const sort: Record<string, 1 | -1> = {};
+    const page: number = filters.page ?? 1;
+    const limit: number = filters.limit ?? 100;
+    const skip = (page - 1) * limit;
+
+    for (const [key, value] of Object.entries(filters)) {
+        if (value === undefined || value === null) continue;
+
+        if ( key === "folder") {
+            !!value ?
+                (query.$expr = { $eq: [ { $arrayElemAt: ["$parentID", -1] }, value ]}) : 
+                (query.parentID = { $size: 0 })
+        } else if (key === "search") {
+            query.$or = searchKeys.map(skey => ({ [skey] : { $regex: value, $options: "i" }}))
+        } else if (Array.isArray(value)) {
+            query[key] = { $in: value };
+        } else if (typeof value === "object" && value !== null && key !== "sort") {
+            const { min, max } = value;
+            query[key] = {
+                ...(min !== undefined ? { $gte: min } : {}),
+                ...(max !== undefined ? { $lte: max } : {}),
+            };
+        }
+    }
+
+    if (filters.sort) {
+        for (const [key, value] of Object.entries(filters.sort)) {
+            if (value === null) continue;
+            value === true ? sort[key] = 1 : sort[key] = -1;
+        }
+    }
+
+    return { query, sort, limit, skip };
 }

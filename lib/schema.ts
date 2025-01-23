@@ -23,7 +23,7 @@ export const ZNewFile = z.object({
 });
 
 export const ZResourceFilter = z.object({
-    folder: z.string().optional(),
+    folder: z.string().default("").optional(),
     search: z.string().optional(),
     limit: z.number().optional(),
     page: z.number().optional(),
@@ -34,12 +34,12 @@ export const ZResourceFilter = z.object({
     createAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
-        name: z.boolean(),
-        fileType: z.boolean(),
-        size: z.boolean(),
-        status: z.boolean(),
-        createdAt: z.boolean(),
-        updatedAt: z.boolean(),
+        name: z.boolean().nullable(),
+        fileType: z.boolean().nullable(),
+        size: z.boolean().nullable(),
+        status: z.boolean().nullable(),
+        createdAt: z.boolean().nullable(),
+        updatedAt: z.boolean().nullable(),
     }).optional(),
 });
 

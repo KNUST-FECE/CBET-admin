@@ -1,6 +1,6 @@
 "use client";
 
-import { IResource } from "@/lib/types";
+import { IResource, IResourceFilter } from "@/lib/types";
 import { columns } from './columns';
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import Table from "@/components/common/table";
@@ -19,8 +19,6 @@ export default function DataContainer() {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [rowSelection, setRowSelection] = useState({});
-
-    console.log({filter});
 
     const table = useReactTable<IResource>({ 
         data: resources || [], 
