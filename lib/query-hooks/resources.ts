@@ -37,14 +37,35 @@ export function useAddResource(filter:IResourceFilter) {
     })
 }
 
-export function useModifyResource() {
+export function useModifyName(filter:IResourceFilter) {
+    const queryClient = useQueryClient();
 
+    return useMutation({ 
+        mutationFn: Q.modifyName,
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: keys.resources(filter)})
+        },
+    })
 }
 
-export function useSoftRemoveResource() {
+export function useModifyStatus(filter:IResourceFilter) {
+    const queryClient = useQueryClient();
 
+    return useMutation({ 
+        mutationFn: Q.modifyStatus,
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: keys.resources(filter)})
+        },
+    })
 }
 
-export function useHardRemoveResource() {
-    
+export function useRemoveResource(filter:IResourceFilter) {
+    const queryClient = useQueryClient();
+
+    return useMutation({ 
+        mutationFn: Q.removeResource,
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: keys.resources(filter)})
+        },
+    })
 }

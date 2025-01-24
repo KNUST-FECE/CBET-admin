@@ -100,23 +100,24 @@ export async function addResource({resource}:{resource: Omit<IResource, "id"|"up
     return "success";
 };
 
-export async function modifyResources() {
-    await using db = await getDb();
-    // TODO: write function to update the name, status
-
-    // await db.RC.bulkWrite()
-}
-
-export async function softRemoveOneResource(id: string) {
+export async function modifyName({id, name}:{ id:string, name: string}) {
     await using db = await getDb();
     
-    // TODO: make sure to delete multiple resources at once;
-    await db.RC.updateOne({_id: _id(id)}, { status: "deleted"});
+    await db.RC.updateOne({_id: _id(id)}, { $set: { name }});
 }
 
-export async function hardRemoveOneResource(id: string) {
+export async function modifyStatus({ids, status}:{ ids: string[], status: string}) {
     await using db = await getDb();
 
-    // TODO: make sure to hard delete multiple resources at once;
-    await db.RC.updateOne({_id: _id(id)}, { status: "deleted"});
+    const parsedID = ids.map(id => _id(id));
+
+    await db.RC.updateMany({ $or: [{_id: { $in: parsedID }}, {parentID: {$in: parsedID }}]}, { $set : { status}});
+}
+
+export async function removeResource({ids}:{ids: string[]}) {
+    await using db = await getDb();
+
+    const parsedID = ids.map(id => _id(id));
+    
+    await db.RC.deleteMany({ $or: [{_id: { $in: parsedID }}, {parentID: {$in: parsedID }}]});
 }
