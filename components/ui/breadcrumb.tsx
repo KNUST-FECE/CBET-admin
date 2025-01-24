@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef as CPWR, ComponentProps as CP, forwardRef } from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { ChevronRight, MoreHorizontal } from "lucide-react"
+import { Slash, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -73,7 +73,7 @@ const BreadcrumbSeparator = ({children, className, ...props}: CP<"li">) => (
         className={cn("separator", className)}
         {...props}
     >
-        {children ?? <ChevronRight />}
+        {children ?? "/"}
     </li>
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"

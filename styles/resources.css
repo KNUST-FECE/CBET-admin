@@ -13,32 +13,6 @@
 			>h1 {
 				@apply text-xl font-semibold tracking-tight text-primary-800;
 			}
-			>#folder-selector {
-				.selector-trigger {
-					@apply p-2 px-2.5 h-auto rounded-full text-xs text-primary-600 font-semibold border focus:ring-secondary-300 space-x-2;
-
-					div {
-						@apply flex items-center space-x-2;
-
-						svg {
-							@apply size-4 stroke-2;
-
-							&:last-child {
-								@apply size-3;
-							}
-						}
-
-						div {
-							@apply relative w-28 overflow-hidden;
-
-							&::before {
-								@apply content-[""] absolute h-full aspect-square top-0 right-0;
-								@apply bg-gradient-to-l from-primary;
-							}
-						}
-					}
-				}
-			}
 		}
 
 		#action-buttons {
@@ -118,7 +92,7 @@
 					@apply size-4 stroke-1;
 				}
 				>a {
-					@apply hover:underline;
+					@apply hover:underline text-ellipsis whitespace-nowrap overflow-hidden;
 				}
 			}
 			.status-col {
@@ -214,6 +188,13 @@
 		&#resource-form-selector-content {
 			svg {
 				@apply size-4 text-primary-700 stroke-1;
+			}
+		}
+		&#folder-crumbs-dropmenu {
+			@apply text-xs p-0 py-2 rounded-xl;
+
+			.item {
+				@apply lowercase;
 			}
 		}
 	}

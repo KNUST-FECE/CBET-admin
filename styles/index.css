@@ -112,6 +112,10 @@
 }
 
 @layer base {
+	* {
+		@apply focus:outline-secondary-300;
+	}
+
 	html {
 		@apply scroll-smooth
 	}
@@ -311,14 +315,12 @@
 				&[data-state=open] {
 					@apply animate-in fade-in-0 zoom-in-95
 				}
-
 				&[data-state=closed] {
 					@apply animate-out fade-out-0 zoom-out-95
 				}
 			}
-
 			.item {
-				@apply relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-xs font-medium outline-none transition-colors focus:bg-primary-50 focus:text-primary-700 data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
+				@apply relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-xs font-medium outline-none transition-colors focus:bg-primary-100 focus:text-primary-700 data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
 				
 				&svg {
 					@apply size-4 shrink-0;
@@ -449,7 +451,7 @@
 	}
 
 	.breadcrumb {
-		@apply flex flex-wrap items-center gap-1.5 break-words text-sm text-primary-600 sm:gap-2.5;
+		@apply flex flex-wrap items-center break-words text-xs text-primary-600 font-medium gap-1 lowercase p-1 px-2 rounded-full;
 
 		.item {
 			@apply inline-flex items-center gap-1.5;
@@ -461,12 +463,10 @@
 			@apply font-normal text-primary-700;
 		}
 		.separator {
-			svg {
-				@apply size-3.5;
-			}
+			@apply text-lg
 		}
-		.ellipses {
-			@apply flex h-9 w-9 items-center justify-center;
+		.ellipsis {
+			@apply flex h-5 w-5 items-center justify-center hover:bg-primary-100;
 
 			svg {
 				@apply size-4;

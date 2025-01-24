@@ -1,8 +1,7 @@
 import DataContainer from "@/components/admin/resources/data-container";
 import Filter from "@/components/admin/resources/filter";
-import FolderSelector from "@/components/admin/resources/folder-selector";
-import { IQuery, IResourceFilter } from "@/lib/types";
 import FormSelector from "@/components/admin/resources/form-selector";
+import { FolderCrumbs } from "@/components/admin/resources/folder-crumbs";
 
 export default function Page() {
     
@@ -11,7 +10,7 @@ export default function Page() {
             <section id="header-section">
                 <div id="info">
                     <h1>Resources</h1>
-                    <FolderSelector />
+                    <FolderCrumbs />
                 </div>
                 <div id="action-buttons">
                     <FormSelector />

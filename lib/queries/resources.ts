@@ -40,7 +40,7 @@ export async function getResources(filters: IResourceFilter) {
     if (!success) {
         throw new Error("Invalid filters");
     }
-    const finalFilters = { ...checkedFilter, folder: checkedFilter.folder ?? "" };
+    const finalFilters = { ...checkedFilter, folder: checkedFilter.folder ? _id(checkedFilter.folder) : "" };
 
     const { query, sort, skip, limit } = buildQuery(finalFilters, ["name"]);
     
