@@ -21,7 +21,7 @@ type Props = {
 export default function RenameForm(props: Props) {
     const { mutate: modifyName } = useModifyName(props.filter);
 
-    const defaultValues = { name: "" };
+    const defaultValues = { name: props.name };
     const form = useForm<IRenameResource>({ resolver: zodResolver(ZRenameResource),defaultValues});
     const { handleSubmit, register, reset, formState: { isSubmitting } } = form;
 
