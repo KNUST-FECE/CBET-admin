@@ -11,15 +11,19 @@ export const ZLogin = z.object({
 });
 
 export const ZNewFolder = z.object({
-    name: z.string()
+    name: z.string().min(3, "Field is compulsory")
 });
 
 export const ZNewFile = z.object({
     files: z.array(
         z.object({
-          file: z.instanceof(File),
+            file: z.instanceof(File),
         })
-      ),
+    ),
+});
+
+export const ZRenameResource = z.object({
+    name: z.string().min(3, "Field is compulsory")
 });
 
 export const ZResourceFilter = z.object({

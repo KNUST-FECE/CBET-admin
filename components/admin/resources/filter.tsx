@@ -30,6 +30,11 @@ export default function Filter() {
                 </div>
                 <div id="filter-buttons">
                     <DataSearch />
+                    <DataSearch />
+                    <DataSearch />
+                    <DataSearch />
+                    <DataSearch />
+                    <DataSearch />
                     <DataFilter />
                     <DataSort />
                     <FilterButton icon={RefreshCw} value="run" type="submit" />

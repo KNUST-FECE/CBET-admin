@@ -124,12 +124,9 @@
 		}
 		.selected-popup {
 			@apply absolute bottom-4 left-1/2 -translate-x-1/2 p-2 min-w-28 rounded-full flex items-center space-x-2 shadow-sm bg-primary border;
-			
-			&[data-active=true] {
-				@apply flex fade-in-0 slide-in-from-bottom;
-			}
+
 			&[data-active=false] {
-				@apply hidden fade-out-0 slide-out-to-bottom;;
+				@apply hidden
 			}
 
 			.total-selected {
@@ -142,7 +139,11 @@
 				@apply flex items-center space-x-2;
 
 				button {
-					@apply h-7 text-xs font-semibold px-2 border bg-secondary-50 hover:bg-secondary-500 text-primary-600 hover:text-primary rounded-full
+					@apply h-7 text-xs font-semibold px-2 border bg-secondary-50 hover:bg-secondary-500 text-primary-600 hover:text-primary rounded-full;
+
+					&[data-hidden=true] {
+						@apply hidden
+					}
 				}
 			}
 			.clear-selection {
@@ -231,7 +232,7 @@
 					@apply space-y-2;
 
 					p {
-						@apply text-xs font-medium text-primary-600
+						@apply text-xs font-medium text-primary-600 capitalize
 					}
 					input {
 						@apply block w-full max-w-xs px-2 py-1 rounded-md border border-primary-300 text-xs outline-secondary-500 focus:outline

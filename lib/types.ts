@@ -1,4 +1,4 @@
-import { ZBlogFilter, ZLogin, ZMemberFilter, ZNewFile, ZNewFolder, ZProductFilter, ZReportFilter, ZResourceFilter, ZShopFilter, ZUserFilter } from "./schema";
+import * as Schema from "./schema";
 import { z } from "zod";
 import '@tanstack/react-table';
 import { RowData } from "@tanstack/react-table";
@@ -15,16 +15,19 @@ export type IQuery = {
     searchParams: { [key: string]: string | string[] | undefined }
 };
 
-export type ILogin = z.infer<typeof ZLogin>;
-export type INewFolder = z.infer<typeof ZNewFolder>;
-export type INewFile = z.infer<typeof ZNewFile>;
-export type IResourceFilter = z.infer<typeof ZResourceFilter>;
-export type IBlogFilter = z.infer<typeof ZBlogFilter>;
-export type IProductFilter = z.infer<typeof ZProductFilter>;
-export type IShopFilter = z.infer<typeof ZShopFilter>;
-export type IReportFilter = z.infer<typeof ZReportFilter>;
-export type IUserFilter = z.infer<typeof ZUserFilter>;
-export type IMemberFilter = z.infer<typeof ZMemberFilter>;
+export type IResourceType = "folder" | "file";
+
+export type ILogin = z.infer<typeof Schema.ZLogin>;
+export type INewFolder = z.infer<typeof Schema.ZNewFolder>;
+export type INewFile = z.infer<typeof Schema.ZNewFile>;
+export type IRenameResource = z.infer<typeof Schema.ZRenameResource>;
+export type IResourceFilter = z.infer<typeof Schema.ZResourceFilter>;
+export type IBlogFilter = z.infer<typeof Schema.ZBlogFilter>;
+export type IProductFilter = z.infer<typeof Schema.ZProductFilter>;
+export type IShopFilter = z.infer<typeof Schema.ZShopFilter>;
+export type IReportFilter = z.infer<typeof Schema.ZReportFilter>;
+export type IUserFilter = z.infer<typeof Schema.ZUserFilter>;
+export type IMemberFilter = z.infer<typeof Schema.ZMemberFilter>;
 
 export interface IMember {
     id: string
@@ -56,7 +59,7 @@ export interface IUser {
 export interface IResource {
     id: string
     name: string
-    type: string
+    type: IResourceType
     fileUrl: string | null
     fileType: string | null
     parentID: string[]

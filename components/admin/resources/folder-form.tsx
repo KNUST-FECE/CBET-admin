@@ -1,7 +1,7 @@
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useAddResource } from "@/lib/query-hooks/resources";
 import { ZNewFolder } from "@/lib/schema";
-import { IFolderTrace, INewFolder, IResourceFilter } from "@/lib/types";
+import { IFolderTrace, INewFolder, IResource, IResourceFilter } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -27,7 +27,7 @@ export default function FolderForm(props:Props) {
         const creatorID = session?.user?.id;
         if(!creatorID) throw new Error("Failed to create resources");
         
-        const folderObject = {
+        const folderObject:Omit<IResource, "id" | "updatedAt" | "createdAt"> = {
             name: values.name,
             type: "folder",
             fileUrl: null,
