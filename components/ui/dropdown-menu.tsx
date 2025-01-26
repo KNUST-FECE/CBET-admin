@@ -28,7 +28,7 @@ const DropMenuRadioGroup = D.RadioGroup
 
 const DropMenuSubTrigger = forwardRef<Ref<ITrigger>, NoRef<ITrigger> & {inset?: boolean}>(
   ({ className, inset, children, ...props }, ref) => (
-    <D.SubTrigger ref={ref} className={cn( "drop-menu trigger", inset && "has-inset", className )} {...props} >
+    <D.SubTrigger ref={ref} className={cn( "drop-menu sub-trigger", inset && "has-inset", className )} {...props} >
       {children}
       <ChevronRight />
     </D.SubTrigger>

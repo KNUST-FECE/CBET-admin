@@ -37,16 +37,8 @@
 			}
 			#filter-buttons {
 				@apply flex items-center space-x-2;
-
-				button {
-					@apply relative p-1 px-2 rounded-full flex-center space-x-1 border text-primary-600 text-xs font-semibold hover:bg-primary-50;
-
-					svg {
-						@apply size-4 stroke-2;
-					}
-				}
 			}
-		}
+	    }
 	}
 	
 	.resource-container>#table-section {

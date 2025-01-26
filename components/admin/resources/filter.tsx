@@ -1,14 +1,16 @@
 "use client";
 
-import FilterButton from "@/components/common/filter-button";
-import DataFilter from "@/components/form/data-filter";
-import DataSearch from "@/components/form/data-search";
-import DataSort from "@/components/form/data-sort";
+import ChipsField from "@/components/form/chips-field";
+import DateRangeField from "@/components/form/date-range-field";
+import DigitRangeField from "@/components/form/digit-range-field";
+import RunFilterButton from "@/components/form/run-filter-button";
+import SearchField from "@/components/form/search-field";
+import SortField from "@/components/form/sort-field";
+import { RESOURCES_SORT_KEYS, RESOURCES_STATUS, RESOURCES_TYPE, RESOURECS_FILE_TYPE } from "@/lib/constants";
 import { ZResourceFilter } from "@/lib/schema";
 import { IResourceFilter } from "@/lib/types";
 import { getFilterObject } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RefreshCw } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -29,15 +31,15 @@ export default function Filter() {
                     <p id="no-filters">No filters here ...</p>
                 </div>
                 <div id="filter-buttons">
-                    <DataSearch />
-                    <DataSearch />
-                    <DataSearch />
-                    <DataSearch />
-                    <DataSearch />
-                    <DataSearch />
-                    <DataFilter />
-                    <DataSort />
-                    <FilterButton icon={RefreshCw} value="run" type="submit" />
+                    <SearchField control={null} />
+                    <ChipsField control={null} fieldKey="type" fieldOptions={RESOURCES_TYPE} />
+                    <ChipsField control={null} fieldKey="file type" fieldOptions={RESOURECS_FILE_TYPE} />
+                    <ChipsField control={null} fieldKey="status" fieldOptions={RESOURCES_STATUS} />
+                    <DigitRangeField control={null} fieldKey="size" />
+                    <DateRangeField control={null} fieldKey="date created" />
+                    <DateRangeField control={null} fieldKey="date modified" />
+                    <SortField control={null} fieldKeys={RESOURCES_SORT_KEYS} />
+                    <RunFilterButton />
                 </div>
             </form>
         </section>
