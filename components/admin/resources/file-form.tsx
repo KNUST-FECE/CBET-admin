@@ -46,7 +46,7 @@ export default function FileForm(props:Props) {
         for (const item of values.files) {
             const { name, fileType, size } = getFileMeta(item.file);
             const { fileUrl } = await saveFile(item.file);
-            const fileObject = {
+            const fileObject: Omit<IResource, "updatedAt" | "createdAt" | "id"> = {
                 name,
                 type: "file",
                 fileType,
@@ -128,7 +128,7 @@ export default function FileForm(props:Props) {
 
 function FileCard(props: CardProps) {
     return (
-        <div>
+        <div className="file-container" onClick={(e) => e.stopPropagation()}>
             file
         </div>
     )

@@ -236,6 +236,14 @@
 			>.form-body {
 				@apply relative w-full p-4 h-96;
 
+				.files-container {
+					@apply min-h-full;
+
+					.file-container {
+						@apply size-24 rounded-md bg-primary-50 flex-center;
+					}
+				}
+
 				.relative-upload-message {
 					@apply w-full h-full flex-center flex-col space-y-7;
 
