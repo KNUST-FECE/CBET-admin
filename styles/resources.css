@@ -237,10 +237,22 @@
 				@apply relative w-full p-4 h-96;
 
 				.files-container {
-					@apply min-h-full;
+					@apply grid grid-flow-row grid-cols-5 gap-2;
 
 					.file-container {
-						@apply size-24 rounded-md bg-primary-50 flex-center;
+						@apply relative aspect-square rounded-lg bg-primary flex-center space-y-2 p-2 flex-col border;
+
+						.more-menu {
+							@apply absolute right-2 top-2 size-8 rounded-full flex-center border;
+							@apply [&>svg]:size-5 [&>svg]:stroke-2 [&>svg]:text-primary-600;
+						}
+						.svg-container {
+							@apply size-16 rounded-full flex-center bg-primary-100;
+							@apply [&>svg]:size-8 [&>svg]:stroke-1;
+						}
+						p {
+							@apply text-xs font-medium text-ellipsis overflow-hidden text-nowrap;
+						}
 					}
 				}
 

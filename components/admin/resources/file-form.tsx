@@ -4,7 +4,7 @@ import { ZNewFile } from "@/lib/schema";
 import { IFolderTrace, INewFile, IResource, IResourceFilter } from "@/lib/types";
 import { getFileMeta, saveFile } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UploadCloud, X } from "lucide-react";
+import { File, MoreVertical, UploadCloud, X } from "lucide-react";
 import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
 import { FormProvider, useFieldArray, useForm } from "react-hook-form";
 import {FileWithPath, useDropzone} from 'react-dropzone';
@@ -15,9 +15,6 @@ type Props = {
     setOpen: Dispatch<SetStateAction<boolean>>,
     folderTrace: IFolderTrace[],
     filter: IResourceFilter
-}
-type CardProps = {
-    file: File
 }
 
 export default function FileForm(props:Props) {
@@ -89,7 +86,15 @@ export default function FileForm(props:Props) {
                                 (
                                     <div className="files-container">
                                         {fields.map(item => (
-                                            <FileCard key={item.id} file={item.file} />
+                                            <div key={item.id} className="file-container" onClick={(e) => e.stopPropagation()}>
+                                                <button type="button" className="more-menu">
+                                                    <MoreVertical />
+                                                </button>
+                                                <div className="svg-container">
+                                                    <File />
+                                                </div>
+                                                <p>{item.file.name}</p>
+                                            </div>
                                         ))}
                                     </div>
                                 ): (
@@ -123,13 +128,5 @@ export default function FileForm(props:Props) {
                 </DialogContent>
             </Dialog>
         </FormProvider>
-    )
-}
-
-function FileCard(props: CardProps) {
-    return (
-        <div className="file-container" onClick={(e) => e.stopPropagation()}>
-            file
-        </div>
     )
 }
