@@ -12,7 +12,7 @@ import { IResourceFilter } from "@/lib/types";
 import { getFilterObject } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 
 export default function Filter() {
     const searchParams = useSearchParams();
@@ -24,24 +24,32 @@ export default function Filter() {
         }
     });
 
+    const { handleSubmit, control } = form;
+
+    const onSubmit = (data: IResourceFilter) => {
+
+    }
+
     return (
         <section id="filter-section">
-            <form>
-                <div id="filter-chips">
-                    <p id="no-filters">No filters here ...</p>
-                </div>
-                <div id="filter-buttons">
-                    <SearchField control={null} />
-                    <ChipsField control={null} fieldKey="type" fieldOptions={RESOURCES_TYPE} />
-                    <ChipsField control={null} fieldKey="file type" fieldOptions={RESOURECS_FILE_TYPE} />
-                    <ChipsField control={null} fieldKey="status" fieldOptions={RESOURCES_STATUS} />
-                    <DigitRangeField control={null} fieldKey="size" />
-                    <DateRangeField control={null} fieldKey="date created" />
-                    <DateRangeField control={null} fieldKey="date modified" />
-                    <SortField control={null} fieldKeys={RESOURCES_SORT_KEYS} />
-                    <RunFilterButton />
-                </div>
-            </form>
+            <FormProvider {...form}>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div id="filter-chips">
+                        <p id="no-filters">No filters here ...</p>
+                    </div>
+                    <div id="filter-buttons">
+                        <SearchField fieldKey="search" />
+                        <ChipsField fieldKey="type" fieldOptions={RESOURCES_TYPE} />
+                        <ChipsField fieldKey="file type" fieldOptions={RESOURECS_FILE_TYPE} />
+                        <ChipsField fieldKey="status" fieldOptions={RESOURCES_STATUS} />
+                        <DigitRangeField fieldKey="size" />
+                        <DateRangeField fieldKey="date created" />
+                        <DateRangeField fieldKey="date modified" />
+                        <SortField fieldKeys={RESOURCES_SORT_KEYS} />
+                        <RunFilterButton />
+                    </div>
+                </form>
+            </FormProvider>
         </section>
     )
 }

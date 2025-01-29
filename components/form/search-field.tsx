@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
 
 type Props = {
-    control: any
+    fieldKey: string
 }
 
 export default function SearchField(props:Props) {

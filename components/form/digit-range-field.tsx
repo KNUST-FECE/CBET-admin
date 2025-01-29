@@ -2,7 +2,6 @@ import { ArrowDownUp, LucideIcon, Ruler } from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
 
 type Props = {
-    control: any,
     fieldKey: string,
     icon?: LucideIcon
 }

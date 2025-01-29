@@ -145,6 +145,33 @@
 			@apply text-2xl font-semibold tracking-tight text-primary-800
 		}
 	}
+
+	.btn {
+		@apply flex-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50;
+		@apply [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
+
+		&.btn-default {
+			@apply bg-secondary-500 text-primary shadow hover:bg-secondary-400;
+		}
+		&.btn-outline {
+			@apply border bg-primary shadow-sm hover:bg-primary-100 hover:text-primary-700;
+		}
+		&.btn-secondary {
+			@apply bg-primary-500 text-primary shadow-sm hover:bg-primary-400;
+		}
+		&.btn-ghost {
+			@apply hover:bg-primary-100 hover:text-primary-700;
+		}
+		&.size-default {
+			@apply h-9 px-4 py-2;
+		}
+		&.size-sm {
+			@apply h-8 rounded-md px-3 text-xs;
+		}
+		&.size-md {
+			@apply h-10 rounded-md px-8;
+		}
+	}
 }
 
 @layer components {
@@ -159,7 +186,6 @@
 			}
 		}
 	}
-
 	.select {
 		&.trigger {
 			@apply flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-primary-300 bg-transparent px-3 py-2 text-sm ring-offset-primary-300 placeholder:text-primary-600 focus:outline-none focus:ring-1 focus:ring-primary-300 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1;
@@ -223,7 +249,6 @@
 			}
 		}
 	}
-
 	.dialog {
 		&.overlay {
 			@apply fixed inset-0 z-50 bg-black/30;
@@ -265,7 +290,6 @@
 			}
 		}
 	}
-
 	.drawer {
 		&.overlay {
 			@apply fixed inset-0 z-50 bg-black/80;
@@ -285,7 +309,6 @@
 			}
 		}
 	}
-
 	.drop-menu {
 		&.sub-trigger {
 			@apply flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-primary data-[state=open]:bg-primary;
@@ -367,7 +390,6 @@
 			}
 		}
 	}
-
 	.popover {
 		&.content {
 			@apply z-50 w-72 rounded-md border bg-primary p-2 text-primary-700 shadow-md outline-none;
@@ -381,7 +403,6 @@
 			}
 		}
 	}
-
 	.sheet {
 		&.overlay {
 			@apply fixed inset-0 z-50 bg-black/80;
@@ -431,7 +452,6 @@
 			}
 		}
 	}
-
 	.switch {
 		@apply inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-300 disabled:cursor-not-allowed disabled:opacity-50;
 		@apply data-[state=checked]:bg-primary-700 data-[state=unchecked]:bg-primary-100;
@@ -441,7 +461,6 @@
 			@apply data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0;
 		}
 	}
-
 	.tooltip {
 		&.content {
 			@apply z-50 overflow-hidden rounded-md bg-primary-50 px-3 py-1.5 text-xs text-primary-700 animate-in fade-in-0 zoom-in-95;
@@ -449,7 +468,6 @@
 			@apply data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2
 		}
 	}
-
 	.breadcrumb {
 		@apply flex flex-wrap items-center break-words text-xs text-primary-600 font-medium gap-1 lowercase p-1 px-2 rounded-full;
 
@@ -471,6 +489,104 @@
 			svg {
 				@apply size-4;
 			}
+		}
+	}
+	.calender {
+		@apply p-2;
+
+		.months {
+			@apply relative flex;
+		}
+		.nav {
+			@apply flex items-start;
+
+			.nav-buttons {
+				@apply absolute h-7 w-7 bg-transparent p-0 opacity-80 hover:opacity-100;
+				@apply [&>svg]:size-4;
+	
+				&.nav-previous {
+					@apply left-0;
+				}
+				&.nav-next {
+					@apply right-0;
+				}
+			}
+		}
+		.month {
+			@apply w-full;
+
+			.month-caption {
+				@apply relative mx-10 flex h-7 items-center justify-center;
+			}
+			.weekdays {
+				@apply flex flex-row;
+
+				.weekday {
+					@apply w-8 text-xs font-medium text-primary-600;
+				}
+			}
+			.month-grid {
+				@apply mx-auto mt-2;
+
+				.week {
+					@apply mt-2 w-max flex items-center;
+
+					.day {
+						@apply flex size-8 flex-1 items-center justify-center p-0 text-xs font-medium text-primary-700;
+
+						.day-button {
+							@apply size-8 rounded-md p-0 font-normal !text-xs transition-none aria-selected:opacity-100;
+						}
+					}
+					.outside {
+						@apply text-primary-700 opacity-50 aria-selected:bg-secondary-600/50 aria-selected:text-primary-700 aria-selected:opacity-30;
+					}
+					.day-selected {
+						@apply [&>button]:bg-secondary-600 [&>button]:text-primary [&>button]:hover:bg-secondary-500 [&>button]:hover:text-primary;
+					}
+					.day-today {
+						@apply [&>button]:bg-secondary-100 [&>button]:text-primary-700;
+					}
+					.day-disabled {
+						@apply text-primary-500 opacity-50;
+					}
+					.day-hidden {
+						@apply invisible flex-1;
+					} 
+
+				}
+				.range-buttons {
+					@apply bg-primary-100 [&>button]:bg-primary-600 [&>button]:text-primary-50 [&>button]:hover:bg-primary-500 [&>button]:hover:text-primary-50;
+
+					&.range-start {
+						@apply rounded-s-md;
+					}
+					&.range-end {
+						@apply rounded-e-md;
+					}
+				}
+				.range-middle {
+					@apply bg-secondary-50 text-primary-700 [&>button]:!bg-transparent [&>button]:!text-primary-700 [&>button]:hover:bg-transparent [&>button]:hover:!text-primary-700;
+				}
+
+			}
+			.month-years-view {
+				@apply grid grid-cols-4 gap-2;
+
+				.year-button {
+					@apply btn hover:bg-primary-100 text-primary-700 text-xs h-7;
+				}
+			}
+			.footer-caption {
+				@apply relative flex items-center justify-center pt-1;
+
+				.foote-caption-label {
+					@apply relative flex items-center justify-center pt-1;
+				}
+			}
+		}
+		.date-picker-chevron {
+			@apply size-4
 		}
 	}
 }
@@ -583,32 +699,21 @@
 			}
 		}
 		&#date-range-field-content {
-			@apply w-[512px];
+			@apply w-auto;
 
-			div:nth-child(2) {
-				@apply relative flex border-b;
+			>div:nth-child(2) {
+				@apply w-full border-b h-8;
 
-				.svg-container {
-					@apply absolute bg-primary size-6 rounded-full flex-center left-1/2 top-1 -translate-x-1/2;
+				p {
+					@apply text-xs h-full w-full flex items-center px-2 space-x-2;
 
-					svg {
-						@apply size-4 stroke-1 text-primary-700;
+					.calender-to, .calender-from {
+						@apply flex-1 flex-center;
 					}
 				}
-				label {
-					@apply flex-1 first-of-type:border-r block;
-
-					div:nth-child(1) {
-						@apply w-full first:border-b p-0;
-
-						input {
-							@apply w-full h-8 px-2 pl-6 text-xs font-light bg-transparent focus:outline-0;
-						}
-					}
-					div:nth-child(2) {
-						@apply w-full min-h-44 max-h-44;
-					}
-				}
+			}
+			div:nth-child(3) {
+				@apply border-b;
 			}
 		}
 		&#sort-field-content {

@@ -1,6 +1,7 @@
 import BlogTable from "@/components/admin/home/blog-table";
 import DepartmentStat from "@/components/admin/home/department-stat";
 import ProductTable from "@/components/admin/home/product-table";
+import { Calendar } from "@/components/ui/calender";
 import { departments } from "@/lib/constants";
 import { _blogs, _products } from "@/lib/routes";
 import { ChevronRight } from "lucide-react";
@@ -20,7 +21,7 @@ export default function Home() {
         </div>
       </section>
       <section className="other-section">
-        
+        <Calendar autoFocus mode="range" />
       </section>
     </div>
   );

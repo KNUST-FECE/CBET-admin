@@ -2,7 +2,6 @@ import { ArchiveX, Check, LucideIcon, Tag } from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
 
 type Props = {
-    control: any,
     fieldKey: string,
     icon?: LucideIcon,
     fieldOptions: string[]

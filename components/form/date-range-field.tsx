@@ -1,8 +1,8 @@
-import { ArrowLeftRight, Calendar, LucideIcon } from "lucide-react";
+import { ArrowLeftRight, Calendar as CalendarIcon, LucideIcon } from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
+import { Calendar } from "../ui/calender";
 
 type Props = {
-    control: any,
     fieldKey: string,
     icon?: LucideIcon
 }
@@ -13,7 +13,7 @@ export default function DateRangeField(props:Props) {
             <DropMenuTrigger className="drop-menu date-range-field-trigger">
                 {props.icon ?
                     (<props.icon />) :
-                    (<Calendar />)
+                    (<CalendarIcon />)
                 }
                 <span>{props.fieldKey}</span>
             </DropMenuTrigger>
@@ -22,25 +22,14 @@ export default function DateRangeField(props:Props) {
                     <h4>{props.fieldKey}</h4>
                 </div>
                 <div>
-                    <div className="svg-container">
-                        <ArrowLeftRight />
-                    </div>
-                    <label htmlFor={`${props.fieldKey}-min`}>
-                        <div>
-                            <input type="text" name={`${props.fieldKey} min`} id={`${props.fieldKey}-min`} step={10} placeholder="min" />
-                        </div>
-                        <div>
-                            
-                        </div>
-                    </label>
-                    <label htmlFor={`${props.fieldKey}-max`}>
-                        <div>
-                            <input type="text" name={`${props.fieldKey} max`} id={`${props.fieldKey}-max`} step={10} placeholder="max" />
-                        </div>
-                        <div>
-
-                        </div>
-                    </label>
+                    <p>
+                        <span className="calender-from">--- , ---, ---</span>
+                        <span className="calender-gap">to</span>
+                        <span className="calender-to">--- , ---, ---</span>
+                    </p>
+                </div>
+                <div>
+                    <Calendar autoFocus mode="range" />
                 </div>
             </DropMenuContent>
         </DropMenu>

@@ -3,7 +3,6 @@ import { DropMenu, DropMenuCheckItem, DropMenuContent, DropMenuTrigger } from ".
 import { SORT_PREFERENCE } from "@/lib/constants";
 
 type Props = {
-    control: any,
     fieldKeys: string[],
 }
 
