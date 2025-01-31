@@ -1,16 +1,17 @@
-import { ArrowUpWideNarrow, Check } from "lucide-react";
-import { DropMenu, DropMenuCheckItem, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
+import { Check } from "lucide-react";
+import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
 import { SORT_PREFERENCE } from "@/lib/constants";
+import { useFormContext } from "react-hook-form";
 
 type Props = {
     fieldKeys: string[],
 }
 
 export default function SortField(props:Props) {
+    const {} = useFormContext();
     return (
         <DropMenu>
             <DropMenuTrigger className="drop-menu sort-field-trigger" type="button">
-                <ArrowUpWideNarrow />
                 <span>sort</span>
             </DropMenuTrigger>
             <DropMenuContent id="sort-field-content" collisionPadding={30}>

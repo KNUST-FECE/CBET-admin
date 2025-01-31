@@ -1,19 +1,17 @@
-import { ArrowDownUp, LucideIcon, Ruler } from "lucide-react";
+import { ArrowDownUp } from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
+import { useFormContext } from "react-hook-form";
 
 type Props = {
     fieldKey: string,
-    icon?: LucideIcon
 }
 
 export default function DigitRangeField(props:Props) {
+    const {} = useFormContext();
+
     return (
         <DropMenu>
             <DropMenuTrigger className="drop-menu digit-range-field-trigger" type="button">
-                {props.icon ? 
-                    (<props.icon />) : 
-                    (<Ruler />)
-                }
                 <span>{props.fieldKey}</span>
             </DropMenuTrigger>
             <DropMenuContent id="digit-range-field-content">

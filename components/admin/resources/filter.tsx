@@ -43,8 +43,8 @@ export default function Filter() {
                         <ChipsField fieldKey="file type" fieldOptions={RESOURECS_FILE_TYPE} />
                         <ChipsField fieldKey="status" fieldOptions={RESOURCES_STATUS} />
                         <DigitRangeField fieldKey="size" />
-                        <DateRangeField fieldKey="date created" />
-                        <DateRangeField fieldKey="date modified" />
+                        <DateRangeField fieldKey="created at" />
+                        <DateRangeField fieldKey="modified at" />
                         <SortField fieldKeys={RESOURCES_SORT_KEYS} />
                         <RunFilterButton />
                     </div>

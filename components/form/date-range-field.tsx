@@ -1,20 +1,17 @@
-import { ArrowLeftRight, Calendar as CalendarIcon, LucideIcon } from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
 import { Calendar } from "../ui/calender";
+import { useFormContext } from "react-hook-form";
 
 type Props = {
     fieldKey: string,
-    icon?: LucideIcon
 }
 
 export default function DateRangeField(props:Props) {
+    const {} = useFormContext();
+
     return (
         <DropMenu>
             <DropMenuTrigger className="drop-menu date-range-field-trigger">
-                {props.icon ?
-                    (<props.icon />) :
-                    (<CalendarIcon />)
-                }
                 <span>{props.fieldKey}</span>
             </DropMenuTrigger>
             <DropMenuContent id="date-range-field-content" collisionPadding={50}>

@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { useFormContext } from "react-hook-form";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
 
 type Props = {
@@ -6,11 +6,10 @@ type Props = {
 }
 
 export default function SearchField(props:Props) {
-
+    const { register } = useFormContext();
     return (
         <DropMenu>
             <DropMenuTrigger className="drop-menu search-field-trigger" type="button">
-                <Search />
                 <span>search</span>
             </DropMenuTrigger>
             <DropMenuContent id="search-field-content">
@@ -18,7 +17,7 @@ export default function SearchField(props:Props) {
                     <h4>search</h4>
                 </div>
                 <div>
-                    <input type="text" placeholder="search here..." />
+                    <input type="text" {...register("search")} placeholder="search here..." />
                 </div>
             </DropMenuContent>
         </DropMenu>

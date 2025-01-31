@@ -1,20 +1,19 @@
-import { ArchiveX, Check, LucideIcon, Tag } from "lucide-react";
+import { ArchiveX, Check} from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
+import { useFieldArray, useFormContext } from "react-hook-form";
 
 type Props = {
     fieldKey: string,
-    icon?: LucideIcon,
     fieldOptions: string[]
 }
 
 export default function ChipsField(props:Props) {
+    const { control } = useFormContext();
+    const {} = useFieldArray({control, name: props.fieldKey});
+
     return (
         <DropMenu>
             <DropMenuTrigger className="drop-menu chips-field-trigger" type="button">
-                {props.icon ? 
-                    (<props.icon />) : 
-                    (<Tag />)
-                }
                 <span>{props.fieldKey}</span>
             </DropMenuTrigger>
             <DropMenuContent id="chips-field-content">
