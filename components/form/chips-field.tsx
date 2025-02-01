@@ -1,6 +1,7 @@
 import { ArchiveX, Check} from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
 import { useFieldArray, useFormContext } from "react-hook-form";
+import { useState } from "react";
 
 type Props = {
     fieldKey: string,
@@ -8,8 +9,16 @@ type Props = {
 }
 
 export default function ChipsField(props:Props) {
-    const { control } = useFormContext();
-    const {} = useFieldArray({control, name: props.fieldKey});
+    const { register, watch, setValue } = useFormContext();
+    const selectedValues: string[] = watch(props.fieldKey) || [];
+    const [search, setSearch] = useState("");
+
+    const toggleValue = (option: string) => {
+        const newValues = selectedValues.includes(option)
+            ? selectedValues.filter(val => val !== option) // Remove if already selected
+            : [...selectedValues, option]; // Add if not selected
+        setValue(props.fieldKey, newValues);
+    };
 
     return (
         <DropMenu>
@@ -19,9 +28,6 @@ export default function ChipsField(props:Props) {
             <DropMenuContent id="chips-field-content">
                 <div>
                     <h4>{props.fieldKey}</h4>
-                </div>
-                <div>
-                    <input type="text" placeholder={`search ${props.fieldKey}...`} />
                 </div>
                 <div>
                     {props.fieldOptions.length? 
@@ -34,7 +40,14 @@ export default function ChipsField(props:Props) {
                                     <div className="key-container">
                                         <p>{option}</p>
                                     </div>
-                                    <input type="checkbox" name={props.fieldKey} id={option} />
+                                    <input 
+                                        type="checkbox" 
+                                        name={props.fieldKey} 
+                                        id={option} 
+                                        value={option} 
+                                        checked={selectedValues.includes(option)}
+                                        onChange={() => toggleValue(option)} 
+                                    />
                                 </label>
                             )
                         ):

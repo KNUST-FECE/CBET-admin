@@ -647,30 +647,22 @@
 		}
 		&#chips-field-content {
 			@apply w-52;
-			
+
 			>div:nth-child(2) {
-				@apply border-b;
-
-				input {
-					@apply w-full h-8 px-2 text-xs font-light bg-transparent focus:outline-0;
-				}
-			}
-
-			>div:nth-child(3) {
 				@apply overflow-y-auto max-h-44;
 
 				label {
-					@apply flex items-center w-full h-8 border-b space-x-2 px-2 text-primary-700 capitalize;
+					@apply flex items-center w-full h-8 border-b space-x-2 px-2 text-primary-700 hover:bg-secondary-50 capitalize cursor-pointer;
 
 					&:has(:checked) {
-						@apply bg-primary-50;
+						@apply bg-secondary-50;
 						
 						.check-container>svg {
 							@apply opacity-100;
 						}
 					}
 					input {
-						@apply hidden
+						@apply hidden;
 					}
 					.check-container {
 						svg {
@@ -723,10 +715,10 @@
 				@apply last:border-y;
 
 				label {
-					@apply flex items-center w-full h-8 space-x-2 px-2 text-primary-700 hover:bg-primary-50 capitalize;
+					@apply flex items-center w-full h-8 space-x-2 px-2 text-primary-700 hover:bg-secondary-50 capitalize cursor-pointer;
 
 					&:has(:checked) {
-						@apply bg-primary-50;
+						@apply bg-secondary-50;
 
 						.check-container>svg {
 							@apply opacity-100;
