@@ -22,6 +22,12 @@ export const ZNewFile = z.object({
     ),
 });
 
+export const ZNewMember = z.object({
+    name: z.string().min(3, "Name is compulsory"),
+    email: z.string().min(3, "Email is compulsory"),
+    role: z.string().min(14, "Role is compulsary")
+});
+
 export const ZRenameResource = z.object({
     name: z.string().min(3, "Field is compulsory")
 });
@@ -155,6 +161,7 @@ export const ZMemberFilter = z.object({
     limit: z.number().optional(),
     page: z.number().optional(),
     role: z.array(z.string()).optional(),
+    status: z.array(z.string()).optional(),
     createAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({

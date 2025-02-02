@@ -2,7 +2,6 @@
 
 import { IResource } from "@/lib/types";
 import { columns } from './columns';
-import { animated, useSpring } from "@react-spring/web";
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import Table from "@/components/common/table";
 import { useEffect, useMemo, useState } from "react";
@@ -12,6 +11,7 @@ import { getFilterObject } from "@/lib/utils";
 import { ZResourceFilter } from "@/lib/schema";
 import { X } from "lucide-react";
 import RenameForm from "./rename-form";
+import SelectPopup from "@/components/common/select-popup";
 
 export default function DataContainer() {
     const searchParams = useSearchParams();
@@ -47,24 +47,30 @@ export default function DataContainer() {
     const selectedRows = table.getFilteredSelectedRowModel().rows;
     const resetSelected = table.resetRowSelection;
 
-    const styles = useSpring({
-        opacity: !!selectedRows.length ? 1 : 0,
-        transform: !!selectedRows.length ? "translate(-50%, 0%)" : "translate(-50%, 20%)",
-        config: { tension: 300, friction: 15 },
-    });
+    const selectActions = [
+        {
+            label: "rename",
+            trigger: () => setOpenRename(true),
+            single: true
+        },
+        {
+            label: "delete",
+            trigger: () => {
+                if(selectedRows.length < 1) return;
 
-    const handleDelete = () => {
-        if(selectedRows.length < 1) return;
+                const selectedIDs = selectedRows.map(({original}) => original.id);
 
-        const selectedIDs = selectedRows.map(({original}) => original.id);
-
-        removeResource({ids: selectedIDs});
-        resetSelected();
-    }
-
-    const handleStatus = () => {
-        if(selectedRows.length < 1) return;
-    }
+                removeResource({ids: selectedIDs});
+                resetSelected();
+            }
+        },
+        {
+            label: "status",
+            trigger: () => {
+                if(selectedRows.length < 1) return;
+            }
+        }
+    ]
 
     useEffect(() => {
         if(!openRename) resetSelected();
@@ -74,27 +80,11 @@ export default function DataContainer() {
         <>
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
-                <animated.div className="selected-popup" style = {styles} data-active={!!selectedRows.length}>
-                    <div className="total-selected">
-                        <p>{selectedRows.length}</p>
-                    </div>
-                    <div className="action-buttons">
-                        <button onClick={() => setOpenRename(true)} data-hidden={!(selectedRows.length == 1)}>
-                            rename
-                        </button>
-                        <button onClick={handleDelete}>
-                            delete
-                        </button>
-                        <button onClick={handleStatus}>
-                            hide
-                        </button>
-                    </div>
-                    <div className="clear-selection">
-                        <button onClick={() => table.resetRowSelection()}>
-                            <X />
-                        </button>
-                    </div>
-                </animated.div>
+                <SelectPopup
+                    totalSelected={selectedRows.length}
+                    onClose={() => table.resetRowSelection()}
+                    actions={selectActions}
+                />
             </section>
             <section id="footer-section">
                 <div id="data-info">

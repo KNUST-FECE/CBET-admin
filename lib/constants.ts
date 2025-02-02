@@ -66,7 +66,12 @@ export const marketLinks = [
 export const departments = ["computer", "biomedical", "electrical", "telecom"];
 
 export const SORT_PREFERENCE = ["accending", "decending"];
+
 export const RESOURCES_TYPE = ["folder", "file"];
 export const RESOURECS_FILE_TYPE = ["docx","pdf","txt","ppt","png","jpg","mp4"];
 export const RESOURCES_STATUS = ["active","hidden"];
 export const RESOURCES_SORT_KEYS = ["name","file type","size","status","created at","updated at"]
+
+export const MEMBERS_ROLE = ["admin", "edittor", "resource manager", "products manager", "user manager"];
+export const MEMBERS_STATUS = ["active", "suspended"];
+export const MEMBERS_SORT_KEYS = ["name", "email", "role", "status", "created at", "updated at"];

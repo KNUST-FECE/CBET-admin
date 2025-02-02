@@ -19,6 +19,7 @@ export type IResourceType = "folder" | "file";
 
 export type ILogin = z.infer<typeof Schema.ZLogin>;
 export type INewFolder = z.infer<typeof Schema.ZNewFolder>;
+export type INewMember = z.infer<typeof Schema.ZNewMember>;
 export type INewFile = z.infer<typeof Schema.ZNewFile>;
 export type IRenameResource = z.infer<typeof Schema.ZRenameResource>;
 export type IResourceFilter = z.infer<typeof Schema.ZResourceFilter>;
@@ -34,6 +35,7 @@ export interface IMember {
     name: string
     email: string
     password: string
+    status: string
     emailVerified: string
     image: string
     roleID: string
