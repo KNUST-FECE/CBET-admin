@@ -30,7 +30,8 @@ export default function SelectPopup(props:Props) {
             </div>
             <div className="action-buttons">
                 {props.actions.map(action => (
-                    <button 
+                    <button
+                        key={action.label}
                         onClick={action.trigger} 
                         data-hidden={ action.single && props.totalSelected !== 1}
                     >
