@@ -1,8 +1,8 @@
 "use client";
 
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ZNewMember } from "@/lib/schema";
-import { INewMember } from "@/lib/types";
+import { ZNewBlog } from "@/lib/schema";
+import { INewBlog } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CirclePlus, X } from "lucide-react";
 import { FormProvider, useForm } from "react-hook-form";
@@ -12,10 +12,10 @@ export default function NewBlogForm() {
     // mutate function to add member
 
     const defaultValues = { name: "" };
-    const form = useForm<INewMember>({ resolver: zodResolver(ZNewMember),defaultValues});
+    const form = useForm<INewBlog>({ resolver: zodResolver(ZNewBlog),defaultValues});
     const { handleSubmit, register, reset, formState: { isSubmitting } } = form;
 
-    function onSubmit(values: INewMember ) {}
+    function onSubmit(values: INewBlog ) {}
 
     return (
         <FormProvider {...form}>

@@ -44,9 +44,17 @@ export const ZNewRole = z.object({
 });
 
 export const ZNewUser = z.object({
+    username: z.string().min(3, "Name is compulsory"),
+    studentNo: z.string().min(3, "Name is compulsory"),
+    indexNo: z.string().min(3, "Name is compulsory"),
+    department: z.string().min(3, "Name is compulsory"),
+    level: z.string().min(3, "Name is compulsory"),
+});
+
+export const ZNewBlog = z.object({
     name: z.string().min(3, "Name is compulsory"),
-    email: z.string().min(3, "Email is compulsory"),
-    role: z.string().min(14, "Role is compulsary")
+    category: z.string().min(3, "Category is compulsory"),
+    tags: z.string().min(3, "Tags are compulsory"),
 });
 
 export const ZResourceFilter = z.object({
