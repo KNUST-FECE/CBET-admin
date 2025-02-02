@@ -71,9 +71,14 @@ export const ZResourceFilter = z.object({
 });
 
 export const ZBlogFilter = z.object({
-    search: z.string().nullable(),
-    limit: z.number().nullable(),
-    page: z.number().nullable(),
+    search: z.string().optional(),
+    limit: z.number().optional(),
+    page: z.number().optional(),
+    category: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional(),
+    status: z.array(z.string()).optional(),
+    createAt: ZMinMax.optional(),
+    updatedAt: ZMinMax.optional(),
     sort: z.object({
         name: z.boolean(),
         category: z.boolean(),
@@ -81,14 +86,7 @@ export const ZBlogFilter = z.object({
         status: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
-    }).nullable(),
-    filter: z.object({
-        category: z.array(z.string()),
-        tags: z.array(z.string()),
-        status: z.array(z.string()),
-        createAt: ZMinMax,
-        updatedAt: ZMinMax
-    }).nullable()
+    }).optional(),
 });
 
 export const ZProductFilter = z.object({

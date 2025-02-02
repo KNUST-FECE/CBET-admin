@@ -1,31 +1,111 @@
 
 @layer utilities {
 	.blogs-container {
-		@apply w-full min-h-dvh flex;
+		@apply w-full min-h-dvh flex flex-col;
 	}
 
-	.blogs-container>#navigation-container {
-		@apply w-full max-w-xs h-dvh bg-primary-100 border-r;
+	.blogs-container>#header-section {
+		@apply w-full p-5 pt-10 flex justify-between items-center;
 
-		>#header-section {
-			@apply common-header-section;
+		>h1 {
+			@apply text-xl font-semibold tracking-tight text-primary-800;
 		}
+		>#new-blog-form-trigger {
+			@apply flex items-center space-x-2 p-2 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-lg text-secondary-50 focus:outline-secondary-300;
 
-		>#filter-section {
-			@apply w-full h-14 p-2 border-b;
+			svg {
+				@apply size-4 stroke-2;
+			}
 		}
-
-		>#data-section {
-			@apply py-4 px-2;
-		}
-
 	}
 
-	.blogs-container>#home-container {
-		@apply flex-1 min-h-dvh flex-center
+	.blogs-container>#filter-section {
+		form {
+			@apply w-full py-2 px-5 flex-center !justify-between border-t;
+
+			#filter-chips {
+				#no-filters {
+					@apply text-xs font-medium text-primary-600;
+				}
+			}
+			#filter-buttons {
+				@apply flex items-center space-x-2;
+			}
+	    }
 	}
 
-	.blogs-container>#blog-container {
-		@apply flex-1 min-h-dvh flex-center
+	.blogs-container>#table-section {
+		@apply relative w-full flex-1 overflow-scroll;
+
+		table#main-table {
+			.name-col>div {
+				@apply w-64 space-x-2;
+
+				>svg {
+					@apply size-4 stroke-1;
+				}
+				>a {
+					@apply hover:underline text-ellipsis whitespace-nowrap overflow-hidden;
+				}
+			}
+			.email-col {
+				div {
+					@apply w-64;
+				}
+
+				&.email-td>div {
+					@apply lowercase;
+				}
+			}
+			.status-col {
+				&.status-td {
+					p {
+						@apply text-xs px-2 py-1 rounded-full flex-center space-x-1.5 tracking-wide justify-start lowercase !important;
+
+						&[data-status=active] {
+							@apply bg-success-50 text-success-600;
+
+							span.indicator {
+								@apply bg-success-600
+							}
+						}
+						&[data-status=hidden] {
+							@apply bg-danger-50 text-danger-600;
+
+							span.indicator {
+								@apply bg-danger-600
+							}
+						}
+						span.indicator {
+							@apply size-1.5 rounded-full;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.blogs-container>#footer-section {
+		@apply w-full px-5 py-2 flex-center !justify-between border-t;
+
+		#data-info {
+			@apply flex items-center justify-start;
+
+			#page-number {
+				@apply text-xs font-medium text-primary-600 flex gap-1;
+
+				span {
+					@apply text-primary-700 font-semibold
+				}
+			}
+		}
+
+		#data-pagination {
+			@apply flex items-center justify-end space-x-2;
+
+			button {
+				@apply p-1 px-2 rounded-full flex-center space-x-1 border text-primary-700 text-xs font-semibold hover:bg-primary-200;
+			}
+		}
 	}
 }
