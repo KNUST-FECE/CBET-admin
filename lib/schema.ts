@@ -22,6 +22,10 @@ export const ZNewFile = z.object({
     ),
 });
 
+export const ZRenameResource = z.object({
+    name: z.string().min(3, "Field is compulsory")
+});
+
 export const ZNewMember = z.object({
     name: z.string().min(3, "Name is compulsory"),
     email: z.string().min(3, "Email is compulsory"),
@@ -39,8 +43,10 @@ export const ZNewRole = z.object({
     rolePermissions: z.array(z.string())
 });
 
-export const ZRenameResource = z.object({
-    name: z.string().min(3, "Field is compulsory")
+export const ZNewUser = z.object({
+    name: z.string().min(3, "Name is compulsory"),
+    email: z.string().min(3, "Email is compulsory"),
+    role: z.string().min(14, "Role is compulsary")
 });
 
 export const ZResourceFilter = z.object({
@@ -134,15 +140,15 @@ export const ZReportFilter = z.object({
     page: z.number().optional(),
     category: z.array(z.string()).optional(),
     type: z.array(z.string()).optional(),
-    serviced: z.array(z.string()).optional(),
+    status: z.array(z.string()).optional(),
     createAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
         user: z.boolean(),
+        summary: z.boolean(),
         category: z.boolean(),
         type: z.boolean(),
-        summary: z.boolean(),
-        serviced: z.boolean(),
+        status: z.boolean(),
         createdAt: z.boolean(),
         updatedAt: z.boolean(),
     }).optional(),

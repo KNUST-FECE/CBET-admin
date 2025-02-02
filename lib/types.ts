@@ -133,7 +133,7 @@ export interface IReport {
     url: string
     type: string
     summary: string
-    serviced: boolean
+    status: boolean
     updatedAt: string
     createdAt: string
 }

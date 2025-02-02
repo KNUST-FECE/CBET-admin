@@ -1,6 +1,5 @@
 import * as routes from "./routes";
 import { Crown, Database, Fingerprint, LayoutGrid, Newspaper, Settings, ShoppingBag, ShoppingBasket, SquareChartGantt, Store, Users } from "lucide-react";
-import { IBlog, IProduct } from "./types";
 
 export const mainLinks = [
     { 
@@ -75,3 +74,8 @@ export const RESOURCES_SORT_KEYS = ["name","file type","size","status","created 
 export const MEMBERS_ROLE = ["admin", "edittor", "resource manager", "products manager", "user manager"];
 export const MEMBERS_STATUS = ["active", "suspended"];
 export const MEMBERS_SORT_KEYS = ["name", "email", "role", "status", "created at", "updated at"];
+
+export const REPORTS_CATEGORY = [];
+export const REPORTS_TYPE = [];
+export const REPORTS_STATUS = ["serviced"];
+export const REPORTS_SORT_KEYS = ["user", "summary", "category", "type", "status", "created at", "updated at"];
