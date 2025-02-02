@@ -83,10 +83,6 @@
 					}
 				}
 			}
-			.leftover-col {
-				@apply w-full;
-			}
-
 		}
 	}
 

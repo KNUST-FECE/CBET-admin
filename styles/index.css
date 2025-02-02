@@ -812,5 +812,8 @@
 				@apply w-8;
 			}
 		}
+		.leftover-col {
+			@apply w-full;
+		}
 	}
 }
