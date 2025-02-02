@@ -38,40 +38,7 @@
 	.members-container>#table-section {
 		@apply relative w-full flex-1 overflow-scroll;
 
-		table {
-			@apply table-auto w-full;
-
-			th, td {
-				@apply w-0 border border-primary-300;
-			}
-			tr th, tr td{
-				@apply first-of-type:border-l-0 last-of-type:border-r-0
-			}
-			thead {
-				@apply bg-primary-100;
-
-				th>div {
-					@apply h-9 w-44 flex items-center justify-start px-2 text-xs text-primary-700 capitalize;
-				}
-			}
-			tbody {
-				tr {
-					@apply hover:bg-primary-50;
-
-					&[data-state=selected] {
-						@apply bg-primary-50
-					}
-				}
-				td>div {
-					@apply h-9 w-44 flex items-center justify-start px-2 text-xs font-medium text-primary-700 capitalize;
-				}
-			}
-			.select-col {
-				@apply w-0;
-				div {
-					@apply w-8;
-				}
-			}
+		table#main-table {
 			.name-col>div {
 				@apply w-64 space-x-2;
 

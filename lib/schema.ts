@@ -28,6 +28,17 @@ export const ZNewMember = z.object({
     role: z.string().min(14, "Role is compulsary")
 });
 
+export const ZNewRole = z.object({
+    name: z.string().min(3, "Name is compulsory"),
+    resourcePermissions: z.array(z.string()),
+    blogPermissions: z.array(z.string()),
+    marketPermisions: z.array(z.string()),
+    userPermissions: z.array(z.string()),
+    memberPermissions: z.array(z.string()),
+    reportPermissions: z.array(z.string()),
+    rolePermissions: z.array(z.string())
+});
+
 export const ZRenameResource = z.object({
     name: z.string().min(3, "Field is compulsory")
 });

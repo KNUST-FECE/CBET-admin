@@ -7,7 +7,7 @@ type Prop<TData> = {
 
 export default function Table<TData>(props: Prop<TData>) {
     return (
-        <table>
+        <table id="main-table">
             <thead>
                 {props.HG.map(hg => (
                     <tr key={hg.id}>

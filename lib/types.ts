@@ -19,8 +19,9 @@ export type IResourceType = "folder" | "file";
 
 export type ILogin = z.infer<typeof Schema.ZLogin>;
 export type INewFolder = z.infer<typeof Schema.ZNewFolder>;
-export type INewMember = z.infer<typeof Schema.ZNewMember>;
 export type INewFile = z.infer<typeof Schema.ZNewFile>;
+export type INewMember = z.infer<typeof Schema.ZNewMember>;
+export type INewRole = z.infer<typeof Schema.ZNewRole>;
 export type IRenameResource = z.infer<typeof Schema.ZRenameResource>;
 export type IResourceFilter = z.infer<typeof Schema.ZResourceFilter>;
 export type IBlogFilter = z.infer<typeof Schema.ZBlogFilter>;
@@ -140,9 +141,13 @@ export interface IReport {
 export interface IRole {
     id: string
     name: string
-    permissions: {
-        [key: string]: boolean
-    }
+    resourcePermissions: string[]
+    blogPermissions: string[]
+    marketPermisions: string[]
+    userPermissions: string[]
+    memberPermissions: string[]
+    reportPermissions: string[]
+    rolePermissions: string[]
     updatedAt: string
     createdAt: string
 }
