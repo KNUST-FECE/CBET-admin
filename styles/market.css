@@ -1,24 +1,26 @@
 
 @layer utilities {
 	.market-container {
-		@apply w-full min-h-dvh pb-20;
+		@apply w-full min-h-dvh flex flex-col;
 	}
 
 	.market-container>#header-section {
-		@apply common-header-section;
-		@apply flex space-x-4 items-center;
+		@apply w-full p-5 pt-10 flex justify-between items-center;
 
-		>nav {
-			>ul {
-				@apply flex space-x-4;
+		#info {
+			@apply flex items-center space-x-4;
 
-				li {
-					a {
-						@apply relative px-3 py-2 text-sm font-medium rounded-full border flex-center;
+			>h1 {
+				@apply text-xl font-semibold tracking-tight text-primary-800;
+			}
+			>nav>ul {
+				@apply flex space-x-2;
 
-						&[data-active="true"] {
-							@apply border-secondary-300 bg-secondary-50 text-secondary-500
-						}
+				li>a {
+					@apply relative p-1 px-2 text-xs font-medium rounded-full border flex-center;
+
+					&[data-active="true"] {
+						@apply border-secondary-300 bg-secondary-50 text-secondary-500
 					}
 				}
 			}
@@ -26,46 +28,166 @@
 	}
 
 	.market-container>#shops-section {
-		@apply w-full;
-		
+		@apply w-full flex-1 flex flex-col;
+
 		#filter-section {
-			@apply w-full h-16 px-7 py-2 border-b;
+			form {
+				@apply w-full py-2 px-5 flex-center !justify-between border-t;
+	
+				#filter-chips {
+					#no-filters {
+						@apply text-xs font-medium text-primary-600;
+					}
+				}
+				#filter-buttons {
+					@apply flex items-center space-x-2;
+				}
+			}
 		}
 		#table-section {
-			@apply w-full;
+			@apply relative w-full flex-1 overflow-scroll;
 	
-			table {
-				@apply w-full table-fixed;
+			table#main-table {
+				.name-col>div {
+					@apply w-64 space-x-2;
 	
-				th {
-					@apply text-start
+					>svg {
+						@apply size-4 stroke-1;
+					}
+					>a {
+						@apply hover:underline text-ellipsis whitespace-nowrap overflow-hidden;
+					}
 				}
+				.status-col {
+					&.status-td {
+						p {
+							@apply text-xs px-2 py-1 rounded-full flex-center space-x-1.5 tracking-wide justify-start lowercase !important;
 	
-				.name-col {
-					@apply px-7
+							&[data-status=active] {
+								@apply bg-success-50 text-success-600;
+	
+								span.indicator {
+									@apply bg-success-600
+								}
+							}
+							&[data-status=hidden] {
+								@apply bg-danger-50 text-danger-600;
+	
+								span.indicator {
+									@apply bg-danger-600
+								}
+							}
+							span.indicator {
+								@apply size-1.5 rounded-full;
+							}
+						}
+					}
+				}
+			}	
+		}
+		#footer-section {
+			@apply w-full px-5 py-2 flex-center !justify-between border-t;
+	
+			#data-info {
+				@apply flex items-center justify-start;
+	
+				#page-number {
+					@apply text-xs font-medium text-primary-600 flex gap-1;
+	
+					span {
+						@apply text-primary-700 font-semibold
+					}
+				}
+			}
+	
+			#data-pagination {
+				@apply flex items-center justify-end space-x-2;
+	
+				button {
+					@apply p-1 px-2 rounded-full flex-center space-x-1 border text-primary-700 text-xs font-semibold hover:bg-primary-200;
 				}
 			}
 		}
 	}
 
 	.market-container>#products-section {
-		@apply w-full;
+		@apply w-full flex-1 flex flex-col;
 
 		#filter-section {
-			@apply w-full h-16 px-7 py-2 border-b;
+			form {
+				@apply w-full py-2 px-5 flex-center !justify-between border-t;
+	
+				#filter-chips {
+					#no-filters {
+						@apply text-xs font-medium text-primary-600;
+					}
+				}
+				#filter-buttons {
+					@apply flex items-center space-x-2;
+				}
+			}
 		}
 		#table-section {
-			@apply w-full;
+			@apply relative w-full flex-1 overflow-scroll;
 	
-			table {
-				@apply w-full table-fixed;
+			table#main-table {
+				.name-col>div {
+					@apply w-64 space-x-2;
 	
-				th {
-					@apply text-start
+					>svg {
+						@apply size-4 stroke-1;
+					}
+					>a {
+						@apply hover:underline text-ellipsis whitespace-nowrap overflow-hidden;
+					}
 				}
+				.status-col {
+					&.status-td {
+						p {
+							@apply text-xs px-2 py-1 rounded-full flex-center space-x-1.5 tracking-wide justify-start lowercase !important;
 	
-				.name-col {
-					@apply px-7
+							&[data-status=active] {
+								@apply bg-success-50 text-success-600;
+	
+								span.indicator {
+									@apply bg-success-600
+								}
+							}
+							&[data-status=hidden] {
+								@apply bg-danger-50 text-danger-600;
+	
+								span.indicator {
+									@apply bg-danger-600
+								}
+							}
+							span.indicator {
+								@apply size-1.5 rounded-full;
+							}
+						}
+					}
+				}
+			}	
+		}
+		#footer-section {
+			@apply w-full px-5 py-2 flex-center !justify-between border-t;
+	
+			#data-info {
+				@apply flex items-center justify-start;
+	
+				#page-number {
+					@apply text-xs font-medium text-primary-600 flex gap-1;
+	
+					span {
+						@apply text-primary-700 font-semibold
+					}
+				}
+			}
+	
+			#data-pagination {
+				@apply flex items-center justify-end space-x-2;
+	
+				button {
+					@apply p-1 px-2 rounded-full flex-center space-x-1 border text-primary-700 text-xs font-semibold hover:bg-primary-200;
 				}
 			}
 		}
