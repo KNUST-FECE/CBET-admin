@@ -54,7 +54,7 @@ export const columns: ColumnDef<IProduct>[] = [
         }
     },
     {
-        accessorKey: "published",
+        accessorKey: "status",
         header: () => <TableHeader value="status" />,
         cell: ({getValue}) => <TableCell value={getValue()} />,
         meta: {
@@ -63,7 +63,7 @@ export const columns: ColumnDef<IProduct>[] = [
         }
     },
     {
-        accessorKey: "approved",
+        accessorKey: "approval",
         header: () => <TableHeader value="approved" />,
         cell: ({getValue}) => <TableCell value={getValue()} />,
         meta: {

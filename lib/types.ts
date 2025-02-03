@@ -103,8 +103,8 @@ export interface IProduct {
     images: string[]
     shopID: string
     likes: number
-    published: boolean
-    approved: boolean
+    status: boolean
+    approval: boolean
     deniedMessage: string
     updatedAt: string
     createdAt: string

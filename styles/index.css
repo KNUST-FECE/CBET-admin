@@ -138,14 +138,6 @@
 		@apply flex items-center justify-center;
 	}
 
-	.common-header-section {
-		@apply w-full p-5 pt-10;
-
-		>h1 {
-			@apply text-2xl font-semibold tracking-tight text-primary-800
-		}
-	}
-
 	.btn {
 		@apply flex-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50;
 		@apply [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;

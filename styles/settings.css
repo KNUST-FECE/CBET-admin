@@ -1,10 +1,14 @@
 
 @layer utilities {
 	.settings-container {
-		@apply w-full min-h-dvh pb-20;
+		@apply w-full min-h-dvh flex flex-col;
 	}
 
 	.settings-container>#header-section {
-		@apply common-header-section;
+		@apply w-full p-5 pt-10 flex justify-between items-center;
+
+		>h1 {
+			@apply text-xl font-semibold tracking-tight text-primary-800;
+		}
 	}
 }

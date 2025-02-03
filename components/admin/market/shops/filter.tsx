@@ -1,13 +1,13 @@
 "use client";
 
-import ChipsField from "@/components/form/chips-field";
 import DateRangeField from "@/components/form/date-range-field";
+import DigitRangeField from "@/components/form/digit-range-field";
 import RunFilterButton from "@/components/form/run-filter-button";
 import SearchField from "@/components/form/search-field";
 import SortField from "@/components/form/sort-field";
-import { MEMBERS_ROLE, MEMBERS_SORT_KEYS, MEMBERS_STATUS } from "@/lib/constants";
-import { ZResourceFilter } from "@/lib/schema";
-import { IResourceFilter } from "@/lib/types";
+import { SHOPS_SORT_KEYS } from "@/lib/constants";
+import { ZShopFilter } from "@/lib/schema";
+import { IShopFilter } from "@/lib/types";
 import { getFilterObject } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
@@ -15,9 +15,9 @@ import { FormProvider, useForm } from "react-hook-form";
 
 export default function Filter() {
     const searchParams = useSearchParams();
-    const filter = getFilterObject(searchParams, ZResourceFilter);
-    const form = useForm<IResourceFilter>({
-        resolver: zodResolver(ZResourceFilter),
+    const filter = getFilterObject(searchParams, ZShopFilter);
+    const form = useForm<IShopFilter>({
+        resolver: zodResolver(ZShopFilter),
         defaultValues: {
             ...filter
         }
@@ -25,7 +25,7 @@ export default function Filter() {
 
     const { handleSubmit } = form;
 
-    const onSubmit = (data: IResourceFilter) => {
+    const onSubmit = (data: IShopFilter) => {
 
     }
 
@@ -38,11 +38,10 @@ export default function Filter() {
                     </div>
                     <div id="filter-buttons">
                         <SearchField fieldKey="search" />
-                        <ChipsField fieldKey="role" fieldOptions={MEMBERS_ROLE} />
-                        <ChipsField fieldKey="status" fieldOptions={MEMBERS_STATUS} />
+                        <DigitRangeField fieldKey="product count" />
                         <DateRangeField fieldKey="created at" />
                         <DateRangeField fieldKey="modified at" />
-                        <SortField fieldKeys={MEMBERS_SORT_KEYS} />
+                        <SortField fieldKeys={SHOPS_SORT_KEYS} />
                         <RunFilterButton />
                     </div>
                 </form>

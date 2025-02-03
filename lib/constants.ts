@@ -75,7 +75,22 @@ export const MEMBERS_ROLE = ["admin", "edittor", "resource manager", "products m
 export const MEMBERS_STATUS = ["active", "suspended"];
 export const MEMBERS_SORT_KEYS = ["name", "email", "role", "status", "created at", "updated at"];
 
+export const USERS_DEPARTMENT = ["computer", "biomedical", "electrical", "telecom"];
+export const USERS_LEVEL = ["l100", "l200", "l300", "l400"];
+export const USERS_SORT_KEYS = ["name", "student no", "indexc no", "department", "level", "created at", "updated at"];
+
+export const BLOGS_CATEGORY = [];
+export const BLOGS_STATUS = ["published", "draft", "archived"];
+export const BLOGS_SORT_KEYS = ["name", "category", "likes", "status", "created at", "updated at"];
+
+export const PRODUCTS_CATEGORY = [];
+export const PRODUCTS_STATUS = ["published", "draft", "archived"]; 
+export const PRODUCTS_APPROVAL = ["pending", "approved", "denied"];
+export const PRODUCTS_SORT_KEY = ["name", "price", "stock", "status", "approval", "category", "created at", "updated at"];
+
+export const SHOPS_SORT_KEYS = ["name", "email", "product count", "created at", "updated at"]; 
+
 export const REPORTS_CATEGORY = [];
 export const REPORTS_TYPE = [];
-export const REPORTS_STATUS = ["serviced"];
+export const REPORTS_STATUS = ["pending", "serviced", "archived"];
 export const REPORTS_SORT_KEYS = ["user", "summary", "category", "type", "status", "created at", "updated at"];
