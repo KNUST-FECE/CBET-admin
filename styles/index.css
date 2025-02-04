@@ -113,7 +113,7 @@
 
 @layer base {
 	* {
-		@apply focus:outline-secondary-300;
+		@apply focus:outline-secondary-500 focus:outline-1;
 	}
 
 	html {
@@ -168,7 +168,8 @@
 
 @layer components {
 	.checkbox {
-		@apply size-4 shrink-0 rounded-[4px] border border-primary-400 shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-500 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-secondary-700 data-[state=checked]:text-secondary-50;
+		@apply size-4 shrink-0 rounded-[4px] border border-primary-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-500 disabled:cursor-not-allowed disabled:opacity-50;
+		@apply data-[state=checked]:bg-secondary-700 data-[state=checked]:text-secondary-50 data-[state=checked]:border-secondary-700;
 
 		>span {
 			@apply flex items-center justify-center text-current;
