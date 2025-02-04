@@ -1,11 +1,13 @@
 "use client";
 
+import File from "@/components/icons/file";
+import Folder from "@/components/icons/folder";
+import FullFolder from "@/components/icons/full-folder";
 import { Checkbox } from "@/components/ui/checkbox";
 import { _resources } from "@/lib/routes";
 import { IResource } from "@/lib/types";
 import { ColumnDef, Row, Table } from "@tanstack/react-table";
 import { format } from 'date-fns';
-import { File, Folder } from "lucide-react";
 import Link from "next/link";
 
 export const columns: ColumnDef<IResource>[] = [
@@ -23,7 +25,7 @@ export const columns: ColumnDef<IResource>[] = [
     {
         id : "name",
         header: () => <TableHeader value="name" />,
-        cell: ({row: { original:o }}) => (<NameCell value={o.name} id={o.id} type={o.type} />),
+        cell: ({row: { original:o }}) => (<NameCell value={o.name} id={o.id} type={o.type} isEmpty={!o.folderCount} />),
         meta: {
             headClass: "name-col name-th",
             cellClass: "name-col name-td",
@@ -141,10 +143,10 @@ function StatusCell(props: { value: string }) {
     )
 }
 
-function NameCell(props: {value: string, id: string, type: string}) {
+function NameCell(props: {value: string, id: string, type: string, isEmpty: boolean}) {
     return (
         <div>
-            {props.type === "folder"? (<Folder />) : (<File />)}
+            {props.type === "folder"? props.isEmpty ? (<Folder />) : (<FullFolder />) : (<File />)}
             <Link href={`${_resources}/?folder=${props.id}`}>{props.value}</Link>
         </div>
     )

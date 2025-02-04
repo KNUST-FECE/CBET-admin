@@ -49,7 +49,7 @@
 				@apply w-64 space-x-2;
 
 				>svg {
-					@apply size-4 stroke-1;
+					@apply size-5 stroke-1;
 				}
 				>a {
 					@apply hover:underline text-ellipsis whitespace-nowrap overflow-hidden;
@@ -111,7 +111,7 @@
 	.drop-menu {
 		&#resource-form-selector-content {
 			svg {
-				@apply size-4 text-primary-700 stroke-1;
+				@apply size-5;
 			}
 		}
 		&#folder-crumbs-dropmenu {

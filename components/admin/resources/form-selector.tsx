@@ -1,7 +1,7 @@
 "use client";
 
 import { DropMenu, DropMenuContent, DropMenuItem, DropMenuTrigger } from "@/components/ui/dropdown-menu";
-import { ChevronDown, CirclePlus, File, Folder, X } from "lucide-react";
+import { ChevronDown, CirclePlus } from "lucide-react";
 import { useState } from "react";
 import FolderForm from "./folder-form";
 import FileForm from "./file-form";
@@ -9,6 +9,8 @@ import { useSearchParams } from "next/navigation";
 import { getFilterObject } from "@/lib/utils";
 import { useGetFolderTrace } from "@/lib/query-hooks/resources";
 import { ZResourceFilter } from "@/lib/schema";
+import Folder from "@/components/icons/folder";
+import File from "@/components/icons/file";
 
 export default function FormSelector() {
     const [ openFolderForm, setOpenFolderForm ] = useState(false);
