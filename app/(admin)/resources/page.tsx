@@ -1,7 +1,8 @@
 import DataContainer from "@/components/admin/resources/data-container";
 import Filter from "@/components/admin/resources/filter";
-import FormSelector from "@/components/admin/resources/form-selector";
 import { FolderCrumbs } from "@/components/admin/resources/folder-crumbs";
+import NewFileButton from "@/components/admin/resources/new-file-button";
+import NewFolderButton from "@/components/admin/resources/new-folder-button";
 
 export default function Page() {
     
@@ -13,7 +14,8 @@ export default function Page() {
                     <FolderCrumbs />
                 </div>
                 <div id="action-buttons">
-                    <FormSelector />
+                    <NewFileButton />
+                    <NewFolderButton />
                 </div>
             </section>
             <Filter />

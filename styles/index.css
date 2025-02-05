@@ -244,7 +244,7 @@
 	}
 	.dialog {
 		&.overlay {
-			@apply fixed inset-0 z-50 bg-black/30;
+			@apply fixed inset-0 z-50 bg-primary-950/60 backdrop-blur-sm;
 
 			&[data-state=open] {
 				@apply animate-in fade-in-0;
@@ -255,7 +255,7 @@
 		}
 
 		&.content {
-			@apply overflow-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-primary p-4 shadow-lg duration-200 sm:rounded-lg;
+			@apply overflow-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border shadow-sm bg-primary p-4 duration-200 sm:rounded-lg;
 
 			&[data-state=open] {
 				@apply animate-in fade-in-0 zoom-in-95 slide-in-from-left-1/2 slide-in-from-top-[48%];

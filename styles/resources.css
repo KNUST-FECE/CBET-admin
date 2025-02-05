@@ -16,11 +16,28 @@
 		}
 
 		#action-buttons {
-			#resource-form-selector {
-				@apply flex items-center space-x-2 p-2 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-lg text-secondary-50 focus:outline-secondary-300;
+			@apply flex space-x-2 items-center;
 
-				svg {
-					@apply size-4 stroke-2;
+			svg {
+				@apply size-5;
+			}
+			#new-folder-trigger{
+				@apply flex items-center space-x-2 px-2 h-8 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-md text-primary focus:outline-secondary-300;
+			}
+			#new-file-button-container {
+				@apply flex items-center;
+
+				#file-input-trigger {
+					@apply px-2 h-8 text-xs font-semibold flex items-center rounded-l-md bg-secondary-50 cursor-pointer text-primary-700 hover:bg-secondary-200;
+					@apply [&>span]:ml-2;
+				}
+				#upload-status-trigger {
+					@apply relative px-2 h-8 text-xs font-semibold bg-secondary-700 text-secondary-50 rounded-r-md hover:bg-secondary-800 disabled:opacity-80;
+					@apply [&>svg]:size-4;
+
+					#total-active-uploads {
+						@apply absolute -top-3 -right-1/2 -translate-x-1/3 h-6 px-2 rounded-full overflow-hidden text-sm font-semibold bg-secondary-50 text-secondary-800 flex-center
+					}
 				}
 			}
 		}
@@ -124,114 +141,43 @@
 	}
 
 	.dialog {
-		&#new-folder-form, &#new-file-form {
-			@apply w-full max-w-screen-md m-4 p-0 border;
-
-			>.form-header {
-				@apply w-full p-3.5 border-b flex items-center space-x-2;
-
-				.title {
-					@apply font-semibold text-primary-700
-				}
-
-				.description {
-					@apply text-sm
-				}
-			}
-
-			>.form-footer {
-				@apply w-full p-2.5 border-t flex-center !justify-end;
-
-				button.create-btn {
-					@apply p-1.5 px-2.5 rounded-full flex-center space-x-1 text-xs font-semibold bg-secondary-600 text-secondary hover:bg-secondary-500;
-				}
-			}
-		}
 		&#new-folder-form {
+			@apply w-full max-w-screen-sm m-4 p-0 border;
+
 			>.form-body {
-				@apply w-full p-4 h-auto;
+				@apply w-full h-10 flex items-center pl-2 bg-primary-50/50;
 
 				label {
-					@apply space-y-2;
+					@apply sr-only;
+				}
+				.icon {
+					@apply size-5;
+				}
+				input {
+					@apply block flex-1 px-2 py-1 h-full text-xs focus:outline-none bg-transparent;
+				}
+				.form-buttons {
+					@apply h-full flex items-center;
 
-					p {
-						@apply text-xs font-medium text-primary-600 capitalize
+					button {
+						@apply h-full aspect-square flex-center;
+						@apply [&>svg]:size-5 [&>svg]:stroke-2 [&>svg]:text-primary-700;
 					}
-					input {
-						@apply block w-full max-w-xs px-2 py-1 rounded-md border border-primary-300 text-xs outline-secondary-500 focus:outline
+					.form-close:hover {
+						@apply [&>svg]:text-danger-500;
+						background: radial-gradient(hsl(var(--danger-300)), hsl(var(--danger-300)/0.2), transparent);
+					}
+					.form-submit:hover {
+						@apply [&>svg]:text-success-500;
+						background: radial-gradient(hsl(var(--success-300)), hsl(var(--success-300)/0.2), transparent);
 					}
 				}
 			}
-		}
-		&#new-file-form {
-			>.form-body {
-				@apply relative w-full p-4 h-96;
+			>.form-footer {
+				@apply w-full p-2 border-t flex-center !justify-start bg-primary-200/80;
 
-				.files-container {
-					@apply grid grid-flow-row grid-cols-5 gap-2;
-
-					.file-container {
-						@apply relative aspect-square rounded-lg bg-primary flex-center space-y-2 p-2 flex-col border;
-
-						.more-menu {
-							@apply absolute right-2 top-2 size-8 rounded-full flex-center border;
-							@apply [&>svg]:size-5 [&>svg]:stroke-2 [&>svg]:text-primary-600;
-						}
-						.svg-container {
-							@apply size-16 rounded-full flex-center bg-primary-100;
-							@apply [&>svg]:size-8 [&>svg]:stroke-1;
-						}
-						p {
-							@apply text-xs font-medium text-ellipsis overflow-hidden text-nowrap;
-						}
-					}
-				}
-
-				.relative-upload-message {
-					@apply w-full h-full flex-center flex-col space-y-7;
-
-					>div {
-						@apply size-16 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-500 flex-center shadow-xl shadow-secondary-200;
-
-						svg {
-							@apply size-7 text-secondary;
-						}
-					}
-					>p {
-						@apply text-xs font-medium text-primary-500
-					}
-				}
-				.absolute-upload-message {
-					@apply absolute top-0 left-0 w-full h-full bg-primary/40 backdrop-blur p-2 flex-center flex-col space-y-16;
-						
-					div#upload-svg-container {
-						@apply relative flex-center;
-
-						div.circle {
-							@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-dotted;
-
-							&.one {
-								@apply size-40 border-4 border-secondary-200;
-							}
-							&.two {
-								@apply size-32 border-4 border-secondary-400;
-							}
-							&.three {
-								@apply size-24 border-secondary-500;
-								border-width: 5px;
-							}
-						}
-						div.upload-svg {
-							@apply size-16 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-600 flex-center shadow-xl shadow-secondary-200;
-
-							svg {
-								@apply size-7 text-secondary;
-							}
-						}
-					}
-					p {
-						@apply text-xs font-medium text-primary-500
-					}
+				.title {
+					@apply sr-only;
 				}
 			}
 		}

@@ -1,8 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { useSearchParams } from "next/navigation";
 import { z } from "zod";
-import { IFolderTrace } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
@@ -128,18 +126,6 @@ export const getFileIcon = ( extension: string | undefined ) => {
         return "/assets/icons/file-image.svg";
     }
 };
-
-export const getFileMeta = (file:File) => {
-    // TODO: work on the file
-
-    return { name: "File Name", fileType: "pdf", size: "20 MB"}
-}
-
-export const saveFile = async (file:File) => {
-    // TODO: save the file
-
-    return { fileUrl: "" }
-}
 
 export function buildQuery(filters: Record<string, any>, searchKeys: string[]) {
     const query: Record<string, any> = {};

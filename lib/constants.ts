@@ -1,3 +1,4 @@
+import { formatFileSize } from "@edgestore/react/utils";
 import * as routes from "./routes";
 import { Crown, Database, Fingerprint, LayoutGrid, Newspaper, Settings, ShoppingBag, ShoppingBasket, SquareChartGantt, Store, Users } from "lucide-react";
 
@@ -61,6 +62,21 @@ export const marketLinks = [
         icon: ShoppingBasket
     },
 ]
+
+export const ERROR_MESSAGES = {
+    fileTooLarge(maxSize: number) {
+        return `The file is too large. Max size is ${formatFileSize(maxSize)}.`;
+    },
+    fileInvalidType() {
+        return 'Invalid file type.';
+    },
+    tooManyFiles(maxFiles: number) {
+        return `You can only add ${maxFiles} file(s).`;
+    },
+    fileNotSupported() {
+        return 'The file is not supported.';
+    },
+};
 
 export const departments = ["computer", "biomedical", "electrical", "telecom"];
 
