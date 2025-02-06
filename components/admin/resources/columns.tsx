@@ -25,7 +25,7 @@ export const columns: ColumnDef<IResource>[] = [
     {
         id : "name",
         header: () => <TableHeader value="name" />,
-        cell: ({row: { original:o }}) => (<NameCell value={o.name} id={o.id} type={o.type} isEmpty={!o.folderCount} />),
+        cell: ({row: { original:o }}) => (<NameCell value={o.name} id={o.id} type={o.type} isEmpty={o.folderCount === 0 && o.fileCount === 0} />),
         meta: {
             headClass: "name-col name-th",
             cellClass: "name-col name-td",

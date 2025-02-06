@@ -126,9 +126,85 @@
 
 	/* DIALOGS AND POPUPS */
 	.drop-menu {
-		&#resource-form-selector-content {
-			svg {
-				@apply size-5;
+		&#uploader-status-content {
+			@apply w-72 max-h-80 overflow-y-auto space-y-2;
+
+			.item {
+				@apply isolate flex w-full flex-col justify-center rounded-md p-2 hover:bg-primary-50;
+
+				.above-section {
+					@apply w-full flex items-center justify-start gap-2;
+
+					.icon-svg {
+						@apply shrink-0 size-5;
+					}
+					.info-container {
+						@apply min-w-0 flex-1 text-xs;
+
+						p {
+							@apply overflow-hidden overflow-ellipsis whitespace-nowrap text-primary-800 font-medium;
+						}
+						span {
+							@apply text-xs text-primary-500;
+						}
+					}
+					.actions-container {
+						@apply flex w-8 aspect-square flex-center text-xs;
+
+						.remove-btn {
+							@apply rounded-sm h-full w-full flex-center p-1 transition-colors duration-200;
+							background: radial-gradient(hsl(var(--secondary-300)), transparent, transparent);
+							
+							&:hover {
+								background: radial-gradient(hsl(var(--secondary-300)), hsl(var(--secondary-300)/0.3), transparent);
+							}
+							svg {
+								@apply shrink-0 size-5 text-secondary-500;
+							}
+						}
+						.error-svg-container {
+							@apply h-full w-full flex-center;
+							background: radial-gradient(hsl(var(--danger-300)), transparent, transparent);
+							
+							svg {
+								@apply size-5 shrink-0 text-danger-500;
+							}
+						}
+						.abort-btn {
+							@apply size-full rounded-sm flex-center transition-colors duration-200;
+							
+							&:hover {
+								background: radial-gradient(hsl(var(--primary-300)), hsl(var(--primary-300)/0.3), transparent);
+							}
+							.abort-svg {
+								@apply size-6 shrink-0 text-primary-500;
+							}
+						}
+						.complete-svg-container {
+							@apply size-full flex-center;
+							background: radial-gradient(hsl(var(--success-300)), transparent, transparent);
+							
+							svg {
+								@apply size-5 shrink-0 text-success-500;
+							}
+						}
+					}
+				}
+
+				.below-section {
+					@apply w-full flex items-center space-x-2;
+
+					.progress-container {
+						@apply h-1 flex-1 shrink-0 overflow-clip rounded-full bg-secondary-100;
+	
+						.progress-bar {
+							@apply h-full bg-secondary-500 transition-all duration-300 ease-in-out
+						}
+					}
+					p {
+						@apply font-medium;
+					}
+				}
 			}
 		}
 		&#folder-crumbs-dropmenu {

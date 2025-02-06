@@ -10,9 +10,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Check, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 export default function NewFolderButton() {
+    const [open, setOpen] = useState(false);
     const { data: session } = useSession();
     const searchParams = useSearchParams();
     const filter = getFilterObject(searchParams, ZResourceFilter);
@@ -41,10 +43,17 @@ export default function NewFolderButton() {
         }
 
         addResource({resource: [folderObject]});
+        setOpen(false);
     }
 
     return (
-        <Dialog onOpenChange={() => reset(defaultValues)}>
+        <Dialog 
+            open={open}
+            onOpenChange={(open) => {
+                setOpen(open);
+                reset(defaultValues);
+            }}
+        >
                 <DialogTrigger asChild>
                     <button type="button" id="new-folder-trigger">
                         <Folder />
