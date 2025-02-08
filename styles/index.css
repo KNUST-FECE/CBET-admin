@@ -113,7 +113,7 @@
 
 @layer base {
 	* {
-		@apply focus:outline-secondary-500 focus:outline-1;
+		@apply focus:outline-secondary-500 focus:outline-1 border-primary-200;
 	}
 
 	html {
@@ -775,7 +775,7 @@
 		@apply table-auto w-full;
 
 		th, td {
-			@apply w-0 border border-primary-300;
+			@apply w-0 border border-primary-200;
 		}
 		tr th, tr td{
 			@apply first-of-type:border-l-0 last-of-type:border-r-0
