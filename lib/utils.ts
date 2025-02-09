@@ -98,13 +98,16 @@ export const convertFileSize = (sizeInBytes: number, digits?: number) => {
     }
 };
 
-export const getFileType = (fileName: string) => {
-    const type = fileName.split(".").pop()?.toLowerCase();
+export const getFileDetails = (fileName: string) => {
+    const list = fileName.split(".");
+    const name = list[0];
+    const type = list.pop()?.toLowerCase() ?? "file";
 
-    if (!type) 
-        return "file";
+    //TODO: split the filetype rather to get the real type (image/Png) split by "/" the pick the png
+    //TODO: means pass (File)file.type to the function and also file.name and pick them and pass them as an object
 
-    return type;
+
+    return {name, type};
 };
   
 export const getFileIcon = ( extension: string | undefined ) => {

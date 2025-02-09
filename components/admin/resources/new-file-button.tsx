@@ -11,7 +11,7 @@ import { useSession } from 'next-auth/react';
 import { useAddResource, useGetFolderTrace } from '@/lib/query-hooks/resources';
 import { ZResourceFilter } from '@/lib/schema';
 import { useSearchParams } from 'next/navigation';
-import { getFilterObject } from '@/lib/utils';
+import { getFileDetails, getFilterObject } from '@/lib/utils';
 import { IResource } from '@/lib/types';
 import { formatFileSize } from '@edgestore/react/utils';
 
@@ -77,10 +77,11 @@ export default function NewFileButton() {
                                 }
                             },
                         });
+                        const {name, type} = getFileDetails(addedFileState.file.name)
                         const fileObject: Omit<IResource, "updatedAt" | "createdAt" | "id"> = {
-                            name: addedFileState.file.name,
+                            name,
                             type: "file",
-                            fileType: addedFileState.file.type,
+                            fileType: type,
                             size: formatFileSize(res.size),
                             fileUrl: res.url,
                             creatorID,
