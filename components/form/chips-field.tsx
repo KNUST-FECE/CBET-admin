@@ -2,6 +2,7 @@ import { ArchiveX, Check} from "lucide-react";
 import { DropMenu, DropMenuContent, DropMenuTrigger } from "../ui/dropdown-menu";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { useState } from "react";
+import { toCamelCase } from "@/lib/utils";
 
 type Props = {
     fieldKey: string,
@@ -9,15 +10,15 @@ type Props = {
 }
 
 export default function ChipsField(props:Props) {
-    const { register, watch, setValue } = useFormContext();
-    const selectedValues: string[] = watch(props.fieldKey) || [];
-    const [search, setSearch] = useState("");
+    const { watch, setValue } = useFormContext();
+    const fieldKey = toCamelCase(props.fieldKey);
+    const selectedValues: string[] = watch(fieldKey) || [];
 
     const toggleValue = (option: string) => {
         const newValues = selectedValues.includes(option)
             ? selectedValues.filter(val => val !== option) // Remove if already selected
             : [...selectedValues, option]; // Add if not selected
-        setValue(props.fieldKey, newValues);
+        setValue(fieldKey, newValues);
     };
 
     return (

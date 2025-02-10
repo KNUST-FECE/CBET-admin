@@ -7,6 +7,7 @@ type Props = {
 
 export default function SearchField(props:Props) {
     const { register } = useFormContext();
+
     return (
         <DropMenu>
             <DropMenuTrigger className="drop-menu search-field-trigger" type="button">

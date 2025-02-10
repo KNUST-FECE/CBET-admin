@@ -534,11 +534,11 @@
 					.outside {
 						@apply text-primary-700 opacity-50 aria-selected:bg-secondary-600/50 aria-selected:text-primary-700 aria-selected:opacity-30;
 					}
-					.day-selected {
-						@apply [&>button]:bg-secondary-600 [&>button]:text-primary [&>button]:hover:bg-secondary-500 [&>button]:hover:text-primary;
-					}
 					.day-today {
 						@apply [&>button]:bg-secondary-100 [&>button]:text-primary-700;
+					}
+					.day-selected {
+						@apply [&>button]:bg-secondary-600 [&>button]:text-primary [&>button]:hover:bg-secondary-500 [&>button]:hover:text-primary;
 					}
 					.day-disabled {
 						@apply text-primary-500 opacity-50;
@@ -586,7 +586,11 @@
 
 @layer components {
 	#run-filter-button {
-		@apply relative p-1 px-2 rounded-full flex-center space-x-1 border text-primary-600 text-xs font-semibold hover:bg-primary-50;
+		@apply relative p-1 px-2 rounded-full flex-center space-x-1 text-secondary-50 text-xs font-semibold bg-secondary-600 hover:bg-secondary-700;
+
+		&:disabled {
+			@apply hover:bg-secondary-600 opacity-50;
+		}
 
 		svg {
 			@apply size-4 stroke-2;
@@ -594,7 +598,7 @@
 	}
 	.drop-menu {
 		&.search-field-trigger, &.digit-range-field-trigger, &.chips-field-trigger, &.date-range-field-trigger, &.sort-field-trigger {
-			@apply relative p-1 px-2 rounded-full flex-center space-x-1 border text-primary-600 text-xs font-semibold hover:bg-primary-50 select-none;
+			@apply relative p-1 px-2 rounded-full flex-center space-x-1 border text-primary-600 text-xs font-semibold hover:bg-primary-50 select-none whitespace-nowrap shrink-0;
 	
 			svg {
 				@apply size-4 stroke-2;
@@ -633,7 +637,7 @@
 					@apply border-b block;
 
 					input {
-						@apply w-full h-8 px-2 text-sm bg-transparent focus:outline-0 placeholder:text-xs;
+						@apply w-full h-8 px-2 text-xs bg-transparent focus:outline-0 placeholder:text-xs;
 					}
 				}
 			}

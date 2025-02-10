@@ -7,7 +7,21 @@ type Props = {
 }
 
 export default function DigitRangeField(props:Props) {
-    const {} = useFormContext();
+    const {register} = useFormContext();
+    const inputData = [
+        {
+            id: `${props.fieldKey}-min`,
+            step: 10,
+            placeholder: "min: 0",
+            key: `${props.fieldKey}.min`
+        },
+        {
+            id: `${props.fieldKey}-max`,
+            step: 10,
+            placeholder: "max: 9999",
+            key: `${props.fieldKey}.max`
+        },
+    ]
 
     return (
         <DropMenu>
@@ -22,12 +36,11 @@ export default function DigitRangeField(props:Props) {
                     <div className="svg-container">
                         <ArrowDownUp />
                     </div>
-                    <label htmlFor={`${props.fieldKey}-min`}>
-                        <input type="number" name={`${props.fieldKey} min`} id={`${props.fieldKey}-min`} step={10} placeholder="min: 0" />
-                    </label>
-                    <label htmlFor={`${props.fieldKey}-max`}>
-                        <input type="number" name={`${props.fieldKey} max`} id={`${props.fieldKey}-max`} step={10} placeholder="max: 9999" />
-                    </label>
+                    {inputData.map(item => (
+                        <label key={item.id} htmlFor={item.id}>
+                            <input type="number" id={item.id} step={item.step} placeholder={item.placeholder} {...register(item.key)} />
+                        </label>
+                    ))}
                 </div>
             </DropMenuContent>
         </DropMenu>

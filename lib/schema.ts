@@ -1,8 +1,8 @@
 import z from "zod";
 
 const ZMinMax = z.object({
-    min: z.string(),
-    max: z.string()
+    min: z.string().nullish(),
+    max: z.string().nullish()
 })
 
 export const ZLogin = z.object({

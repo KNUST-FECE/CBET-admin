@@ -32,24 +32,21 @@ export function getFilterString<T extends Record<string, any>>(filter: T): strin
     const params: Record<string, string> = {};
 
     Object.entries(filter).forEach(([key, value]) => {
-        if (value === null || value === undefined) {
-            // Skip null or undefined values
+        if (value === null || value === undefined || value === '' || value === 0) {
             return;
         }
         if (typeof value === "string" || typeof value === "number") {
-            // Directly add primitive types
             params[key] = value.toString();
-        } else if (Array.isArray(value)) {
-            // Join array values with commas
+        } else if (Array.isArray(value) && value.length !== 0) {
             params[key] = value.join(",");
         } else if (typeof value === "object" && "min" in value && "max" in value) {
-            // Handle MinMax object (e.g., { min: "10", max: "100" })
+            if(!value.min && !value.max) return;
             params[key] = `min:${value.min},max:${value.max}`;
         } else if (key === "sort" && typeof value === "object") {
             // Handle sort object (e.g., { name: true, email: false })
             const sortKeys = Object.entries(value)
-                .filter(([, sortValue]) => sortValue === true) // Only include true values
-                .map(([sortKey]) => sortKey)
+                .filter(([, sortValue]) => sortValue !== null) // Only include true values
+                .map(([sortKey, sortValue]) => `${sortKey}:${sortValue? "asc":"dsc"}`)
                 .join(",");
             if (sortKeys) {
                 params[key] = sortKeys;
@@ -66,7 +63,15 @@ export function getFilterObject<T>(searchParams: URLSearchParams, schema: z.ZodT
     searchParams.forEach((value, key) => {
         if (value.includes(":")) {
             const nested = Object.fromEntries(
-                value.split(",").map((pair) => pair.split(":") as [string, string])
+                value.split(",").map((pair) => {
+                    let keyPair = pair.split(":") as [string, string|boolean];
+                    if(key === "sort") {
+                        keyPair[1] === "asc" ? 
+                            keyPair[1] = true : 
+                            keyPair[1] = false
+                    }
+                    return keyPair;
+                })
             );
             filterObject[key] = nested;
         }
@@ -79,7 +84,6 @@ export function getFilterObject<T>(searchParams: URLSearchParams, schema: z.ZodT
         }
     });
 
-    // Validate and return the parsed object
     return schema.parse(filterObject) as T;
 }
 
@@ -109,6 +113,16 @@ export const getFileDetails = (fileName: string) => {
 
     return {name, type};
 };
+
+export const toCamelCase = (sentence: string): string => {
+    return sentence
+    .toLowerCase()
+    .split(/[\s_-]+/)
+    .map((word, index) =>
+        index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join('');
+}
   
 export const getFileIcon = ( extension: string | undefined ) => {
     switch (extension) {
