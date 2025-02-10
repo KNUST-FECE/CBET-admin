@@ -46,7 +46,6 @@ export default function Filter() {
                         <ChipsField fieldKey="type" fieldOptions={RESOURCES_TYPE} />
                         <ChipsField fieldKey="file type" fieldOptions={RESOURECS_FILE_TYPE} />
                         <ChipsField fieldKey="status" fieldOptions={RESOURCES_STATUS} />
-                        <DigitRangeField fieldKey="size" />
                         <DateRangeField fieldKey="created at" />
                         <DateRangeField fieldKey="updated at" />
                         <SortField fieldKeys={RESOURCES_SORT_KEYS} />

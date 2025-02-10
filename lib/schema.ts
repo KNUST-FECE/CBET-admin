@@ -65,13 +65,11 @@ export const ZResourceFilter = z.object({
     type: z.array(z.string()).optional(),
     fileType: z.array(z.string()).optional(),
     status: z.array(z.string()).optional(),
-    size: ZMinMax.optional(),
     createdAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
         name: z.boolean().nullable(),
         fileType: z.boolean().nullable(),
-        size: z.boolean().nullable(),
         status: z.boolean().nullable(),
         createdAt: z.boolean().nullable(),
         updatedAt: z.boolean().nullable(),
