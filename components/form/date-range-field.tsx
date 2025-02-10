@@ -46,7 +46,7 @@ export default function DateRangeField(props:Props) {
                                 { min: selected.from?.toISOString(), max: selected.to?.toISOString()} :
                                 undefined;
 
-                            setValue(fieldKey, data);
+                            setValue(fieldKey, data, {shouldDirty: true});
                         }}
                     />
                 </div>

@@ -38,14 +38,14 @@ export function getFilterString<T extends Record<string, any>>(filter: T): strin
         if (typeof value === "string" || typeof value === "number") {
             params[key] = value.toString();
         } else if (Array.isArray(value) && value.length !== 0) {
-            params[key] = value.join(",");
+            params[key] = "l;" + value.join(",");
         } else if (typeof value === "object" && "min" in value && "max" in value) {
             if(!value.min && !value.max) return;
             params[key] = `min:${value.min},max:${value.max}`;
         } else if (key === "sort" && typeof value === "object") {
             // Handle sort object (e.g., { name: true, email: false })
             const sortKeys = Object.entries(value)
-                .filter(([, sortValue]) => sortValue !== null) // Only include true values
+                .filter(([sortKey, sortValue]) => sortValue !== undefined && sortKey !== "name")
                 .map(([sortKey, sortValue]) => `${sortKey}:${sortValue? "asc":"dsc"}`)
                 .join(",");
             if (sortKeys) {
@@ -64,7 +64,7 @@ export function getFilterObject<T>(searchParams: URLSearchParams, schema: z.ZodT
         if (value.includes(":")) {
             const nested = Object.fromEntries(
                 value.split(",").map((pair) => {
-                    let keyPair = pair.split(":") as [string, string|boolean];
+                    let keyPair = pair.split(/:(.+)/,2) as [string, string|boolean];
                     if(key === "sort") {
                         keyPair[1] === "asc" ? 
                             keyPair[1] = true : 
@@ -75,15 +75,16 @@ export function getFilterObject<T>(searchParams: URLSearchParams, schema: z.ZodT
             );
             filterObject[key] = nested;
         }
-        else if (value.includes(",")) {
-            filterObject[key] = value.split(",");
+        else if (value.includes(";")) {
+            //value has the form key = l;data1,data2
+            filterObject[key] = value.split(";")[1].split(",");
         } 
         else {
             const numberValue = Number(value);
             filterObject[key] = isNaN(numberValue) ? value : numberValue;
         }
     });
-
+    
     return schema.parse(filterObject) as T;
 }
 
@@ -173,7 +174,7 @@ export function buildQuery(filters: Record<string, any>, searchKeys: string[]) {
 
     if (filters.sort) {
         for (const [key, value] of Object.entries(filters.sort)) {
-            if (value === null) continue;
+            if (value === undefined) continue;
             value === true ? sort[key] = 1 : sort[key] = -1;
         }
     }

@@ -18,7 +18,7 @@ export default function ChipsField(props:Props) {
         const newValues = selectedValues.includes(option)
             ? selectedValues.filter(val => val !== option) // Remove if already selected
             : [...selectedValues, option]; // Add if not selected
-        setValue(fieldKey, newValues);
+        setValue(fieldKey, newValues, {shouldDirty: true});
     };
 
     return (

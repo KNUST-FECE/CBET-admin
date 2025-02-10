@@ -2,7 +2,6 @@
 
 import ChipsField from "@/components/form/chips-field";
 import DateRangeField from "@/components/form/date-range-field";
-import DigitRangeField from "@/components/form/digit-range-field";
 import RunFilterButton from "@/components/form/run-filter-button";
 import SearchField from "@/components/form/search-field";
 import SortField from "@/components/form/sort-field";
@@ -20,21 +19,39 @@ export default function Filter() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const filter = getFilterObject(searchParams, ZResourceFilter);
+    const defaultValues = {
+        folder: undefined,
+        search: undefined,
+        limit: undefined,
+        page: undefined,
+        type: [],
+        fileType: [],
+        status: [],
+        createdAt: undefined,
+        updatedAt: undefined,
+        sort: {
+            name: true,
+            fileType: undefined,
+            status: undefined,
+            createdAt: undefined,
+            updatedAt: undefined
+        },
+        ...filter
+    }
     const form = useForm<IResourceFilter>({
         resolver: zodResolver(ZResourceFilter),
-        defaultValues: filter
+        defaultValues
     });
 
     const { handleSubmit, reset } = form;
 
     const onSubmit = (data: IResourceFilter) => {
-        console.log(data);
         const filterString = getFilterString(data);
         router.push(`${_resources}?${filterString}`);
     }
 
     useEffect(() => {
-        reset(filter);
+        reset(defaultValues);
     }, [searchParams.toString()]); 
 
     return (

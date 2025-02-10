@@ -12,18 +12,18 @@ export default function SortField(props:Props) {
     const { watch, setValue } = useFormContext();
 
     const currentSort = watch("sort") || undefined;
-    const activeField = currentSort && Object.keys(currentSort).find(key => currentSort[key] !== null);
+    const activeField = currentSort && Object.keys(currentSort).find(key => currentSort[key] !== undefined);
     const sortOrder = activeField ? currentSort[activeField] === true ? SORT_PREFERENCE[0] : SORT_PREFERENCE[1] : SORT_PREFERENCE[0];
 
     const handleFieldSelection = (selectedField: string) => {
         const updatedSort = props.fieldKeys.reduce((acc, key) => {
             const fieldKey = toCamelCase(key);
-            acc[fieldKey] = key === selectedField ? (sortOrder === SORT_PREFERENCE[0] ? true : false) : null;
+            acc[fieldKey] = key === selectedField ? (sortOrder === SORT_PREFERENCE[0] ? true : false) : undefined;
             
             return acc;
-        }, {} as Record<string, boolean | null>);
+        }, {} as Record<string, boolean | undefined>);
 
-        setValue("sort", updatedSort);
+        setValue("sort", updatedSort, {shouldDirty: true});
     };
 
     const handleSortPreference = (preference: string) => {
@@ -31,11 +31,11 @@ export default function SortField(props:Props) {
 
         const updatedSort = props.fieldKeys.reduce((acc, key) => {
             const fieldKey = toCamelCase(key);
-            acc[fieldKey] = fieldKey === activeField ? (preference === SORT_PREFERENCE[0]) : null;
+            acc[fieldKey] = fieldKey === activeField ? (preference === SORT_PREFERENCE[0]) : undefined;
             return acc;
-        }, {} as Record<string, boolean | null>);
+        }, {} as Record<string, boolean | undefined>);
 
-        setValue("sort", updatedSort);
+        setValue("sort", updatedSort, {shouldDirty: true});
     };
 
     return (

@@ -68,11 +68,11 @@ export const ZResourceFilter = z.object({
     createdAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
-        name: z.boolean().nullable(),
-        fileType: z.boolean().nullable(),
-        status: z.boolean().nullable(),
-        createdAt: z.boolean().nullable(),
-        updatedAt: z.boolean().nullable(),
+        name: z.boolean().optional(),
+        fileType: z.boolean().optional(),
+        status: z.boolean().optional(),
+        createdAt: z.boolean().optional(),
+        updatedAt: z.boolean().optional(),
     }).optional(),
 });
 
@@ -85,12 +85,12 @@ export const ZBlogFilter = z.object({
     createdAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
-        name: z.boolean(),
-        category: z.boolean(),
-        likes: z.boolean(),
-        status: z.boolean(),
-        createdAt: z.boolean(),
-        updatedAt: z.boolean(),
+        name: z.boolean().optional(),
+        category: z.boolean().optional(),
+        likes: z.boolean().optional(),
+        status: z.boolean().optional(),
+        createdAt: z.boolean().optional(),
+        updatedAt: z.boolean().optional(),
     }).optional(),
 });
 
@@ -107,14 +107,14 @@ export const ZProductFilter = z.object({
     createdAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
-        name: z.boolean(),
-        price: z.boolean(),
-        stock: z.boolean(),
-        status: z.boolean(),
-        approval: z.boolean(),
-        category: z.boolean(),
-        createdAt: z.boolean(),
-        updatedAt: z.boolean(),
+        name: z.boolean().optional(),
+        price: z.boolean().optional(),
+        stock: z.boolean().optional(),
+        status: z.boolean().optional(),
+        approval: z.boolean().optional(),
+        category: z.boolean().optional(),
+        createdAt: z.boolean().optional(),
+        updatedAt: z.boolean().optional(),
     }).optional(),
 });
 
@@ -126,11 +126,11 @@ export const ZShopFilter = z.object({
     createdAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
-        name: z.boolean(),
-        email: z.boolean(),
-        productCount: z.boolean(),
-        createdAt: z.boolean(),
-        updatedAt: z.boolean(),
+        name: z.boolean().optional(),
+        email: z.boolean().optional(),
+        productCount: z.boolean().optional(),
+        createdAt: z.boolean().optional(),
+        updatedAt: z.boolean().optional(),
     }).optional(),
 });
 
@@ -144,13 +144,13 @@ export const ZReportFilter = z.object({
     createdAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
-        user: z.boolean(),
-        summary: z.boolean(),
-        category: z.boolean(),
-        type: z.boolean(),
-        status: z.boolean(),
-        createdAt: z.boolean(),
-        updatedAt: z.boolean(),
+        user: z.boolean().optional(),
+        summary: z.boolean().optional(),
+        category: z.boolean().optional(),
+        type: z.boolean().optional(),
+        status: z.boolean().optional(),
+        createdAt: z.boolean().optional(),
+        updatedAt: z.boolean().optional(),
     }).optional(),
 });
 
@@ -163,13 +163,13 @@ export const ZUserFilter = z.object({
     createdAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
-        user: z.boolean(),
-        studentNo: z.boolean(),
-        indexNo: z.boolean(),
-        department: z.boolean(),
-        level: z.boolean(),
-        createdAt: z.boolean(),
-        updatedAt: z.boolean(),
+        user: z.boolean().optional(),
+        studentNo: z.boolean().optional(),
+        indexNo: z.boolean().optional(),
+        department: z.boolean().optional(),
+        level: z.boolean().optional(),
+        createdAt: z.boolean().optional(),
+        updatedAt: z.boolean().optional(),
     }).optional(),
 });
 
@@ -182,10 +182,10 @@ export const ZMemberFilter = z.object({
     createdAt: ZMinMax.optional(),
     updatedAt: ZMinMax.optional(),
     sort: z.object({
-        name: z.boolean(),
-        email: z.boolean(),
-        role: z.boolean(),
-        createdAt: z.boolean(),
-        updatedAt: z.boolean(),
+        name: z.boolean().optional(),
+        email: z.boolean().optional(),
+        role: z.boolean().optional(),
+        createdAt: z.boolean().optional(),
+        updatedAt: z.boolean().optional(),
     }).optional(),
 });
