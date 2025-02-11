@@ -45,7 +45,7 @@ export function getFilterString<T extends Record<string, any>>(filter: T): strin
         } else if (key === "sort" && typeof value === "object") {
             // Handle sort object (e.g., { name: true, email: false })
             const sortKeys = Object.entries(value)
-                .filter(([sortKey, sortValue]) => sortValue !== undefined && sortKey !== "name")
+                .filter(([sortKey, sortValue]) => sortValue !== undefined && (sortKey !== "name" || sortValue === false))
                 .map(([sortKey, sortValue]) => `${sortKey}:${sortValue? "asc":"dsc"}`)
                 .join(",");
             if (sortKeys) {

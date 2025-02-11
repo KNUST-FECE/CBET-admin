@@ -32,15 +32,10 @@
 
 		#filter-section {
 			form {
-				@apply w-full py-2 px-5 flex-center !justify-between border-t;
-	
-				#filter-chips {
-					#no-filters {
-						@apply text-xs font-medium text-primary-600;
-					}
-				}
+				@apply w-full py-2 px-5 flex-center !justify-end border-t;
+
 				#filter-buttons {
-					@apply flex items-center space-x-2;
+					@apply flex items-center gap-2 flex-wrap;
 				}
 			}
 		}
@@ -115,15 +110,10 @@
 
 		#filter-section {
 			form {
-				@apply w-full py-2 px-5 flex-center !justify-between border-t;
-	
-				#filter-chips {
-					#no-filters {
-						@apply text-xs font-medium text-primary-600;
-					}
-				}
+				@apply w-full py-2 px-5 flex-center !justify-end border-t;
+
 				#filter-buttons {
-					@apply flex items-center space-x-2;
+					@apply flex items-center gap-2 flex-wrap;
 				}
 			}
 		}
