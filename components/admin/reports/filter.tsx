@@ -65,7 +65,7 @@ export default function Filter() {
                         <ChipsField fieldKey="type" fieldOptions={REPORTS_TYPE} />
                         <ChipsField fieldKey="status" fieldOptions={REPORTS_STATUS} />
                         <DateRangeField fieldKey="created at" />
-                        <DateRangeField fieldKey="modified at" />
+                        <DateRangeField fieldKey="updated at" />
                         <SortField fieldKeys={REPORTS_SORT_KEYS} />
                         <RunFilterButton />
                     </div>

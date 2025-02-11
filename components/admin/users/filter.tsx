@@ -63,7 +63,7 @@ export default function Filter() {
                         <ChipsField fieldKey="department" fieldOptions={USERS_DEPARTMENT} />
                         <ChipsField fieldKey="level" fieldOptions={USERS_LEVEL} />
                         <DateRangeField fieldKey="created at" />
-                        <DateRangeField fieldKey="modified at" />
+                        <DateRangeField fieldKey="updated at" />
                         <SortField fieldKeys={USERS_SORT_KEYS} />
                         <RunFilterButton />
                     </div>

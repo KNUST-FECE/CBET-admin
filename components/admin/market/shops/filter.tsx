@@ -59,7 +59,7 @@ export default function Filter() {
                         <SearchField fieldKey="search" />
                         <DigitRangeField fieldKey="product count" />
                         <DateRangeField fieldKey="created at" />
-                        <DateRangeField fieldKey="modified at" />
+                        <DateRangeField fieldKey="updated at" />
                         <SortField fieldKeys={SHOPS_SORT_KEYS} />
                         <RunFilterButton />
                     </div>

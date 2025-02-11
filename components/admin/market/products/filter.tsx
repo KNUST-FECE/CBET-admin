@@ -72,7 +72,7 @@ export default function Filter() {
                         <DigitRangeField fieldKey="price" />
                         <DigitRangeField fieldKey="stock" />
                         <DateRangeField fieldKey="created at" />
-                        <DateRangeField fieldKey="modified at" />
+                        <DateRangeField fieldKey="updated at" />
                         <SortField fieldKeys={PRODUCTS_SORT_KEY} />
                         <RunFilterButton />
                     </div>

@@ -61,7 +61,7 @@ export default function Filter() {
                         <ChipsField fieldKey="role" fieldOptions={MEMBERS_ROLE} />
                         <ChipsField fieldKey="status" fieldOptions={MEMBERS_STATUS} />
                         <DateRangeField fieldKey="created at" />
-                        <DateRangeField fieldKey="modified at" />
+                        <DateRangeField fieldKey="updated at" />
                         <SortField fieldKeys={MEMBERS_SORT_KEYS} />
                         <RunFilterButton />
                     </div>

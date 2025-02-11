@@ -62,7 +62,7 @@ export default function Filter() {
                         <ChipsField fieldKey="category" fieldOptions={BLOGS_CATEGORY} />
                         <ChipsField fieldKey="status" fieldOptions={BLOGS_STATUS} />
                         <DateRangeField fieldKey="created at" />
-                        <DateRangeField fieldKey="modified at" />
+                        <DateRangeField fieldKey="updated at" />
                         <SortField fieldKeys={BLOGS_SORT_KEYS} />
                         <RunFilterButton />
                     </div>
