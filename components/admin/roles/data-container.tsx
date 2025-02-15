@@ -23,7 +23,7 @@ export default function DataContainer() {
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
             </section>
-            <section id="footer-section">
+            <section id="table-footer-section">
                 <div id="data-info">
                     <p id="page-number">
                         page 

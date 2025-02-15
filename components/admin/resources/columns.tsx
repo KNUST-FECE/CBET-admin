@@ -85,6 +85,13 @@ export const columns: ColumnDef<IResource>[] = [
             cellClass: "modified-col modified-td",
         }
     },
+    {
+        id: "leftover",
+        meta: {
+            headClass: "leftover-col leftover-th",
+            cellClass: "leftover-col leftover-td",
+        }
+    },
 ]
 
 function TableHeader({value}:{value: string}) {

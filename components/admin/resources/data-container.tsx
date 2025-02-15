@@ -86,7 +86,7 @@ export default function DataContainer() {
                     actions={selectActions}
                 />
             </section>
-            <section id="footer-section">
+            <section id="table-footer-section">
                 <div id="data-info">
                     <p id="page-number">
                         page 

@@ -39,28 +39,4 @@
 			}
 		}
 	}
-
-	.roles-container>#footer-section {
-		@apply w-full px-5 py-2 flex-center !justify-between border-t;
-
-		#data-info {
-			@apply flex items-center justify-start;
-
-			#page-number {
-				@apply text-xs font-medium text-primary-600 flex gap-1;
-
-				span {
-					@apply text-primary-700 font-semibold
-				}
-			}
-		}
-
-		#data-pagination {
-			@apply flex items-center justify-end space-x-2;
-
-			button {
-				@apply p-1 px-2 rounded-full flex-center space-x-1 border text-primary-700 text-xs font-semibold hover:bg-primary-200;
-			}
-		}
-	}
 }
