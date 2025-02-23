@@ -232,5 +232,24 @@
 				}
 			}
 		}
+		&#rename-resource-form {
+			@apply w-full max-w-screen-sm m-4 p-0 border px-2;
+
+			>.form-header {
+				@apply flex;
+
+				div:first-of-type {
+					@apply flex-1
+				}
+			}
+
+			>.form-body {
+
+			}
+
+			>.form-footer {
+
+			}
+		}
 	}
 }

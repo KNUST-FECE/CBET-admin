@@ -9,7 +9,6 @@ import { useGetResources, useModifyStatus, useRemoveResource } from "@/lib/query
 import { useSearchParams } from "next/navigation";
 import { getFilterObject } from "@/lib/utils";
 import { ZResourceFilter } from "@/lib/schema";
-import { X } from "lucide-react";
 import RenameForm from "./rename-form";
 import SelectPopup from "@/components/common/select-popup";
 
@@ -108,9 +107,7 @@ export default function DataContainer() {
                 open={openRename} 
                 setOpen={setOpenRename} 
                 filter={filter}
-                type={selectedRows[0]?.original.type} 
-                id={selectedRows[0]?.original.id}
-                name={selectedRows[0]?.original.name}
+                selected={selectedRows.map(row => row.original)}
             />
         </>
     )

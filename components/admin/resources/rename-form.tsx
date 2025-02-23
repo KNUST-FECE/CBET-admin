@@ -3,7 +3,7 @@
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useModifyName } from "@/lib/query-hooks/resources";
 import { ZRenameResource } from "@/lib/schema";
-import { IRenameResource, IResourceFilter, IResourceType } from "@/lib/types";
+import { IRenameResource, IResource, IResourceFilter, IResourceType } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect } from "react";
@@ -13,20 +13,18 @@ type Props = {
     open: boolean
     setOpen: Dispatch<SetStateAction<boolean>>
     filter: IResourceFilter
-    type: IResourceType
-    id: string
-    name: string
+    selected: IResource[]
 }
 
 export default function RenameForm(props: Props) {
     const { mutate: modifyName } = useModifyName(props.filter);
 
-    const defaultValues = { name: props.name };
+    const defaultValues = { name: "" };
     const form = useForm<IRenameResource>({ resolver: zodResolver(ZRenameResource),defaultValues});
     const { handleSubmit, register, reset, formState: { isSubmitting } } = form;
 
     function onSubmit(values: IRenameResource ) {
-        modifyName({id: props.id, name: values.name});
+        modifyName({id: "", name: ""});
         props.setOpen(false);
     }
 
@@ -37,32 +35,53 @@ export default function RenameForm(props: Props) {
     }, [props.open, reset]);
 
     return (
-        <FormProvider {...form}>
-            <Dialog open={props.open} onOpenChange={props.setOpen}>
-                <DialogContent asChild id="new-folder-form">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <DialogClose className="close">
-                            <X />
-                            <span className="sr-only">Close</span>
-                        </DialogClose>
-                        <div className="form-header">
-                            <DialogTitle>rename {props.type}</DialogTitle>
-                            <DialogDescription>~ Rename {props.type} to something concise and relevant</DialogDescription>
-                        </div>
-                        <div className="form-body">
-                            <label htmlFor="folder-name">
-                                <p>{props.type} Name</p>
-                                <input id="folder-name" {...register("name")} />
-                            </label>
-                        </div>
-                        <div className="form-footer">
-                            <button className="create-btn">
-                                {!isSubmitting ? "create" : "creating"}
+        <Dialog open={props.open} onOpenChange={props.setOpen}>
+            <DialogContent asChild id="rename-resource-form">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-header">
+                        <div> {/* left side of header */}
+                            <label htmlFor="rename-all">rename all</label>
+                            <input type="text" id="rename-all"  />
+                            <button>
+                                <X />
                             </button>
                         </div>
-                    </form>
-                </DialogContent>
-            </Dialog>
-        </FormProvider>
+                        <div> {/* right side of header */}
+                            <button>save</button>
+                            <button>
+                                <X />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="form-body">
+                        <label htmlFor="folder-name">
+                            <p>This Name</p>
+                            <input id="folder-name" {...register("name")} />
+                        </label>
+                        {props.selected.map(({id, name, type}) => ( 
+                            <div key={id}>
+                                {/* make list come from react hook form array */}
+                                <div> {/* on the left */}
+                                    <label htmlFor={id}>{name}</label>
+                                    <input type="text" id={id} />
+                                    <button>
+                                        <X />
+                                    </button>
+                                </div>
+                                <div>
+                                    <button>
+                                        <X />
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="form-footer">
+                        <DialogTitle>Rename {props.selected.length} resources</DialogTitle>
+                        <DialogDescription>rename the following resources</DialogDescription>
+                    </div>
+                </form>
+            </DialogContent>
+        </Dialog>
     )
 }
