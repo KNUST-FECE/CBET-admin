@@ -69,7 +69,7 @@ export default function NewFileButton() {
                             options: {
                                 temporary: true
                             },
-                            onProgressChange: async (progress) => {
+                            onProgressChange: async (progress:any) => {
                                 updateFileProgress(addedFileState.key, progress);
                                 if (progress === 100) {
                                     await new Promise((resolve) => setTimeout(resolve, 1000));

@@ -51,7 +51,7 @@ export const { handlers, auth } = NextAuth({
 
                     if (!member) throw new InvalidLoginError();
 
-                    const isPasswordValid = await bcrypt.compare(password, member.password);
+                    const isPasswordValid = await bcrypt.compare(password, member.password); //admin@delmac
 
                     if (!isPasswordValid) throw new InvalidLoginError();
 
