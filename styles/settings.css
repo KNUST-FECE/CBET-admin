@@ -4,11 +4,53 @@
 		@apply w-full min-h-dvh flex flex-col;
 	}
 
-	.settings-container>#header-section {
-		@apply w-full p-5 pt-10 flex justify-between items-center;
+	.settings-container {
 
-		>h1 {
-			@apply text-xl font-semibold tracking-tight text-primary-800;
+		#header-section {
+			@apply w-full p-5 pt-10 flex justify-between items-center;
+	
+			>h1 {
+				@apply text-xl font-semibold tracking-tight text-primary-800;
+			}
+		}
+
+		#details-section, #password-section {
+			@apply w-full first:mb-10;
+
+			.section-head {
+				@apply w-full h-10 border-y flex items-center px-4;
+
+				h2 {
+					@apply text-sm font-semibold text-primary-700;
+				}
+			}
+			.section-form {
+				@apply p-4;
+
+				form {
+					@apply w-full space-y-5;
+
+					>div {
+						@apply space-y-2;
+
+						label {
+							@apply block text-xs font-medium capitalize;
+						}
+
+						input {
+							@apply block border
+						}
+
+						>div {
+							@apply flex space-x-2;
+						}
+
+						button {
+							@apply text-xs font-medium px-4 py-1 rounded-md bg-primary-700 hover:bg-primary-800 disabled:bg-primary-700/50 text-primary-100;
+						}
+					}
+				}
+			}
 		}
 	}
 }
