@@ -623,7 +623,7 @@
 	}
 	.drop-menu {
 		&.search-field-trigger, &.digit-range-field-trigger, &.chips-field-trigger, &.date-range-field-trigger, &.sort-field-trigger {
-			@apply relative p-1 px-2 rounded-full flex-center space-x-1 border text-primary-600 text-xs font-semibold hover:bg-primary-50 select-none whitespace-nowrap shrink-0;
+			@apply relative p-1 px-2 rounded-full flex-center space-x-1 border text-fg-300/70 text-xs font-semibold hover:bg-bg-200/25 select-none whitespace-nowrap shrink-0;
 	
 			svg {
 				@apply size-4 stroke-2;
@@ -636,7 +636,7 @@
 				@apply p-2 border-b;
 
 				h4 {
-					@apply text-xs font-semibold text-primary-600 capitalize;
+					@apply text-xs font-semibold text-fg-300/70 capitalize;
 				}
 			}
 		}
@@ -653,9 +653,9 @@
 				@apply relative w-full;
 
 				.svg-container {
-					@apply absolute bg-primary size-8 rounded-full flex-center left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2;
+					@apply absolute bg-bg-300 size-8 rounded-full flex-center left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2;
 					svg {
-						@apply size-4 stroke-1 text-primary-700;
+						@apply size-4 stroke-1 text-fg-300/80;
 					}
 				}
 				label {
@@ -674,10 +674,10 @@
 				@apply overflow-y-auto max-h-44;
 
 				label {
-					@apply flex items-center w-full h-8 border-b space-x-2 px-2 text-primary-700 hover:bg-secondary-50 capitalize cursor-pointer;
+					@apply flex items-center w-full h-8 border-b space-x-2 px-2 text-fg-300/70 hover:bg-bg-200/50 capitalize cursor-pointer;
 
 					&:has(:checked) {
-						@apply bg-secondary-50;
+						@apply bg-bg-200/50;
 						
 						.check-container>svg {
 							@apply opacity-100;
@@ -703,10 +703,10 @@
 					@apply p-4 flex-center flex-col space-y-2 border-b;
 
 					svg {
-						@apply size-6 text-primary-600 opacity-30;
+						@apply size-6 text-fg-300/60 opacity-30;
 					}
 					p {
-						@apply text-xs font-medium tracking-wide text-primary-600;
+						@apply text-xs font-medium tracking-wide text-fg-300/60;
 					}
 				}
 			}
@@ -736,10 +736,10 @@
 				@apply last:border-y;
 
 				label {
-					@apply flex items-center w-full h-8 space-x-2 px-2 text-primary-700 hover:bg-secondary-50 capitalize cursor-pointer;
+					@apply flex items-center w-full h-8 space-x-2 px-2 text-fg-300/70 hover:bg-bg-200/50 capitalize cursor-pointer;
 
 					&:has(:checked) {
-						@apply bg-secondary-50;
+						@apply bg-bg-200/50;
 
 						.check-container>svg {
 							@apply opacity-100;
