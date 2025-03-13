@@ -5,35 +5,35 @@
 	}
 
 	.home-container>#header-section {
-		@apply w-full p-5 pt-10 bg-primary-50;
+		@apply w-full p-5 pt-10 bg-bg-200/25;
 
 		>h1 {
-			@apply text-xl font-semibold tracking-tight text-primary-800
+			@apply text-xl font-semibold tracking-tight text-fg-300/80;
 		}
 	}
 
 	.home-container>#resource-section {
-		@apply w-full p-5 bg-primary-50 border-b;
+		@apply w-full p-5 bg-bg-200/25 border-b;
 
 		>div {
 			@apply w-full flex space-x-5;
 
 			.resource-stat-container {
-				@apply w-full max-w-72 rounded-xl p-4 bg-primary border border-primary-300 flex items-center space-x-2;
+				@apply w-full max-w-72 rounded-xl p-4 bg-bg-300 border flex items-center space-x-2;
 		
 				.stat-start {
-					@apply flex-center p-3 bg-secondary-50 rounded-full;
+					@apply flex-center p-3 bg-ac-100 rounded-full;
 		
 					>svg {
-						@apply size-7 text-secondary-500 stroke-2
+						@apply size-7 text-ac-200 stroke-2
 					}
 				}
 				.stat-end {
 					>a {
-						@apply capitalize text-sm font-semibold text-primary-600 hover:text-primary-500
+						@apply capitalize text-sm font-semibold text-fg-300/70 hover:text-fg-300/60
 					}
 					>p {
-						@apply text-xs font-medium text-primary-500
+						@apply text-xs font-medium text-fg-300/50
 					}
 				}
 			}
@@ -53,11 +53,11 @@
 	}
 
 	.table-section>div>.table-section-header>h2 {
-		@apply text-lg font-semibold text-primary-800
+		@apply text-lg font-semibold text-fg-300/80
 	}
 
 	.table-section>div>.table-section-header>a {
-		@apply flex items-center space-x-2 text-primary-700 py-2 px-3 rounded-full hover:bg-primary-200
+		@apply flex items-center space-x-2 text-fg-300/70 py-2 px-3 rounded-full hover:bg-fg-300/60
 	}
 
 	.table-section>div>.table-section-header>a>p {
@@ -73,11 +73,11 @@
 	}
 
 	.table-section-content>table>thead>tr>th {
-		@apply p-4 text-start text-sm font-medium text-primary-700 cursor-default
+		@apply p-4 text-start text-sm font-medium text-fg-300/70 cursor-default
 	}
 
 	.table-section-content>table>tbody>tr {
-		@apply hover:bg-primary-100 cursor-pointer text-primary-700;
+		@apply hover:bg-bg-200/50 cursor-pointer text-fg-300/70;
 
 		&:hover {
 			.blogs-icon-td, .products-icon-td {
@@ -112,7 +112,7 @@
 				@apply h-full flex gap-2 flex-wrap;
 
 				p {
-					@apply text-sm py-1 px-1.5 border border-primary-300;
+					@apply text-sm py-1 px-1.5 border;
 				}
 			}
 		}
@@ -168,7 +168,7 @@
 
 		&.products-published-td {
 			p>span {
-				@apply text-xs text-center font-medium px-2.5 py-1 rounded-full border border-primary-300;
+				@apply text-xs text-center font-medium px-2.5 py-1 rounded-full border;
 			}
 		}
 	}
@@ -178,7 +178,7 @@
 
 		&.products-approved-td {
 			p>span {
-				@apply text-xs text-center font-medium px-2.5 py-1 rounded-full border border-primary-300;
+				@apply text-xs text-center font-medium px-2.5 py-1 rounded-full border;
 			}
 		}
 	}

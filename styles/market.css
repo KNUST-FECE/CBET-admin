@@ -11,7 +11,7 @@
 			@apply flex items-center space-x-4;
 
 			>h1 {
-				@apply text-xl font-semibold tracking-tight text-primary-800;
+				@apply text-xl font-semibold tracking-tight text-fg-300/90;
 			}
 			>nav>ul {
 				@apply flex space-x-2;
@@ -20,7 +20,7 @@
 					@apply relative p-1 px-2 text-xs font-medium rounded-full border flex-center;
 
 					&[data-active="true"] {
-						@apply border-secondary-300 bg-secondary-50 text-secondary-500
+						@apply border-ac-200/70 bg-ac-100 text-ac-200;
 					}
 				}
 			}
@@ -59,17 +59,17 @@
 							@apply text-xs px-2 py-1 rounded-full flex-center space-x-1.5 tracking-wide justify-start lowercase !important;
 	
 							&[data-status=active] {
-								@apply bg-success-50 text-success-600;
+								@apply bg-ss-100 text-ss-300;
 	
 								span.indicator {
-									@apply bg-success-600
+									@apply bg-ss-300;
 								}
 							}
 							&[data-status=hidden] {
-								@apply bg-danger-50 text-danger-600;
+								@apply bg-dg-100 text-dg-300;
 	
 								span.indicator {
-									@apply bg-danger-600
+									@apply bg-dg-300;
 								}
 							}
 							span.indicator {
@@ -114,17 +114,17 @@
 							@apply text-xs px-2 py-1 rounded-full flex-center space-x-1.5 tracking-wide justify-start lowercase !important;
 	
 							&[data-status=active] {
-								@apply bg-success-50 text-success-600;
+								@apply bg-ss-100 text-ss-300;
 	
 								span.indicator {
-									@apply bg-success-600
+									@apply bg-ss-300
 								}
 							}
 							&[data-status=hidden] {
-								@apply bg-danger-50 text-danger-600;
+								@apply bg-dg-100 text-dg-300;
 	
 								span.indicator {
-									@apply bg-danger-600
+									@apply bg-dg-300
 								}
 							}
 							span.indicator {

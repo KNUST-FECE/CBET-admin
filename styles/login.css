@@ -5,7 +5,7 @@
 	}
 
 	.login-container>main {
-		@apply w-full h-dvh flex-center flex-col bg-primary
+		@apply w-full h-dvh flex-center flex-col bg-bg-300;
 	}
 
 	main>#logo-container {
@@ -13,7 +13,7 @@
 	}
 
 	#logo-container>img {
-		@apply text-secondary-500
+		@apply text-ac-200;
 	}
 
 	main>#header-container {
@@ -21,27 +21,27 @@
 	}
 
 	#header-container>h1 {
-		@apply text-lg text-primary-800 font-semibold
+		@apply text-lg text-fg-300/90 font-semibold
 	}
 
 	main>#form-container {
-		@apply w-full flex-center
+		@apply w-full flex-center;
 	}
 
 	#form-container>form {
-		@apply w-full max-w-xs space-y-4
+		@apply w-full max-w-xs space-y-4;
 	}
 
 	#form-container>form>input {
-		@apply block w-full h-10 px-2 rounded-md border border-primary-300 text-sm outline-secondary-500 focus:outline
+		@apply block w-full h-10 px-2 rounded-md border text-sm outline-ac-200 focus:outline
 	}
 
 	#form-container>form>button {
-		@apply block w-full h-10 rounded-md bg-secondary-500 text-sm text-primary-50 hover:bg-secondary-600 font-medium
+		@apply block w-full h-10 rounded-md bg-ac-200 text-sm text-fg-200/25 hover:bg-ac-200/90 font-medium;
 	}
 
 	#form-container>form>div {
-		@apply w-full flex p-2 items-center space-x-4 bg-danger-100 rounded-md text-xs text-danger-600
+		@apply w-full flex p-2 items-center space-x-4 bg-dg-100 rounded-md text-xs text-dg-300;
 	}
 
 	#form-container>form>div>svg {

@@ -11,7 +11,7 @@
 			@apply flex items-center space-x-4;
 
 			>h1 {
-				@apply text-xl font-semibold tracking-tight text-primary-800;
+				@apply text-xl font-semibold tracking-tight text-fg-300/80;
 			}
 		}
 
@@ -22,25 +22,25 @@
 				@apply size-5;
 			}
 			#new-folder-trigger{
-				@apply flex items-center space-x-2 px-2 h-8 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-md text-primary focus:outline-secondary-300;
+				@apply flex items-center space-x-2 px-2 h-8 text-xs font-semibold bg-ac-300 hover:bg-ac-300/90 rounded-md text-fg-100 focus:outline-ac-300/50;
 			}
 			#new-file-button-container {
 				@apply flex items-center;
 
 				#file-input-trigger {
-					@apply px-2 h-8 text-xs font-semibold flex items-center rounded-l-md bg-secondary-50 cursor-pointer text-primary-700 hover:bg-secondary-200;
+					@apply px-2 h-8 text-xs font-semibold flex items-center rounded-l-md bg-ac-300 cursor-pointer text-fg-100 hover:bg-ac-300/90;
 					@apply [&>span]:ml-2;
 				}
 				#upload-status-trigger {
-					@apply relative px-2 h-8 text-xs font-semibold bg-secondary-700 text-secondary-50 rounded-r-md hover:bg-secondary-800;
+					@apply relative px-2 h-8 text-xs font-semibold bg-ac-300 text-fg-100 rounded-r-md hover:bg-ac-300/90;
 					@apply [&>svg]:size-4;
 
 					&:disabled {
-						@apply hover:bg-secondary-700 opacity-50;
+						@apply hover:bg-ac-300 opacity-50;
 					}
 
 					#total-active-uploads {
-						@apply absolute -top-3 -right-1/2 -translate-x-1/3 h-6 px-2 rounded-full overflow-hidden text-sm font-semibold bg-secondary-50 text-secondary-800 flex-center
+						@apply absolute -top-3 -right-1/2 -translate-x-1/3 h-6 px-2 rounded-full overflow-hidden text-sm font-semibold bg-ac-100 text-ac-300 flex-center
 					}
 				}
 			}
@@ -77,17 +77,17 @@
 						@apply text-xs px-2 py-1 rounded-full flex-center space-x-1.5 tracking-wide justify-start lowercase !important;
 
 						&[data-status=active] {
-							@apply bg-success-50 text-success-600;
+							@apply bg-ss-100 text-ss-300;
 
 							span.indicator {
-								@apply bg-success-600
+								@apply bg-ss-300;
 							}
 						}
 						&[data-status=hidden] {
-							@apply bg-danger-50 text-danger-600;
+							@apply bg-dg-100 text-dg-300;
 
 							span.indicator {
-								@apply bg-danger-600
+								@apply bg-dg-300;
 							}
 						}
 						span.indicator {
@@ -105,7 +105,7 @@
 			@apply w-72 max-h-80 overflow-y-auto space-y-2;
 
 			.item {
-				@apply isolate flex w-full flex-col justify-center rounded-md p-2 hover:bg-primary-50;
+				@apply isolate flex w-full flex-col justify-center rounded-md p-2 hover:bg-bg-200/25;
 
 				.above-section {
 					@apply w-full flex items-center justify-start gap-2;
@@ -117,10 +117,10 @@
 						@apply min-w-0 flex-1 text-xs;
 
 						p {
-							@apply overflow-hidden overflow-ellipsis whitespace-nowrap text-primary-800 font-medium;
+							@apply overflow-hidden overflow-ellipsis whitespace-nowrap text-fg-300/80 font-medium;
 						}
 						span {
-							@apply text-xs text-primary-500;
+							@apply text-xs text-fg-300/50;
 						}
 					}
 					.actions-container {
@@ -128,39 +128,39 @@
 
 						.remove-btn {
 							@apply rounded-sm h-full w-full flex-center p-1 transition-colors duration-200;
-							background: radial-gradient(hsl(var(--secondary-300)), transparent, transparent);
+							background: radial-gradient(hsl(var(--ac-200)/0.6), transparent, transparent);
 							
 							&:hover {
-								background: radial-gradient(hsl(var(--secondary-300)), hsl(var(--secondary-300)/0.3), transparent);
+								background: radial-gradient(hsl(var(--ac-200)/0.6), hsl(var(--ac-200)/0.1), transparent);
 							}
 							svg {
-								@apply shrink-0 size-5 text-secondary-500;
+								@apply shrink-0 size-5 text-ac-200;
 							}
 						}
 						.error-svg-container {
 							@apply h-full w-full flex-center;
-							background: radial-gradient(hsl(var(--danger-300)), transparent, transparent);
+							background: radial-gradient(hsl(var(--dg-200)), transparent, transparent);
 							
 							svg {
-								@apply size-5 shrink-0 text-danger-500;
+								@apply size-5 shrink-0 text-dg-300/90;
 							}
 						}
 						.abort-btn {
 							@apply size-full rounded-sm flex-center transition-colors duration-200;
 							
 							&:hover {
-								background: radial-gradient(hsl(var(--primary-300)), hsl(var(--primary-300)/0.3), transparent);
+								background: radial-gradient(hsl(var(--fg-300)/0.25), hsl(var(--fg-300)/0.1), transparent);
 							}
 							.abort-svg {
-								@apply size-6 shrink-0 text-primary-500;
+								@apply size-6 shrink-0 text-fg-300/60;
 							}
 						}
 						.complete-svg-container {
 							@apply size-full flex-center;
-							background: radial-gradient(hsl(var(--success-300)), transparent, transparent);
+							background: radial-gradient(hsl(var(--ss-200)), transparent, transparent);
 							
 							svg {
-								@apply size-5 shrink-0 text-success-500;
+								@apply size-5 shrink-0 text-ss-300/90;
 							}
 						}
 					}
@@ -170,10 +170,10 @@
 					@apply w-full flex items-center space-x-2;
 
 					.progress-container {
-						@apply h-1 flex-1 shrink-0 overflow-clip rounded-full bg-secondary-100;
+						@apply h-1 flex-1 shrink-0 overflow-clip rounded-full bg-ac-200/20;
 	
 						.progress-bar {
-							@apply h-full bg-secondary-500 transition-all duration-300 ease-in-out
+							@apply h-full bg-ac-200 transition-all duration-300 ease-in-out
 						}
 					}
 					p {
@@ -196,7 +196,7 @@
 			@apply w-full max-w-screen-sm m-4 p-0 border;
 
 			>.form-body {
-				@apply w-full h-10 flex items-center pl-2 bg-primary-50/50;
+				@apply w-full h-10 flex items-center pl-2 bg-bg-200/20;
 
 				label {
 					@apply sr-only;
@@ -212,20 +212,20 @@
 
 					button {
 						@apply h-full aspect-square flex-center;
-						@apply [&>svg]:size-5 [&>svg]:stroke-2 [&>svg]:text-primary-700;
+						@apply [&>svg]:size-5 [&>svg]:stroke-2 [&>svg]:text-fg-300/70;
 					}
 					.form-close:hover {
-						@apply [&>svg]:text-danger-500;
-						background: radial-gradient(hsl(var(--danger-300)), hsl(var(--danger-300)/0.2), transparent);
+						@apply [&>svg]:text-dg-300/90;
+						background: radial-gradient(hsl(var(--dg-200)), hsl(var(--dg-200)/0.2), transparent);
 					}
 					.form-submit:hover {
-						@apply [&>svg]:text-success-500;
-						background: radial-gradient(hsl(var(--success-300)), hsl(var(--success-300)/0.2), transparent);
+						@apply [&>svg]:text-ss-300/90;
+						background: radial-gradient(hsl(var(--ss-200)), hsl(var(--ss-200)/0.2), transparent);
 					}
 				}
 			}
 			>.form-footer {
-				@apply w-full p-2 border-t flex-center !justify-start bg-primary-200/80;
+				@apply w-full p-2 border-t flex-center !justify-start bg-fg-200/80;
 
 				.title {
 					@apply sr-only;

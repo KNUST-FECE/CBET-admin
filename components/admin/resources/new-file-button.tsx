@@ -112,7 +112,7 @@ export default function NewFileButton() {
                 }}
             >
                 <FileIcon />
-                <span>New Filesss</span>
+                <span>New File</span>
             </MultiFileDropzone>
             <DropMenu>
                 <DropMenuTrigger id='upload-status-trigger' disabled={!fileStates.length}>

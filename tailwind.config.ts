@@ -16,12 +16,38 @@ const config: Config = {
     },
     fontFamily: {
       "inter": ["Inter", "sans-serif"],
+      "open-sans": ['var(--font-open-sans)'], 
     },
     extend: {
       screens: {
         "xs": "480px"
       },
       colors: {
+        bg: {
+          100: "hsl(var(--bg-100))",
+          200: "hsl(var(--bg-200))",
+          300: "hsl(var(--bg-300))",
+        },
+        fg: {
+          100: "hsl(var(--fg-100))",
+          200: "hsl(var(--fg-200))",
+          300: "hsl(var(--fg-300))",
+        },
+        ac: {
+          100: "hsl(var(--ac-100))",
+          200: "hsl(var(--ac-200))",
+          300: "hsl(var(--ac-300))",
+        },
+        ss: {
+          100: "hsl(var(--ss-100))",
+          200: "hsl(var(--ss-200))",
+          300: "hsl(var(--ss-300))",
+        },
+        dg: {
+          100: "hsl(var(--dg-100))",
+          200: "hsl(var(--dg-200))",
+          300: "hsl(var(--dg-300))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           50: "hsl(var(--primary-50))",

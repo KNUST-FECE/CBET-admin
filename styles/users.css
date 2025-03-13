@@ -8,11 +8,11 @@
 		@apply w-full p-5 pt-10 flex justify-between items-center;
 
 		>h1 {
-			@apply text-xl font-semibold tracking-tight text-primary-800;
+			@apply text-xl font-semibold tracking-tight text-fg-300/90;
 		}
 
 		>#new-member-form-trigger {
-			@apply flex items-center space-x-2 p-2 text-xs font-semibold bg-secondary-700 hover:bg-secondary-800 rounded-lg text-secondary-50 focus:outline-secondary-300;
+			@apply flex items-center space-x-2 p-2 text-xs font-semibold bg-ac-300 hover:bg-ac-300/90 rounded-lg text-fg-100 focus:outline-ac-300/50;
 
 			svg {
 				@apply size-4 stroke-2;
@@ -50,17 +50,17 @@
 						@apply text-xs px-2 py-1 rounded-full flex-center space-x-1.5 tracking-wide justify-start lowercase !important;
 
 						&[data-status=active] {
-							@apply bg-success-50 text-success-600;
+							@apply bg-ss-100 text-ss-300;
 
 							span.indicator {
-								@apply bg-success-600
+								@apply bg-ss-300;
 							}
 						}
 						&[data-status=hidden] {
-							@apply bg-danger-50 text-danger-600;
+							@apply bg-dg-100 text-dg-300;
 
 							span.indicator {
-								@apply bg-danger-600
+								@apply bg-dg-300;
 							}
 						}
 						span.indicator {

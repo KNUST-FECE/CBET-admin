@@ -5,13 +5,13 @@
 	}
 
 	.admin-container>header {
-		@apply sticky z-10 top-0 w-52 min-w-52 h-dvh bg-primary-50 border-r flex flex-col justify-between;
+		@apply sticky z-10 top-0 w-52 min-w-52 h-dvh bg-bg-200/25 border-r flex flex-col justify-between;
 
 		>#header-logo {
 			@apply w-full h-20 p-2 flex-center;
 
 			>#the-logo {
-				@apply text-secondary-500
+				@apply text-ac-200;
 			}
 		}
 		>nav {
@@ -21,18 +21,18 @@
 				@apply w-full p-2;
 
 				>a {
-					@apply h-full flex items-center justify-start space-x-2 text-primary-800;
+					@apply h-full flex items-center justify-start space-x-2 text-fg-300/80;
 
 					&[data-active=true], &:hover {
-						@apply text-secondary-600;
+						@apply text-ac-200;
 
 						>.header-icon {
-							@apply bg-secondary-100
+							@apply bg-ac-200/10;
 						}
 					}
 
 					>.header-icon {
-						@apply h-full aspect-square flex-center bg-primary-200 p-1.5 rounded-md;
+						@apply h-full aspect-square flex-center bg-bg-200 p-1.5 rounded-md;
 
 						svg {
 							@apply size-4 stroke-2;
@@ -48,7 +48,7 @@
 			@apply w-full flex items-center p-2 pb-3 space-x-4;
 
 			>#the-logout {
-				@apply overflow-hidden h-full w-full p-2 rounded-md bg-secondary-700 flex-center space-x-4 text-primary-100 hover:bg-secondary-600;
+				@apply overflow-hidden h-full w-full p-2 rounded-md bg-ac-300 flex-center space-x-4 text-ac-100 hover:bg-ac-200/90;
 
 				>p {
 					@apply flex-1 text-xs font-medium text-center
@@ -63,6 +63,6 @@
 	}
 
 	.admin-container>main {
-		@apply w-[calc(100%_-_208px)] min-h-dvh flex bg-primary
+		@apply w-[calc(100%_-_208px)] min-h-dvh flex bg-bg-300;
 	}
 }

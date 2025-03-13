@@ -10,7 +10,7 @@
 			@apply w-full p-5 pt-10 flex justify-between items-center;
 	
 			>h1 {
-				@apply text-xl font-semibold tracking-tight text-primary-800;
+				@apply text-xl font-semibold tracking-tight text-fg-300/90;
 			}
 		}
 
@@ -21,7 +21,7 @@
 				@apply w-full h-10 border-y flex items-center px-4;
 
 				h2 {
-					@apply text-sm font-semibold text-primary-700;
+					@apply text-sm font-semibold text-fg-300/80;
 				}
 			}
 			.section-form {
@@ -46,7 +46,7 @@
 						}
 
 						button {
-							@apply text-xs font-medium px-4 py-1 rounded-md bg-primary-700 hover:bg-primary-800 disabled:bg-primary-700/50 text-primary-100;
+							@apply text-xs font-medium px-4 py-1 rounded-md bg-bg-100/80 hover:bg-bg-100/70 disabled:opacity-50 text-fg-100;
 						}
 					}
 				}
