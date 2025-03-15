@@ -6,49 +6,55 @@
 
 	.login-container>main {
 		@apply w-full h-dvh flex-center flex-col bg-bg-300;
+
+		#logo-container {
+			@apply w-full py-2 flex-center;
+
+			>img {
+				@apply text-ac-200;
+			}
+		}
+		#header-container {
+			@apply w-full py-5 flex-center;
+
+			>h1 {
+				@apply text-lg text-fg-300/90 font-semibold
+			}
+		}
+		#form-container {
+			@apply w-full flex-center;
+
+			>form {
+				@apply w-full max-w-xs space-y-4;
+
+				>input {
+					@apply block w-full h-10 px-2 rounded-md border text-sm outline-ac-200 focus:outline
+				}
+				>button {
+					@apply block w-full h-10 rounded-md bg-ac-200 text-sm text-ac-100 hover:bg-ac-200/90 font-medium;
+				}
+				>div {
+					@apply w-full flex p-2 items-center space-x-4 bg-dg-100 rounded-md text-xs text-dg-300;
+
+					>svg {
+						@apply size-4
+					}
+					>p {
+						@apply text-xs font-medium
+					}
+				}
+			}
+		}
 	}
 
-	main>#logo-container {
-		@apply w-full py-2 flex-center
-	}
 
-	#logo-container>img {
-		@apply text-ac-200;
-	}
 
-	main>#header-container {
-		@apply w-full py-5 flex-center
-	}
 
-	#header-container>h1 {
-		@apply text-lg text-fg-300/90 font-semibold
-	}
 
-	main>#form-container {
-		@apply w-full flex-center;
-	}
 
-	#form-container>form {
-		@apply w-full max-w-xs space-y-4;
-	}
 
-	#form-container>form>input {
-		@apply block w-full h-10 px-2 rounded-md border text-sm outline-ac-200 focus:outline
-	}
 
-	#form-container>form>button {
-		@apply block w-full h-10 rounded-md bg-ac-200 text-sm text-fg-200/25 hover:bg-ac-200/90 font-medium;
-	}
 
-	#form-container>form>div {
-		@apply w-full flex p-2 items-center space-x-4 bg-dg-100 rounded-md text-xs text-dg-300;
-	}
 
-	#form-container>form>div>svg {
-		@apply size-4
-	}
 
-	#form-container>form>div>p {
-		@apply text-xs font-medium
-	}
 }
