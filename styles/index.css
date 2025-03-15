@@ -73,13 +73,13 @@
 			@apply bg-ac-200 text-fg-100 shadow hover:bg-ac-200/80;
 		}
 		&.btn-outline {
-			@apply border bg-bg-300 shadow-sm hover:bg-bg-200/50 text-fg-300;
+			@apply border border-bg-200 shadow-sm hover:bg-bg-200/50 text-fg-300;
 		}
 		&.btn-secondary {
-			@apply bg-bg-200 text-fg-300 shadow-sm hover:bg-bg-200/80;
+			@apply bg-bg-100 text-fg-100 shadow-sm hover:bg-bg-100/90;
 		}
 		&.btn-ghost {
-			@apply hover:bg-bg-100 hover:text-fg-300;
+			@apply hover:bg-bg-200 hover:text-fg-300;
 		}
 		&.size-default {
 			@apply h-9 px-4 py-2;
