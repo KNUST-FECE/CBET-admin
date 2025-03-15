@@ -34,9 +34,6 @@
 					@apply hover:underline text-ellipsis whitespace-nowrap overflow-hidden;
 				}
 			}
-			.leftover-col {
-				@apply w-full;
-			}
 		}
 	}
 }

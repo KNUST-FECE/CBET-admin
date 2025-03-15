@@ -79,7 +79,7 @@ function Calendar({
                 week: cn("week", props.weekCN),
                 day: cn("day", props.dayCN),
                 outside: cn("day-outside outside", props.outsideCN),
-                day_button: cn("btn btn-ghost day-button", props.dayButtonCN),
+                day_button: cn("day-button", props.dayButtonCN),
                 range_start: cn( "range-buttons day-range-start range-start", props.rangeStartCN),
                 range_end: cn( "range-buttons day-range-end range-end", props.rangeEndCN),
                 selected: cn("day-selected", props.selectedCN),

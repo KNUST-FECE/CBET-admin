@@ -154,7 +154,10 @@ function NameCell(props: {value: string, id: string, type: string, isEmpty: bool
     return (
         <div>
             {props.type === "folder"? props.isEmpty ? (<Folder />) : (<FullFolder />) : (<File />)}
-            <Link href={`${_resources}/?folder=${props.id}`}>{props.value}</Link>
+            {props.type === "folder"? 
+                <Link href={`${_resources}/?folder=${props.id}`}>{props.value}</Link> : 
+                <p>{props.value}</p>
+            }
         </div>
     )
 }

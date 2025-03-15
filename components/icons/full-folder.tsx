@@ -2,9 +2,9 @@ import React from "react";
 
 export default function FullFolder(props: React.ComponentPropsWithoutRef<"svg">) {
     return (
-        <svg width="800px" height="800px" viewBox="0 0 24 24" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" {...props}>
-            <path id="secondary" d="M18,2H6A2,2,0,0,0,4,4v7a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V4A2,2,0,0,0,18,2Z" fill="#42A5F5"></path>
-            <path id="primary" d="M20,10H11.4L9.7,8.29A1.05,1.05,0,0,0,9,8H4a2,2,0,0,0-2,2V20a2,2,0,0,0,2,2H20a2,2,0,0,0,2-2V12A2,2,0,0,0,20,10Z" fill="#FFCA28"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+            <path fill="#FFA000" d="M38,12H22l-4-4H8c-2.2,0-4,1.8-4,4v24c0,2.2,1.8,4,4,4h31c1.7,0,3-1.3,3-3V16C42,13.8,40.2,12,38,12z"/>
+            <path fill="#FFCA28" d="M42.2,18H15.3c-1.9,0-3.6,1.4-3.9,3.3L8,40h31.7c1.9,0,3.6-1.4,3.9-3.3l2.5-14C46.6,20.3,44.7,18,42.2,18z"/>
         </svg>
     )
 }
