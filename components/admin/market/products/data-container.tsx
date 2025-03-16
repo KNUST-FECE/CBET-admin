@@ -8,6 +8,7 @@ import { getCoreRowModel } from "@tanstack/react-table";
 import { getFilteredRowModel, getPaginationRowModel, getSortedRowModel } from "@tanstack/react-table";
 import { useState } from "react";
 import { useGetProducts } from "@/lib/query-hooks/products";
+import Filter from "./filter";
 
 export default function DataContainer({ filter }: { filter: IProductFilter }) {
     const { data: resources } = useGetProducts(filter);
@@ -34,9 +35,31 @@ export default function DataContainer({ filter }: { filter: IProductFilter }) {
 
     const headerGroup = table.getHeaderGroups();
     const tableRows = table.getRowModel().rows;
+    const selectedRows = table.getFilteredSelectedRowModel().rows;
+    const resetSelected = table.resetRowSelection;
+
+    const selectActions = [
+        {
+            label: "role",
+            trigger: () => {
+                if(selectedRows.length < 1) return
+            }
+        },
+        {
+            label: "status",
+            trigger: () => {
+                if(selectedRows.length < 1) return;
+            }
+        }
+    ]
 
     return (
         <>
+            <Filter
+                totalSelected={selectedRows.length}
+                onClose={() => table.resetRowSelection()}
+                actions={selectActions}
+            />
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
             </section>

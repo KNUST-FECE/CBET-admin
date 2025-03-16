@@ -31,8 +31,10 @@
 		@apply w-full flex-1 flex flex-col;
 
 		#filter-section {
+			@apply px-5 flex-center !justify-end border-t;
+
 			form {
-				@apply w-full py-2 px-5 flex-center !justify-end border-t;
+				@apply py-2;
 
 				#filter-buttons {
 					@apply flex items-center gap-2 flex-wrap;
@@ -61,8 +63,10 @@
 		@apply w-full flex-1 flex flex-col;
 
 		#filter-section {
+			@apply px-5 flex-center !justify-between border-t;
+
 			form {
-				@apply w-full py-2 px-5 flex-center !justify-end border-t;
+				@apply py-2;
 
 				#filter-buttons {
 					@apply flex items-center gap-2 flex-wrap;

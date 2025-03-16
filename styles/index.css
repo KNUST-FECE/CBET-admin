@@ -671,34 +671,29 @@
 		}
 	}
 	.selected-popup {
-		@apply absolute bottom-4 left-1/2 -translate-x-1/2 p-2 min-w-28 rounded-full flex items-center space-x-2 shadow-sm bg-bg-300 border;
-
-		&[data-active=false] {
-			@apply hidden
-		}
+		@apply py-2 flex items-center space-x-2 ;
 
 		.total-selected {
 			@apply pr-2 border-r;
+
 			p {
-				@apply h-7 px-2 min-w-9 flex-center rounded-full text-sm font-semibold bg-ac-200 text-ac-100;
+				@apply min-w-7 p-1 px-2 rounded-full flex-center space-x-1 text-ac-100 text-xs font-semibold bg-ac-200 select-none;
 			}
 		}
 		.action-buttons {
 			@apply flex items-center space-x-2;
 
 			button {
-				@apply h-7 text-xs font-semibold px-2 border bg-ac-100 hover:bg-ac-200 text-fg-300/80 hover:text-fg-100 rounded-full;
-
-				&[data-hidden=true] {
-					@apply hidden
-				}
+				@apply p-1 px-2 rounded-full flex-center space-x-1 border text-fg-300/70 text-xs font-semibold hover:bg-bg-200/25 select-none whitespace-nowrap shrink-0;
+				@apply disabled:cursor-not-allowed disabled:bg-transparent disabled:text-fg-300/70 disabled:opacity-50;
 			}
 		}
 		.clear-selection {
 			@apply pl-2 border-l;
 
 			button {
-				@apply size-7 flex-center rounded-full bg-bg-200/50 text-fg-300/80 hover:bg-ac-200 hover:text-ac-100;
+				@apply p-1 flex-center rounded-full border bg-ac-100 text-fg-300/80 hover:bg-ac-200 hover:text-fg-100;
+				@apply disabled:cursor-not-allowed disabled:bg-ac-100 disabled:text-fg-300/80 disabled:opacity-50;
 
 				svg {
 					@apply size-4

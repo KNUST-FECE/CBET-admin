@@ -1,5 +1,4 @@
 import DataContainer from "@/components/admin/blogs/data-container";
-import Filter from "@/components/admin/blogs/filter";
 import NewBlogForm from "@/components/admin/blogs/new-blog-form";
 
 export default function Page() {
@@ -9,7 +8,6 @@ export default function Page() {
                 <h1>Blogs</h1>
                 <NewBlogForm />
             </section>
-            <Filter />
             <DataContainer />
         </section>
     )

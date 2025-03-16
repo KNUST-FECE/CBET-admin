@@ -154,4 +154,14 @@ export interface IRole {
     createdAt: string
 }
 
+export type IDataAction = {
+    totalSelected: number,
+    onClose: () => void,
+    actions: {
+        label: string,
+        trigger: () => void,
+        single?: boolean
+    }[]
+}
+
 export type IFolderTrace = Pick<IResource, "id" | "name">;

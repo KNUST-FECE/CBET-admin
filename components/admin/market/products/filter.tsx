@@ -1,5 +1,6 @@
 "use client";
 
+import SelectPopup from "@/components/common/select-popup";
 import ChipsField from "@/components/form/chips-field";
 import DateRangeField from "@/components/form/date-range-field";
 import DigitRangeField from "@/components/form/digit-range-field";
@@ -9,14 +10,14 @@ import SortField from "@/components/form/sort-field";
 import { PRODUCTS_APPROVAL, PRODUCTS_CATEGORY, PRODUCTS_SORT_KEY, PRODUCTS_STATUS } from "@/lib/constants";
 import { _products } from "@/lib/routes";
 import { ZProductFilter } from "@/lib/schema";
-import { IProductFilter } from "@/lib/types";
+import { IDataAction, IProductFilter } from "@/lib/types";
 import { getFilterObject, getFilterString } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
-export default function Filter() {
+export default function Filter(props:IDataAction) {
     const searchParams = useSearchParams();
     const router = useRouter();
     const filter = getFilterObject(searchParams, ZProductFilter);
@@ -62,6 +63,7 @@ export default function Filter() {
 
     return (
         <section id="filter-section">
+            <SelectPopup {...props} />
             <FormProvider {...form}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div id="filter-buttons">

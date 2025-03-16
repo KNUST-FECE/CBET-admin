@@ -10,6 +10,7 @@ import { useGetBlogs } from "@/lib/query-hooks/blogs";
 import { useSearchParams } from "next/navigation";
 import { getFilterObject } from "@/lib/utils";
 import { ZBlogFilter } from "@/lib/schema";
+import Filter from "./filter";
 
 export default function DataContainer() {
     const searchParams = useSearchParams();
@@ -58,13 +59,13 @@ export default function DataContainer() {
 
     return (
         <>
+            <Filter
+                totalSelected={selectedRows.length}
+                onClose={() => table.resetRowSelection()}
+                actions={selectActions}
+            />
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
-                <SelectPopup
-                    totalSelected={selectedRows.length}
-                    onClose={() => table.resetRowSelection()}
-                    actions={selectActions}
-                />
             </section>
             <section id="table-footer-section">
                 <div id="data-info">

@@ -7,6 +7,7 @@ import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPagination
 import { useState } from "react";
 import { useGetMembers } from "@/lib/query-hooks/members";
 import SelectPopup from "@/components/common/select-popup";
+import Filter from "./filter";
 
 export default function DataContainer({ filter }: { filter: IMemberFilter }) {
     const { data: resources } = useGetMembers(filter);
@@ -55,13 +56,13 @@ export default function DataContainer({ filter }: { filter: IMemberFilter }) {
 
     return (
         <>
+            <Filter
+                totalSelected={selectedRows.length}
+                onClose={() => table.resetRowSelection()}
+                actions={selectActions}
+            />
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
-                <SelectPopup
-                    totalSelected={selectedRows.length}
-                    onClose={() => table.resetRowSelection()}
-                    actions={selectActions}
-                />
             </section>
             <section id="table-footer-section">
                 <div id="data-info">

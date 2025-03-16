@@ -12,7 +12,6 @@ export default function Page() {
                 <h1>Members</h1>
                 <NewMemberForm />
             </section>
-             <Filter />
             <DataContainer filter={filter} />
         </div>
     )

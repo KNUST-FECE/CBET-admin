@@ -6,6 +6,7 @@ import { columns } from './columns';
 import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
 import { useGetUsers } from "@/lib/query-hooks/users";
+import Filter from "./filter";
 
 export default function DataContainer({ filter }: { filter: IUserFilter }) {
     const { data: resources } = useGetUsers(filter);
@@ -32,9 +33,31 @@ export default function DataContainer({ filter }: { filter: IUserFilter }) {
 
     const headerGroup = table.getHeaderGroups();
     const tableRows = table.getRowModel().rows;
+    const selectedRows = table.getFilteredSelectedRowModel().rows;
+    const resetSelected = table.resetRowSelection;
+
+    const selectActions = [
+        {
+            label: "role",
+            trigger: () => {
+                if(selectedRows.length < 1) return
+            }
+        },
+        {
+            label: "status",
+            trigger: () => {
+                if(selectedRows.length < 1) return;
+            }
+        }
+    ]
 
     return (
         <>
+            <Filter
+                totalSelected={selectedRows.length}
+                onClose={() => table.resetRowSelection()}
+                actions={selectActions}
+            />
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
             </section>

@@ -6,6 +6,7 @@ import { ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPagination
 import { useState } from "react";
 import Table from "@/components/common/table";
 import { useGetShops } from "@/lib/query-hooks/shops";
+import Filter from "./filter";
 
 export default function DataContainer({ filter }: { filter: IShopFilter }) {
     const { data: resources } = useGetShops(filter);
@@ -35,6 +36,7 @@ export default function DataContainer({ filter }: { filter: IShopFilter }) {
 
     return (
         <>
+            <Filter/>
             <section id="table-section">
                 <Table HG={headerGroup} TR={tableRows} />
             </section>
