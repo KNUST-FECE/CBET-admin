@@ -13,5 +13,5 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/979003b8-f251-4aca-95f0-8c0bd50c1915" alt="CBET Platform Admin Sample" />
+  <img src="https://github.com/user-attachments/assets/90a5ecfc-8835-4465-8b56-8548fd4733d0" alt="CBET Platform Admin Sample" />
 </p>
