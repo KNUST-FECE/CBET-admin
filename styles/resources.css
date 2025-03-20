@@ -205,7 +205,7 @@
 				}
 			}
 			>.form-footer {
-				@apply w-full p-2 border-t flex-center !justify-start bg-fg-200/80;
+				@apply w-full p-2 border-t flex-center !justify-start bg-bg-200/80;
 
 				.title {
 					@apply sr-only;
@@ -213,22 +213,76 @@
 			}
 		}
 		&#rename-resource-form {
-			@apply w-full max-w-screen-sm m-4 p-0 border px-2;
+			@apply w-full max-w-screen-sm m-4 p-0 border;
 
 			>.form-header {
-				@apply flex;
+				@apply h-10 flex justify-between items-center border-b px-2 bg-bg-200/20;
 
-				div:first-of-type {
-					@apply flex-1
+				div {
+					@apply relative flex items-center last:space-x-2 first:flex-1 first:max-w-xs;
+
+					label {
+						@apply sr-only;
+					}
+
+					input {
+						@apply h-8 w-full rounded-md border text-sm pl-2 pr-8;
+					}
+
+					#cancel-rename-all {
+						@apply absolute right-1 top-1/2 -translate-y-1/2 size-6 bg-bg-200/80 hover:bg-bg-200 rounded-full flex-center;
+						@apply [&>svg]:size-4;
+					}
+
+					#close-form-dialog {
+						@apply size-7 rounded-full bg-bg-200 flex-center hover:bg-bg-200/90;
+						@apply [&>svg]:size-4;
+					}
+
+					#save-rename-action {
+						@apply h-7 px-4 flex-center rounded-md bg-ac-300 hover:bg-ac-300/90 text-ac-100 text-sm font-semibold;
+					}
 				}
 			}
 
 			>.form-body {
+				.resource-rename-item {
+					@apply border-b last:border-none h-10 px-2 flex items-center justify-between bg-bg-200/20;
 
+					div {
+						@apply relative first:flex-1 first:max-w-xs;
+
+						label {
+							@apply sr-only;
+						}
+
+						input {
+							@apply h-8 w-full rounded-md border text-sm pl-2 pr-8;
+						}
+
+						.item-rename-cancel {
+							@apply absolute right-1 top-1/2 -translate-y-1/2 size-6 bg-bg-200/80 hover:bg-bg-200 rounded-full flex-center;
+							@apply [&>svg]:size-4;
+						}
+
+						.item-rename-remove {
+							@apply size-7 rounded-full bg-bg-200 flex-center hover:bg-bg-200/90;
+							@apply [&>svg]:size-4;
+						}
+					}
+				}
 			}
 
 			>.form-footer {
+				@apply h-10 flex items-center px-2 bg-bg-200/50 border-t;
 
+				.title {
+					@apply sr-only;
+				}
+
+				.description {
+					@apply text-sm
+				}
 			}
 		}
 	}

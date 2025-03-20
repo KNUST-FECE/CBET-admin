@@ -16,7 +16,7 @@ type Props = {
     selected: IResource[]
 }
 
-export default function RenameForm(props: Props) {
+export default function DeleteForm(props: Props) {
     const { mutate: modifyName } = useModifyName(props.filter);
 
     const defaultValues = { name: "" };

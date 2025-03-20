@@ -60,7 +60,7 @@ export default function DataContainer() {
 
                 const selectedIDs = selectedRows.map(({original}) => original.id);
 
-                removeResource({ids: selectedIDs});
+                // removeResource({ids: selectedIDs});
                 resetSelected();
             }
         },
